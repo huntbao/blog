@@ -1,0 +1,22 @@
+# Dependencies
+markdown:         redcarpet
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Gzool
+tagline:          The Gzool
+url:              http://gzool.com
+paginate:         1
+baseurl:          /
+author:
+  name:           HuntBao
+  url:            http://www.weibo.com/gzooler
+  email:          huntbao@gmail.com
+
+# Custom vars
+version:          1.0.0
+github:
+  repo:           https://github.com/huntbao/blog
