@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>Gzool</title>
+ <title>Don</title>
  <link href="http://gzool.com/atom.xml" rel="self"/>
  <link href="http://gzool.com/"/>
- <updated>2014-08-19T13:23:35+08:00</updated>
+ <updated>2014-08-26T00:18:24+08:00</updated>
  <id>http://gzool.com</id>
  <author>
    <name>HuntBao</name>
@@ -13,13 +13,61 @@
 
  
  <entry>
-   <title>Jqueryui Developer Guide Errata</title>
-   <link href="http://gzool.com//2014/08/19/jqueryui-developer-guide-errata/"/>
-   <updated>2014-08-19T00:00:00+08:00</updated>
-   <id>http://gzool.com/2014/08/19/jqueryui-developer-guide-errata</id>
+   <title>Jquery Recipes And Examples Errata Collect</title>
+   <link href="http://gzool.com//2013/05/12/jquery-recipes-and-examples-errata-collect/"/>
+   <updated>2013-05-12T00:00:00+08:00</updated>
+   <id>http://gzool.com/2013/05/12/jquery-recipes-and-examples-errata-collect</id>
+   <content type="html">&lt;h2&gt;《jQuery、jQuery UI及jQuery Mobile技巧与示例》勘误收集&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/jquery-recipes.jpg&quot; alt=&quot;jQuery技巧与示例&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;此书由程学彬 （&lt;a href=&quot;http://weibo.com/ironbin&quot;&gt;http://weibo.com/ironbin&lt;/a&gt;）和我合译完成，此篇博客作为勘误收集而用，若译文有误或者有任何疑问，欢迎留下评论，或者给我发邮件(地址：&lt;a href=&quot;mailto:gzooler@gmail.com&quot;&gt;gzooler@gmail.com&lt;/a&gt;)或者联系程学彬，非常感谢。&lt;/p&gt;
+
+&lt;h2&gt;购买地址&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;京东：&lt;a href=&quot;http://item.jd.com/11298722.html&quot;&gt;http://item.jd.com/11298722.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;亚马逊：&lt;a href=&quot;http://www.amazon.cn/jQuery-jQuery-UI%E5%8F%8AjQuery-Mobile%E6%8A%80%E5%B7%A7%E4%B8%8E%E7%A4%BA%E4%BE%8B-%E6%89%AC/dp/B00EH8DFNA/ref=sr_1_1&quot;&gt;http://www.amazon.cn/jQuery-jQuery-UI%E5%8F%8AjQuery-Mobile%E6%8A%80%E5%B7%A7%E4%B8%8E%E7%A4%BA%E4%BE%8B-%E6%89%AC/dp/B00EH8DFNA/ref=sr_1_1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;当当网：&lt;a href=&quot;http://product.dangdang.com/23316600.html&quot;&gt;http://product.dangdang.com/23316600.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;附:《译者序》&lt;/h2&gt;
+
+&lt;p&gt;编程是需要技巧的。&lt;/p&gt;
+
+&lt;p&gt;这里说的技巧并非指奇技淫巧，而是对所使用编程语言的特性和API的熟练掌握和灵活运用。&lt;/p&gt;
+
+&lt;p&gt;曾经有位朋友问我该如何深入地学习一门语言。我说别的我不好说，但有一点是可以肯定的，就是对该门语言提供的API要非常熟悉。今天这个功能用了这个API来实现，明天开发同样的功能时就想办法用别的API来实现。&lt;/p&gt;
+
+&lt;p&gt;我高中的语文老师曾说过一段话，让我此生都受益匪浅。他说你们今天看到了漂亮的词语、成语或者语句，就应该把它们记下来并想方设法地用到下次的作文中去。我想这方法是同样适用于编程的。万事开头难，在能举一反三和融会贯通之前，只能一点一滴地开始积累，大家都是这么一步一步走过来的。期间有人走得快，也有人走得慢，但这并不能阻止你一直前进的步伐。&lt;/p&gt;
+
+&lt;p&gt;当然编程还需要其他很多专业知识，比如数据结构和算法、设计模式等等，按照从事的特定领域，又需要更多的专业技能。我上面说的对API做到举手投足只是最基本的要求之一。&lt;/p&gt;
+
+&lt;p&gt;本书涵盖了jQuery、jQuery UI、jQuery Mobile以及jQuery插件共四大块的技术，内容丰富全面。那么这本区区几百页的书能把上面这些内容都讲解得非常细致吗？答案当然是否定的。作者精挑细选的技巧示例只是一些典型的代表，希望起到抛砖引玉的作用。作者根据自己的知识水平和累积经验，用生动的语言来向我们演示它们的用法以及该注意的地方。比如要操作两个独立的选取集中的含有特定类名的元素，很多人可能就会写上两句样板代码，细心的人可能会提取一个函数出来。这里就可以使用合并选取集的技巧（即add方法）。这就是我所说的技巧，小而美的技巧。&lt;/p&gt;
+
+&lt;p&gt;前端技术日新月异，更新很快，书本中的有些内容已经过时，但这并不会有什么影响。当然权威的解释只有官方文档，实际开发的时候要以最新的官方文档为准。书本只是茶余饭后快速学习的手段之一。&lt;/p&gt;
+
+&lt;p&gt;感谢杨海玲老师给我翻译此书的机会。在翻译过程中，我对每个技巧和示例都认真进行了验证核对，对每一句话都推敲再三，生怕表达不清而误导了读者。但本人水平有限，加之时间仓促，书中难免有纰漏之处，敬请广大读者批评指正。
+本书的翻译由我的好友程学彬和我合作完成，感谢杨海玲老师在翻译过程中给予的充分信任和支持，感谢出版社编辑们认真仔细的编校工作。&lt;/p&gt;
+
+&lt;p&gt;今天是母亲节，借此机会也向我的妈妈表达一下我无以言表的爱：您的乐观豁达开朗是我此生弥足珍贵的财富。也感谢一直支持我和关心我的朋友，能认识你们我已很知足。&lt;/p&gt;
+
+&lt;p&gt;今天也是汶川地震五周年祭，汶川之殇，举国之痛。悲痛往事不想多提，相信重生后的你们定如凤凰涅槃，美丽无比。&lt;/p&gt;
+
+&lt;p&gt;包勇明&lt;/p&gt;
+
+&lt;p&gt;2013年5月12日　于上海&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Jqueryui Developer Guide Errata Collect</title>
+   <link href="http://gzool.com//2012/08/01/jqueryui-developer-guide-errata-collect/"/>
+   <updated>2012-08-01T00:00:00+08:00</updated>
+   <id>http://gzool.com/2012/08/01/jqueryui-developer-guide-errata-collect</id>
    <content type="html">&lt;h2&gt;《jQuery UI开发指南》勘误收集&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://images.cnblogs.com/cnblogs_com/huntbao/563263/o_rBEHaFCpnN8IAAAAAADct2Ux4F0AAC2vQLu2EkAANzP971.jpg&quot; alt=&quot;jQuery UI&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/public/images/jqueryui.jpg&quot; alt=&quot;jQuery UI&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;此书由罗晴明 （&lt;a href=&quot;http://weibo.com/sunnylqm&quot;&gt;http://weibo.com/sunnylqm&lt;/a&gt;）和我合译完成，此篇博客作为勘误收集而用，若译文有误或者有任何疑问，欢迎留下评论，或者给我发邮件(地址：&lt;a href=&quot;mailto:gzooler@gmail.com&quot;&gt;gzooler@gmail.com&lt;/a&gt;)或者联系罗晴明，非常感谢。&lt;/p&gt;
 

@@ -12,15 +12,7 @@ body {
 }
 
 html {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-@media (min-width: 38em) {
-    html {
-        font-size: 20px;
-    }
+    font: 18px/1.5 Georgia, "微软雅黑";
 }
 
 body {
@@ -202,7 +194,7 @@ blockquote p:last-child {
 img {
     display: block;
     max-width: 100%;
-    margin: 0 0 1rem;
+    margin: 0 auto 1rem;
     border-radius: 5px;
 }
 
@@ -240,6 +232,7 @@ tbody tr:nth-child(odd) th {
     max-width: 38rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    padding-top: 1rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -323,14 +316,14 @@ tbody tr:nth-child(odd) th {
     overflow: hidden;
     margin-left: -1rem;
     margin-right: -1rem;
-    font-family: "PT Sans", Helvetica, Arial, sans-serif;
     color: #ccc;
     text-align: center;
+    float: right;
 }
 
 .pagination-item {
     display: block;
-    padding: 1rem;
+    padding: .2rem .8rem;
     border: 1px solid #eee;
 }
 
@@ -349,7 +342,7 @@ a.pagination-item:hover {
 
     .pagination-item {
         float: left;
-        width: 50%;
+        font-size: 14px;
     }
 
     .pagination-item:first-child {

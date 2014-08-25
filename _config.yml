@@ -6,8 +6,8 @@ pygments:         true
 permalink:        pretty
 
 # Setup
-title:            Gzool
-tagline:          The Gzool
+title:            Don
+tagline:          Quixote
 url:              http://gzool.com
 paginate:         1
 baseurl:          /
