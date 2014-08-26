@@ -4,7 +4,7 @@
  <title>Don Quixote</title>
  <link href="http://gzool.com/atom.xml" rel="self"/>
  <link href="http://gzool.com/"/>
- <updated>2014-08-26T23:39:23+08:00</updated>
+ <updated>2014-08-26T23:47:35+08:00</updated>
  <id>http://gzool.com</id>
  <author>
    <name>HuntBao</name>
@@ -19,7 +19,7 @@
    <id>http://gzool.com/2014/08/27/spa-afterword</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/spa.png&quot; alt=&quot;单页Web应用&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;突然想为这本写篇译后记，一来是出版社的老师已经提前帮忙发布&lt;a href=&quot;http://gzool.com/2014/08/26/spa-errata-collect/&quot;&gt;《译者序》&lt;/a&gt;的内容，相同的文字再发一遍觉得没啥意思。二来正好还有几个关于本书的问题想说明一下。&lt;/p&gt;
+&lt;p&gt;突然想为这本书写篇译后记，一来是出版社的老师已经提前发布了&lt;a href=&quot;http://gzool.com/2014/08/26/spa-errata-collect/&quot;&gt;《译者序》&lt;/a&gt;的内容，相同的文字再发一遍觉得没啥意思。二来正好还有几个关于本书的问题想说明一下。&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;关于书名&lt;/p&gt;
@@ -41,7 +41,7 @@
 
 &lt;p&gt;首先，作为程序员，要把英语拿起来，英语的重要性就不用我说了。不是说看译文就是在看别人消化后的东西（这我觉得没什么不好，译文的目的之一是提升读者的阅读速度），而是能流畅地看英文的话就能看标准和规范，也能第一时间欣赏国外作者的原创文章，这才是最吸引人的地方。&lt;/p&gt;
 
-&lt;p&gt;其次，就这本书来说，第一遍看时可以不用看代码，不用“追根究底”，主要看正文部分作者的解释说明。其实很多书的代码都不用看，特别是大段大段的代码，光看正文足已，等要用到了再来仔细琢磨也来得及。如果你正好在开发一个和作者演示类似的项目，那另当别论。当然看不看代码因人而异，请根据自己的爱好习惯决定。&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;其次，就这本书来说，第一遍看时可以不用看代码，不用“追根究底”，主要看正文部分作者的解释说明。其实很多书的代码都不用看，特别是大段大段的代码，光看正文足已，等要用到了再来仔细琢磨也来得及。如果你正好在开发一个和作者演示程序类似的项目，那另当别论。当然看不看代码因人而异，请根据自己的爱好习惯决定。&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;这本书主要讲了什么东西？前端、后端还是全端？&lt;/p&gt;
 
 &lt;p&gt;这本书重点讲的是单页应用的前端架构设计。但也讲了 Node.js、MongoDB、编码规范、测试等。这些在我看来都是附赠的内容，是 bonus，是为了“卖相”好看。但这些额外的内容都非常不错，毕竟占了这么大的篇幅，对于前端工程师来说可能是薄弱的环节甚至是盲点，但看无妨。人总喜欢完整的和对称的事物，作者不能光顾前端而不管后端，连演示程序也运行不起来，总有点说不过去。完整的事物有助于加深理解。&lt;/p&gt;
@@ -55,9 +55,9 @@
  
  <entry>
    <title>单页Web应用 勘误收集</title>
-   <link href="http://gzool.com//2014/08/26/spa-errata-collect/"/>
-   <updated>2014-08-26T00:00:00+08:00</updated>
-   <id>http://gzool.com/2014/08/26/spa-errata-collect</id>
+   <link href="http://gzool.com//2014/08/25/spa-errata-collect/"/>
+   <updated>2014-08-25T00:00:00+08:00</updated>
+   <id>http://gzool.com/2014/08/25/spa-errata-collect</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/spa.png&quot; alt=&quot;单页Web应用&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;此篇博客作为本书勘误收集而用，若译文有误或者有任何疑问，欢迎留下评论，或者给我发邮件(地址：&lt;a href=&quot;mailto:gzooler@gmail.com&quot;&gt;gzooler@gmail.com&lt;/a&gt;)非常感谢。&lt;/p&gt;
