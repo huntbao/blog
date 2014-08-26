@@ -1,4 +1,8 @@
-##《jQuery、jQuery UI及jQuery Mobile技巧与示例》勘误收集
+---
+layout: post
+title: jQuery、jQuery UI及jQuery Mobile技巧与示例 勘误收集
+---
+
 
 ![jQuery技巧与示例]({{ site.baseurl }}public/images/jquery-recipes.jpg)
 

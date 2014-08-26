@@ -4,34 +4,32 @@ title: Home
 ---
 
 <div class="posts">
-  {% for post in paginator.posts %}
-  <div class="post">
-    <h1 class="post-title">
-      <a href="{{ site.baseurl }}{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
-
-    <span class="post-date">{{ post.date | date_to_string }}</span>
-
-    {{ post.content }}
-  </div>
-  {% endfor %}
+    {% for post in paginator.posts %}
+    <div class="post">
+        <h1 class="post-title">
+            <a href="{{ post.url }}">
+                {{ post.title }}
+            </a>
+        </h1>
+        <span class="post-date">{{ post.date | date_to_string }}</span>
+        {{ post.content }}
+    </div>
+    {% endfor %}
 </div>
 
 <div class="pagination">
-  {% if paginator.next_page %}
+    {% if paginator.next_page %}
     <a class="pagination-item older" href="{{ site.baseurl }}page{{paginator.next_page}}">上一篇</a>
-  {% else %}
-    <span class="pagination-item older">上一篇</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}">下一篇</a>
     {% else %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}page{{paginator.previous_page}}">下一篇</a>
+    <span class="pagination-item older">上一篇</span>
     {% endif %}
-  {% else %}
+    {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+    <a class="pagination-item newer" href="{{ site.baseurl }}">下一篇</a>
+    {% else %}
+    <a class="pagination-item newer" href="{{ site.baseurl }}page{{paginator.previous_page}}">下一篇</a>
+    {% endif %}
+    {% else %}
     <span class="pagination-item newer">下一篇</span>
-  {% endif %}
+    {% endif %}
 </div>

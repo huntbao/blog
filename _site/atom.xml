@@ -4,7 +4,7 @@
  <title>Don</title>
  <link href="http://gzool.com/atom.xml" rel="self"/>
  <link href="http://gzool.com/"/>
- <updated>2014-08-26T01:04:02+08:00</updated>
+ <updated>2014-08-26T14:35:58+08:00</updated>
  <id>http://gzool.com</id>
  <author>
    <name>HuntBao</name>
@@ -13,13 +13,46 @@
 
  
  <entry>
-   <title>Jquery Recipes And Examples Errata Collect</title>
+   <title>单页Web应用 勘误收集</title>
+   <link href="http://gzool.com//2014/08/26/spa-errata-collect/"/>
+   <updated>2014-08-26T00:00:00+08:00</updated>
+   <id>http://gzool.com/2014/08/26/spa-errata-collect</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/spa.png&quot; alt=&quot;单页Web应用&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;此篇博客作为本书勘误收集而用，若译文有误或者有任何疑问，欢迎留下评论，或者给我发邮件(地址：&lt;a href=&quot;mailto:gzooler@gmail.com&quot;&gt;gzooler@gmail.com&lt;/a&gt;)非常感谢。&lt;/p&gt;
+
+&lt;h2&gt;购买地址&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;暂无&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;附:《译者序》&lt;/h2&gt;
+
+&lt;p&gt;单页 Web 应用（single page web application，简称 SPA）无疑是目前网站开发技术的弄潮儿，很多传统网站都在或者已经转型为单页应用，新的单页 Web 应用网站（包括移动平台上的）也如雨后春笋般涌现出来，如 Gmail、Evernote、Trello 等。如果你是一名 Web 开发人员，却还没开发过或者甚至是没有听说过单页应用，那你已经 Out 很久了。&lt;/p&gt;
+
+&lt;p&gt;单页 Web 应用和前端工程师息息相关，因为最主要的变革发生在浏览器端，用到的技术其实还是 HTML+CSS+JavaScript，所有的浏览器都原生支持，当然有的浏览器因为具备一些高级特性，从而使得单页Web应用的用户体验更上一层楼。关于单页应用的优点和缺点，网上讲解的文章有很多，这里就不展开论述了。&lt;/p&gt;
+
+&lt;p&gt;单页 Web 应用，顾名思义，就是只有一张 Web 页面的应用。浏览器一开始会加载必需的 HTML、CSS 和 JavaScript，之后所有的操作都在这张页面上完成，这一切都由 JavaScript 来控制。因此，单页Web应用会包含大量的 JavaScript 代码，复杂度可想而知，模块化开发和架构设计的重要性不言而喻。&lt;/p&gt;
+
+&lt;p&gt;随着单页Web应用的崛起，各种框架也不断涌现，如 Backbone.js、Ember.js、Angular.js 等，还有 RequireJS 等模块加载器。但是，本书没有讲解这些框架和模块加载器，这也正是我最喜欢这本书的地方。作者坦言自己很少使用框架，认为框架的限制过多，一旦不符合框架本身的设计哲学，结果可能适得其反。在翻译的过程中，曾多次想给作者鼓掌，因为我一直以来的观点和想法多次和作者的不谋而合。当然我和作者一样，也并不反对使用框架。不管是按照书中的方法来开发，还是决定使用其他可用的框架库，书中的思想都是适用的。&lt;/p&gt;
+
+&lt;p&gt;本书作者主要是介绍他们多年来开发单页Web应用网站的经验，他们已经从中提炼出单页 Web 应用的架构设计，这些架构设计思想是本书的精华所在，是本书最有价值且最值得回味和学习的知识。我特别欣赏作者那种毫无保留的分享精神和对技术认真严肃的态度，讲解的过程中一直担心遗漏了什么，结果使得本书的篇幅大大超出了他们最初的计划。&lt;/p&gt;
+
+&lt;p&gt;本书前面 6 章都在讲解单页 Web 应用的客户端。鉴于完整性的需要，最后 3 章讲的是服务端技术，同样讲得深入浅出，推荐所有 Web 开发人员尤其是前端工程师仔细阅读。作者特意选择和 JavaScript 相关的服务端技术，即 Node.js 和 MongoDB。作者想证明全栈 JavaScript 开发的可行性。作者表示结果是令他们自己满意的。当然服务端也可以选择其他平台，作者从来没有也不会说 Node.js 和 MongoDB 是最好的服务端技术，这一点也是特意强调过的。最后还添加了两个附录，分别介绍 JavaScript 的编码规范和单页 Web 应用的测试，这也是程序开发的两大话题，很值得一读。&lt;/p&gt;
+
+&lt;p&gt;单页 Web 应用的开发会遇到很多挑战，但我相信随着技术的不断发展和人们的不断努力，这些挑战会被一一突破。比如，目前棘手的 SEO 问题，需要搜索引擎公司和开发人员的不断尝试和配合，我相信会有那么一天，SEO 的问题将不复存在。&lt;/p&gt;
+
+&lt;p&gt;由于本人水平有限，加之时间仓促，翻译过程中难免有纰漏之处，敬请广大读者批评指正。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>jQuery、jQuery UI及jQuery Mobile技巧与示例 勘误收集</title>
    <link href="http://gzool.com//2013/05/12/jquery-recipes-and-examples-errata-collect/"/>
    <updated>2013-05-12T00:00:00+08:00</updated>
    <id>http://gzool.com/2013/05/12/jquery-recipes-and-examples-errata-collect</id>
-   <content type="html">&lt;h2&gt;《jQuery、jQuery UI及jQuery Mobile技巧与示例》勘误收集&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/public/images/jquery-recipes.jpg&quot; alt=&quot;jQuery技巧与示例&quot;&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/jquery-recipes.jpg&quot; alt=&quot;jQuery技巧与示例&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;此书由程学彬 （&lt;a href=&quot;http://weibo.com/ironbin&quot;&gt;http://weibo.com/ironbin&lt;/a&gt;）和我合译完成，此篇博客作为勘误收集而用，若译文有误或者有任何疑问，欢迎留下评论，或者给我发邮件(地址：&lt;a href=&quot;mailto:gzooler@gmail.com&quot;&gt;gzooler@gmail.com&lt;/a&gt;)或者联系程学彬，非常感谢。&lt;/p&gt;
 
@@ -61,13 +94,11 @@
  </entry>
  
  <entry>
-   <title>Jqueryui Developer Guide Errata Collect</title>
+   <title>jQuery UI开发指南 勘误收集</title>
    <link href="http://gzool.com//2012/08/01/jqueryui-developer-guide-errata-collect/"/>
    <updated>2012-08-01T00:00:00+08:00</updated>
    <id>http://gzool.com/2012/08/01/jqueryui-developer-guide-errata-collect</id>
-   <content type="html">&lt;h2&gt;《jQuery UI开发指南》勘误收集&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/public/images/jqueryui.jpg&quot; alt=&quot;jQuery UI&quot;&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/jqueryui.jpg&quot; alt=&quot;jQuery UI&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;此书由罗晴明 （&lt;a href=&quot;http://weibo.com/sunnylqm&quot;&gt;http://weibo.com/sunnylqm&lt;/a&gt;）和我合译完成，此篇博客作为勘误收集而用，若译文有误或者有任何疑问，欢迎留下评论，或者给我发邮件(地址：&lt;a href=&quot;mailto:gzooler@gmail.com&quot;&gt;gzooler@gmail.com&lt;/a&gt;)或者联系罗晴明，非常感谢。&lt;/p&gt;
 
