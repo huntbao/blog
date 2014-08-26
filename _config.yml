@@ -6,8 +6,8 @@ highlighter:      pygments
 permalink:        pretty
 
 # Setup
-title:            Don
-tagline:          Quixote
+title:            Don Quixote
+tagline:          Knight Of Romantic
 url:              http://gzool.com
 paginate:         1
 baseurl:          /
