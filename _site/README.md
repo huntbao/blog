@@ -1,1 +1,0 @@
-Gzool blog
