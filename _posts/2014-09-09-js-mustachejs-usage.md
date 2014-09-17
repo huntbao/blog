@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Mustache.js 使用简介
 ---
 
@@ -250,24 +250,20 @@ Mustache.render(template, view) // <b>Moe</b><b>Larry</b><b>Curly</b>
 {% highlight javascript %}
 
 var template = '' +
-    '{{ "{{#beatles"}}}}' +
+    '{{ "{{#names"}}}}' +
     '<b>{{ "{{name"}}}}</b>' +
-    '{{ "{{/beatles"}}}}'
+    '{{ "{{/names"}}}}'
 
 var view = {
-    'beatles': [
-        {'firstName': 'John', 'lastName': 'Lennon'},
-        {'firstName': 'Paul', 'lastName': 'McCartney'},
-        {'firstName': 'George', 'lastName': 'Harrison'},
-        {'firstName': 'Ringo', 'lastName': 'Starr'}
+    names: [
+        {'firstName': 'Don', 'lastName': 'Quixote'}
     ],
-    'name': function () {
+    name: function () {
         return this.firstName + ' ' + this.lastName
     }
 }
 
-Mustache.render(template, view) // <b>John Lennon</b><b>Paul McCartney</b><b>George Harrison</b><b>Ringo Starr</b> 
-
+Mustache.render(template, view) // <b>Don Quixote</b>
 {% endhighlight %}
 
 * 如果区块的键是函数，则会调用该函数。函数的第一个参数是区块的内容块（未渲染）。第二个参数是一个特殊的渲染函数，它的 `view` 参数是当前的 `view`，调用的 `context` 对象即为当前的 `view` 对象。
@@ -325,6 +321,141 @@ var template = '<h1>Today{{ "{{! ignore me"}}}}.</h1>'
 Mustache.render(template) // <h1>Today.</h1> 
 
 {% endhighlight %}
+
+## 局部模板 `{{ "{{>name"}}}}`
+
+* 局部模板在运行期渲染（而不是编译期），所以局部模板可以递归使用，但要避免产生无限循环。将局部模板传给 `Mustache.render` 方法的第三个参数即可。
+
+{% highlight javascript %}
+
+var template = '' +
+    '{{ "{{#names"}}}}' +
+    '{{ "{{> user"}}}}' +
+    '{{ "{{/names"}}}}'
+
+var userTemplate = '<strong>{{ "{{name"}}}}</strong>'
+
+var view = {
+    names: [
+        {
+            name: 'Don Quixote'
+        }
+    ]
+}
+
+// <strong>Don Quixote</strong>
+Mustache.render(template, view, {
+    user: userTemplate
+})
+
+{% endhighlight %}
+
+下面的例子会产生无限循环。因为 Mustache.js 发现当前对象没有 `children` 属性时，它会往上查找，这和 JavaScript 中查找变量的过程是类似的：在当前作用域中找不到变量，就到父级作用域中查找。
+
+{% highlight javascript %}
+
+var view = {
+    title: 'title1',
+    children: [
+        {
+            title: 'title1-1'
+        },
+        {
+            title: 'title1-2',
+            children: [
+                {
+                    title: 'title1-2-1'
+                }
+            ]
+        }
+    ]
+}
+
+var template = '' +
+    '{{ "{{title"}}}}' +
+    '<ul>' +
+    '{{ "{{#children"}}}}' +
+    '   <li>{{ "{{>panel"}}}}</li>' +
+    '{{ "{{/children"}}}}' +
+    '</ul>'
+
+var partials = {panel: template}
+
+// Uncaught RangeError: Maximum call stack size exceeded
+Mustache.render(template, view, partials)
+
+{% endhighlight %}
+
+## 设置自定义标签（Set Delimiter）
+
+* Mustache.js 的标签是两对大括号，但如果就想输出两对大括号就比较麻烦(但不是无法做到，比如可以使用 html 标签把单个大括号包起来，但在实际情况中这么做就太麻烦了)。Mustache.js 可以设置自定义标签，不使用默认的`{{ "{{"}}}}`。
+
+{% highlight javascript %}
+
+var template = '' +
+    '{{ "{{ firstName "}}}}' +
+    '{{ "{{=<% %>="}}}}' +
+    '<% lastName %>' +
+    '<%={{ "{{ "}}}}=%>' +
+    ' is {{ "{{ title "}}}}'
+
+var view = {
+    firstName: 'Don',
+    lastName: 'Quixote',
+    title: 'Knight'
+}
+
+Mustache.render(template, view) // Don Quixote is Knight
+
+{% endhighlight %}
+
+Mustache.js 把标签存放在 `tags` 属性中，可以通过更改 `Mustache.tags` 的值，则会更换默认标签，注意，这是全局范围内的更换，所以不要轻易这么做。
+
+{% highlight javascript %}
+
+Mustache.tags = ['<%', '%>']
+
+var template = '<% name %>'
+
+var view = {
+    name: 'Don Quixote'
+}
+
+Mustache.render(template, view)
+
+{% endhighlight %}
+
+## 预解析和缓存模板
+
+默认情况下，当 Mustache.js 首次解析了某个模板后，它会把完整的标记树（token tree，这个涉及到 Mustache.js 的实现）缓存起来。之后如果又遇到相同的模板，就会绕过解析步骤直接使用缓存模板，这样渲染就快得多了。可以预先使用 `Mustache.parse` 方法。
+
+{% highlight javascript %}
+
+Mustache.parse(template);
+
+// Then, sometime later.
+Mustache.render(template, view);
+
+{% endhighlight %}
+
+## API
+
+Mustache.js 暴露的 API 主要就是一个，即 `Mustache.render` 方法。还有一个 `Mustache.to_html` 方法，这个方法是为了兼容 `0.4.x` 版本的，所以已经不推荐使用这个方法，官方文档甚至都没提到这个方法。
+
+## 问题
+
+在使用 Mustache.js 的过程中，遇到比较多的一个问题是无法遍历对象，即需要同时使用对象的 `key` 和 `value`。这个问题 Mustache.js 没提供解决方案，只能预先对对象进行处理，所以说，Mustache.js 的立场是让使用者来适应它，而不是它来满足使用者遇到的各种使用场景。
+
+## 结语
+
+2011 年 2 月，Jan Lehnardt 写了一篇[博客](http://writing.jan.io/mustache-2.0.html){:target="_blank"}，展望了 Mustache 2.0 和 Mustache 的未来。他例举了在使用 Mustache 过程中遇到的一些问题，并打算积极推动 Mustache 的社区建设并推动大家起草 Mustache 2.0 规范，然后所有语言都实现新的规范。
+
+2013 年 11 月，Jan Lehnardt 又写了一篇[博客](http://writing.jan.io/2013/11/01/the-parable-of-mustache-js.html){:target="_blank"}，介绍了 Mustache.js 产生的一些背景知识。我想他有点无奈，因为两年前的愿景毫无进展，Mustache 2.0 遥遥无期。主要是 Mustache 的作者们难以达成共识，我想是他们不想破坏 Mustache 的设计哲学，即不想把 logic-less template 变成 logic template。于是，Jan Lehnardt 又把他的精力放在其他事情上面了。
+
+对于 Mustache 作者们的坚持，是对的还是错的？我想每个人都有自己的看法。世界就是如此的奇妙，坚持到底的路上，有失去的机会，也有不错的回报。
+
+在刚开始使用 Mustache.js 时，有时很纳闷怎么这么简单的功能也不提供呢？在对 Mustache 有了较多的了解后，我现在挺欣赏 Mustache 作者们的坚持。
+
 
 
 
