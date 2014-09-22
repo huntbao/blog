@@ -448,7 +448,7 @@ Mustache.js 暴露的 API 主要就是一个，即 `Mustache.render` 方法。�
 
 ## 结语
 
-2011 年 2 月，Jan Lehnardt 写了一篇[博客](http://writing.jan.io/mustache-2.0.html){:target="_blank"}，展望了 Mustache 2.0 和 Mustache 的未来。他例举了在使用 Mustache 过程中遇到的一些问题，并打算积极推动 Mustache 的社区建设并推动大家起草 Mustache 2.0 规范，然后所有语言都实现新的规范。
+2011 年 2 月，Jan Lehnardt 写了一篇[博客](http://writing.jan.io/mustache-2.0.html){:target="_blank"}，展望了 Mustache 2.0 和 Mustache 的未来。他例举了在使用 Mustache 过程中遇到的一些问题（很多 idea 都是来自于后起之秀 [Handlebars.js](https://github.com/wycats/handlebars.js){:target="_blank"}），并打算积极推动 Mustache 的社区建设并推动大家起草 Mustache 2.0 规范，然后所有语言都实现新的规范。
 
 2013 年 11 月，Jan Lehnardt 又写了一篇[博客](http://writing.jan.io/2013/11/01/the-parable-of-mustache-js.html){:target="_blank"}，介绍了 Mustache.js 的一些背景知识。我想他有点无奈，因为两年前的愿景进展缓慢，Mustache 2.0 更是遥遥无期。主要是 Mustache 的作者们难以达成共识，我想他们是不想破坏 Mustache 的设计哲学，即不想把 logic-less template 变成 logic template。于是，Jan Lehnardt 又把他的精力放在其他事情上面了。
 
