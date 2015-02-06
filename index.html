@@ -2,6 +2,23 @@
 layout: default
 title: Home
 ---
+<div class="pagination pagination-top">
+    {% if paginator.next_page %}
+    <a class="pagination-item older" href="{{ site.baseurl }}page{{paginator.next_page}}" title="Previous">☚</a>
+    {% else %}
+    <span class="pagination-item older" title="Previous">☚</span>
+    {% endif %}
+    {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+    <a class="pagination-item newer" href="{{ site.baseurl }}" title="Next">☛</a>
+    {% else %}
+    <a class="pagination-item newer" href="{{ site.baseurl }}page{{paginator.previous_page}}" title="Next">☛</a>
+    {% endif %}
+    {% else %}
+    <span class="pagination-item newer" title="Next">☛</span>
+    {% endif %}
+    <a class="pagination-item arhive" href="{{ site.baseurl }}archives" title="Archives">∑</a>
+</div>
 
 <div class="posts">
     {% for post in paginator.posts %}

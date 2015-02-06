@@ -330,8 +330,13 @@ a.pagination-item:hover {
 }
 
 @media (min-width: 30em) {
+
     .pagination {
         margin: -1.2rem -.5rem 0 0;
+    }
+
+    .pagination-top {
+        margin: -4px -4px 0 0;
     }
 
     .pagination-item {
