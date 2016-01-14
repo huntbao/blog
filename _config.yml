@@ -10,12 +10,11 @@ title:            Don Quixote
 tagline:          Knight Of Brave
 url:              http://gzool.com
 encoding:         UTF-8
-paginate:         1
 baseurl:          /
 author:
   name:           HuntBao
   url:            http://www.weibo.com/gzooler
-  email:          huntbao@gmail.com
+  email:          gzooler@gmail.com
 
 # Custom vars
 version:          1.0.0

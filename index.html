@@ -6,12 +6,10 @@ title: Home
     <ul class="archive-posts">
         {% for post in site.posts %}
         <li>
-            <h6>
-                <a href="{{ post.url }}">
-                    {{ post.title }}
-                    <small>{{ post.date | date_to_string }}</small>
-                </a>
-            </h6>
+            <a href="{{ post.url }}">
+                {{ post.title }}
+                <small>{{ post.date | date_to_string }}</small>
+            </a>
         </li>
         {% endfor %}
     </ul>
