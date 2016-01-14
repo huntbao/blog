@@ -3,6 +3,10 @@
 #### Install jekyll
 gem install jekyll
 
+if pygments is not installed, then:
+
+gem install pygments.rb
+
 #### Run
 jekyll serve
 
