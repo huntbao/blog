@@ -112,7 +112,7 @@ pre {
 }
 
 code {
-    padding: .25em .5em;
+    padding: .25em .1em;
     font-size: 85%;
     color: #bf616a;
 }
@@ -124,8 +124,9 @@ pre {
     padding: 1rem;
     font-size: .8rem;
     line-height: 1.4;
-    background-color: #f9f9f9;
     overflow-x: auto;
+    border-radius: .5rem;
+    color: #d0d0d0;
 }
 
 pre code {
@@ -174,6 +175,7 @@ blockquote {
     margin: .8rem 0;
     color: #7a7a7a;
     border-left: .25rem solid #e5e5e5;
+    font-size: .8rem;
 }
 
 blockquote p:last-child {
