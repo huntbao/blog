@@ -11,7 +11,7 @@ title: Web Development with Node and Express Charpter 2 —— 读书笔记
 
 假设某项目有如下目录结构：
 
-{% highlight bash %}
+{% highlight console %}
 .
 └── dir1
     └── dir2
@@ -32,14 +32,14 @@ console.log("found path.js: " + require('./path.js'))
 
 执行以下命令：
 
-{% highlight bash %}
+{% highlight console %}
 cd dir1/dir2
 node path.js
 {% endhighlight %}
 
 输出结果是：
 
-{% highlight bash %}
+{% highlight console %}
 . = /dir1/dir2
 __dirname = /dir1/dir2
 process.cwd() = /dir1/dir2
@@ -50,14 +50,14 @@ found path.js: yes
 
 然后再执行：
 
-{% highlight bash %}
+{% highlight console %}
 cd ..
 node dir2/path.js
 {% endhighlight %}
 
 输出结果是：
 
-{% highlight bash %}
+{% highlight console %}
 . = /dir1
 __dirname = /dir1/dir2
 process.cwd() = /dir1

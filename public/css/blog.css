@@ -143,6 +143,11 @@ pre code {
 
 .highlight pre {
     margin-bottom: 0;
+    background-color: #272727;
+}
+
+.highlight code.language-console .go {
+  color: #4fbf40;
 }
 
 .gist .gist-file {
