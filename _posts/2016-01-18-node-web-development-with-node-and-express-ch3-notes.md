@@ -3,6 +3,23 @@ layout: post
 title: Web Development with Node and Express Charpter 3 —— 读书笔记
 ---
 
-1. Express 项目初始工程生成工具：[Express application generator](http://expressjs.com/en/starter/generator.html)。
+* Express 项目初始工程生成工具：[Express application generator](http://expressjs.com/en/starter/generator.html)。
 
-2. 前端工程模板文件：[HTML5 Boilerplate](https://html5boilerplate.com/)。
+* 前端工程模板文件：[HTML5 Boilerplate](https://html5boilerplate.com/)。
+
+* Express 中间件（middleware）可以理解为：处理和所有路由规则不匹配的请求的程序。这就意味着在 Express 中，路由和中间件的添加顺序是很重要的。
+
+* Express 可以通过中间件的回调函数的参数个数来区分 404 和 500 错误，如下所示：
+{% highlight javascript %}
+// Handle 404
+app.use(function(req, res) {
+   res.send('404: Page not Found', 404);
+});
+
+// Handle 500
+app.use(function(error, req, res, next) {
+   res.send('500: Internal Server Error', 500);
+});
+{% endhighlight %}
+
+* 本质上来说，`View` 是发送给用户的东西，拿网站来说，一般是指 HTML，也可以是 PNG 或者 PDF 以及其他任何能被客户端渲染的资源。
