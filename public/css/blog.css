@@ -125,7 +125,7 @@ pre {
     font-size: .8rem;
     line-height: 1.4;
     overflow-x: auto;
-    border-radius: .5rem;
+    border-radius: 5px;
     color: #d0d0d0;
 }
 
@@ -137,8 +137,8 @@ pre code {
 }
 
 .highlight {
-    margin-bottom: 1rem;
     border-radius: 4px;
+    margin: 1rem 2.2rem;
 }
 
 .highlight pre {
