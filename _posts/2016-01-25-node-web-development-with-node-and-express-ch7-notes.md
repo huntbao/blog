@@ -43,33 +43,33 @@ var handlebars = require('express3-handlebars').create({
 
 `VIEW`:
 {% highlight html %}
-{{#section 'head'}}
+{{ "{{#section 'head'"}}}}
 <!-- we want Google to ignore this page -->
 <meta name="robots" content="noindex">
-{{/section}}
+{{ "{{/section"}}}}
 <h1>Test Page</h1>
 <p>We're testing some jQuery stuff.</p>
-{{#section 'jquery'}}
+{{ "{{#section 'jquery'"}}}}
 <script>
 $('document').ready(function(){
   $('h1').html('jQuery Works');
 });
 </script>
-{{/section}}
+{{ "{{/section"}}}}
 {% endhighlight %}
 
 `LAYOUT`:
 {% highlight html %}
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Meadowlark Travel</title>
-    {{{_sections.head}}}
+    {{ "{{{_sections.head"}}}}}
   </head>
   <body>
     {{{body}}}
     <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
-    {{{_sections.jquery}}}
+    {{ "{{{_sections.jquery"}}}}}
   </body>
 </html>
 {% endhighlight %}
