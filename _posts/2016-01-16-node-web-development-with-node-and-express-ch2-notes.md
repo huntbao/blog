@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Web Development with Node and Express Charpter 2 —— 读书笔记
+title: Web Development with Node and Express Chapter 2: Getting Started with Node
 ---
 
 * [nvm](https://github.com/creationix/nvm)，在一台机器上面安装管理多个 Node.js 版本。

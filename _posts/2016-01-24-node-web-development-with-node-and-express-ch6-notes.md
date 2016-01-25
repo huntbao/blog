@@ -1,6 +1,27 @@
 ---
 layout: post
-title: Web Development with Node and Express Charpter 6 —— 读书笔记
+title: Web Development with Node and Express Chapter 6: The Request and Response Objects
 ---
 
-* 在 Node.js 应用中，对于任何请求，参数可以从 `querystring`、`cookie`、`request body` 以及 `route` 中获取，而 `req.param(name)` 方法却将从所有这些参数获取指定名称的参数，这导致的一个问题是，如果各个部分都有相同的参数，那么最终使用的是哪个参数？因此应该避免使用该方法。
+* `req.param(name)` 方法会依次从路径参数、请求体、查询字符串中获取参数值，找到就立即返回。Express 4.x 已经不推荐使用这个方法。源代码如下：
+
+{% highlight javascript %}
+req.param = function param(name, defaultValue) {
+  var params = this.params || {};
+  var body = this.body || {};
+  var query = this.query || {};
+
+  var args = arguments.length === 1
+    ? 'name'
+    : 'name, default';
+  deprecate('req.param(' + args + '): Use req.params, req.body, or req.query instead');
+
+  if (null != params[name] && params.hasOwnProperty(name)) return params[name];
+  if (null != body[name]) return body[name];
+  if (null != query[name]) return query[name];
+
+  return defaultValue;
+};
+{% endhighlight %}
+
+* [Express API](http://expressjs.com/en/api.html)。

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Web Development with Node and Express Charpter 4 —— 读书笔记
+title: Web Development with Node and Express Chapter 4: Tidying Up
 ---
 
 * 版本控制的三大好处：
