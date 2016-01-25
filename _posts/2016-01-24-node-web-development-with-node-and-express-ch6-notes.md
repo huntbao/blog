@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Web Development with Node and Express Chapter 6: The Request and Response Objects
+title: Web Development with Node and Express Chapter 6 - The Request and Response Objects
 ---
 
 * `req.param(name)` 方法会依次从路径参数、请求体、查询字符串中获取参数值，找到就立即返回。Express 4.x 已经不推荐使用这个方法。源代码如下：
