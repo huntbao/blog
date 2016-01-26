@@ -20,7 +20,7 @@ req.session.userName = 'Anonymous';
 var colorScheme = req.session.colorScheme || 'dark';
 req.session.userName = null; // this sets 'userName' to null, but doesn't remove it
 delete req.session.colorScheme; // this removes 'colorScheme'
-{% highlight %}
+{% endhighlight %}
 
 * 使用 `session` 实现 `flash messgae`，即在流程中（跨页面）只会出现一次的信息（提示）。
 
