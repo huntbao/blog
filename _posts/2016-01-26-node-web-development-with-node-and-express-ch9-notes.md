@@ -7,7 +7,7 @@ title: Web Development with Node and Express Chapter 9 - Cookies and Sessions
 
 {% highlight javascript %}
 res.cookie(name, value, { signed: true })
-{% highlight %}
+{% endhighlight %}
 
 * 设置 `cookie` 的选项有：domain、path、maxAge、secure、httpOnly、signed 等
 
