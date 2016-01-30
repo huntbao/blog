@@ -64,3 +64,51 @@ app.get('/staff/:city/:name', function(req, res){
   res.render('staffer', info);
 });
 {% endhighlight %}
+
+* 常见的路由组织方式：
+
+  * 路由处理程序使用具名函数。
+
+  * 路由不要很神秘（比如到处乱放、分散在各个地方）。
+
+  * 路由的组织要有扩展性。
+
+  * 使用自动化的基于 `view` 的路由处理程序，去除重复代码（比如 URL 固定的静态资源）。
+
+* 路由模块化，一种方法是返回一个数组，数组的每一项是包含 `method` 和 `handler` 属性的对象，如下所示：
+
+{% highlight javascript %}
+var routes = require('./routes.js')();
+
+routes.forEach(function(route){
+  app[route.method](route.handler);
+})
+{% endhighlight %}
+
+* 按逻辑组织路由，将一些功能相关的放在一起。
+
+* 添加 `view` 后不用增加路由的方法：
+
+{% highlight javascript %}
+var autoViews = {};
+var fs = require('fs');
+app.use(function(req,res,next){
+  var path = req.path.toLowerCase();
+  // check cache; if it's there, render the view
+  if(autoViews[path]) return res.render(autoViews[path]);
+  // if it's not in the cache, see if there's
+  // a .handlebars file that matches
+  if(fs.existsSync(__dirname + '/views' + path + '.handlebars')){
+    autoViews[path] = path.replace(/^\//, '');
+    return res.render(autoViews[path]);
+  }
+  // no view found; pass on to 404 handler
+  next();
+});
+{% endhighlight %}
+
+* 其他组织路由的方法：
+
+  * `namespaced routing`：[express-namespace](https://github.com/expressjs/express-namespace)，适合于有大量有固定前缀的路由。
+
+  * `resourceful routing`：[express-resource ](https://github.com/expressjs/express-resource)，它会根据对象的方法自动添加路由，适合于面向对象的代码逻辑。
