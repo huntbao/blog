@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Web Development with Node and Express Chapter 17 - Implementing MVC in Express
+category: wdwne
 ---
 
 * `Model`: 最重要的组成部分，不应该掺杂任何展示或者和用户交互的代码。在理想情况下，应该和持久层完全隔离，这可以做到，但需要花费相当大的代价，有时还可能得不偿失。

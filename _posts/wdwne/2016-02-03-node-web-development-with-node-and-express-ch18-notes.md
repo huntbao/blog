@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Web Development with Node and Express Chapter 18 - Security
+category: wdwne
 ---
 
 * 使用 HTTPS 协议需要在服务器上面放置公钥证书，也叫 SSL 证书。目前 SSL 证书的标准是 x.509。证书（certificate）是由证书管理机构（certificate authorities，CA）颁发的。证书管理机构会给浏览器厂商受信根证书（trusted root certificates）。在安装浏览器的时候会包含这些受信根证书文件，所以 CA 和浏览器的信任链就建立起来了。为了能使这条信任链正常工作，因此你的服务器上需要有由 CA 颁发的证书。

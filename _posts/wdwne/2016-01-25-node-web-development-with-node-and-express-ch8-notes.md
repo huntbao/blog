@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Web Development with Node and Express Chapter 8 - Form Handling
+category: wdwne
 ---
 
 * `POST` 比 `GET` 安全是站不住脚的。

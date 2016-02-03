@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Web Development with Node and Express Chapter 10 - Middleware
+category: wdwne
 ---
 
 * 中间件是一种封装功能的方式：尤其是操作 HTTP request 的功能。

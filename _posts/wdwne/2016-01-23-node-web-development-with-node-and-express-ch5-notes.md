@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Web Development with Node and Express Chapter 5 - Quality Assurance
+category: wdwne
 ---
 
 * 测试分单元测试（unit testing）和集成测试（integration testing），系统测试（system testing）可以认为是集成测试的一种类型。 单元测试用来测试单个组件以确保其功能正常，集成测试用来测试多个组件（甚至是整个系统的组件）之间的交互。 一般来说，单元测试适合业务逻辑测试（但也可用来测试表现层），而集成测试对两者都适用。

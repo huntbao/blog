@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Web Development with Node and Express Chapter 11 - Sending Email
+category: wdwne
 ---
 
 * 发送邮件的库：[Nodemailer](https://github.com/nodemailer/nodemailer)。

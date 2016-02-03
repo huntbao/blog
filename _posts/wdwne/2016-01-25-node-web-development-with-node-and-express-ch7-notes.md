@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Web Development with Node and Express Chapter 7 - Templating with Handlebars
+category: wdwne
 ---
 
 * 命令式语言（imperative language）：做这个，然后做那个，再然后做其他的。

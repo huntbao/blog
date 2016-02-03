@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Web Development with Node and Express Chapter 3 - Saving Time with Express
+category: wdwne
 ---
 
 * Express 项目初始工程生成工具：[Express application generator](http://expressjs.com/en/starter/generator.html)。

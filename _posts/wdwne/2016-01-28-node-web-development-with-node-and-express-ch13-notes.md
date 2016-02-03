@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Web Development with Node and Express Chapter 13 - Persistence
+category: wdwne
 ---
 
 * 将用户上传的文件保存到本地时，取个随机的名字，并且去掉扩展名，这样做才是安全的。

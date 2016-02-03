@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Web Development with Node and Express Chapter 1 - Introducing Express
+category: wdwne
 ---
 
 * 2009年，[Ryan Dahl](https://github.com/ry) 发明了 [Node.js](https://nodejs.org/en/)，目前已经淡出 Node.js 舞台，貌似是一个很低调的人。
