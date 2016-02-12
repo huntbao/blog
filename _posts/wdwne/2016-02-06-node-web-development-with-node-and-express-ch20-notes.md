@@ -23,3 +23,7 @@ category: wdwne
   * 模拟功能以排除复杂的子系统。
 
   * 最后，排除法也不是银弹，问题经常是由于多个组件之间互相交互产生的：排除或者模拟某个组件的代码，问题是会消失，但问题也不会存在单个组件中。排除法只能缩小范围。
+
+* REPL：read-eval-print loop
+
+* node debug：以 debug 模式在命令行中运行程序，如果不需要在命令行中 debug（比如使用 [Node Inspector](https://github.com/node-inspector/node-inspector)），则使用：node --debug
