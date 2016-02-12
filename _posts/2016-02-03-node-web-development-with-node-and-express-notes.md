@@ -22,3 +22,5 @@ title: Web Development with Node and Express - Learning notes
 * [Chapter 17 - Implementing MVC in Express]({% post_url 2016-01-31-node-web-development-with-node-and-express-ch17-notes %})
 * [Chapter 18 - Security]({% post_url 2016-02-03-node-web-development-with-node-and-express-ch18-notes %})
 * [Chapter 19 - Integrating with Third-Party APIs]({% post_url 2016-02-05-node-web-development-with-node-and-express-ch19-notes %})
+* [Chapter 20 - Debugging]({% post_url 2016-02-06-node-web-development-with-node-and-express-ch20-notes %})
+* [Chapter 21 - Going Live]({% post_url 2016-02-12-node-web-development-with-node-and-express-ch21-notes %})
