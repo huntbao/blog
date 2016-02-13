@@ -25,3 +25,4 @@ title: Web Development with Node and Express - Learning notes
 * [Chapter 20 - Debugging]({% post_url 2016-02-06-node-web-development-with-node-and-express-ch20-notes %})
 * [Chapter 21 - Going Live]({% post_url 2016-02-12-node-web-development-with-node-and-express-ch21-notes %})
 * [Chapter 22 - Maintenance]({% post_url 2016-02-13-node-web-development-with-node-and-express-ch22-notes %})
+* [Chapter 23 - Additional Resources]({% post_url 2016-02-13-node-web-development-with-node-and-express-ch23-notes %})
