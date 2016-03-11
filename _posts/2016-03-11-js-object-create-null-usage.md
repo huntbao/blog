@@ -55,7 +55,7 @@ Uncaught TypeError: Cannot convert object to primitive value
 
 `Object.create(null)` 的性能不如 `{}`，[查看测试结果](https://jsperf.com/object-create-null-vs-literal/2)。
 
-#### 兼容性和标准
+#### 标准
 
 MDN 上 `Object.create()` 的 [Polyfill](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) 没考虑参数为 `null` 的情况。
 
@@ -67,15 +67,12 @@ MDN 上 `Object.create()` 的 [Polyfill](https://developer.mozilla.org/en-US/doc
 
 >尽管 `__proto__` 属性是标准的，但这只是为了浏览器的兼容性考虑。推荐使用 `Object.getPrototypeOf()` 和 `Object.setPrototypeOf()`。
 
+
+#### 兼容性
+
 不支持 `__proto__` 属性的浏览器，可以通过 `iframe` 来创建“空对象”，具体实现请参考 [es-sham](https://github.com/es-shims/es5-shim/blob/master/es5-sham.js#LC195)。
 
-#### Object.create 的历史演变
 
-
-
-
-
-#### 参考资料
 [1]: http://stackoverflow.com/questions/32262809/is-it-bad-practice-to-use-object-createnull-versus
 [2]: http://ferrante.pl/frontend/javascript/objectcreate-history-and-memory-leaks/
 [3]: http://javascript.crockford.com/prototypal.html
