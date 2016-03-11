@@ -62,8 +62,7 @@ h4, h5, h6 {
 }
 
 p {
-    margin-top: 0;
-    margin-bottom: .3rem;
+    text-align: justify;
     word-wrap: break-word;
 }
 
