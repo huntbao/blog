@@ -53,15 +53,15 @@ Uncaught TypeError: Cannot convert object to primitive value
 
 #### 性能
 
-Object.create(null) 的性能不如 {}，[查看测试结果](https://jsperf.com/object-create-null-vs-literal/2)。
+Object.create(null) 的性能不如 {}<sup>注1</sup>。
 
 #### 标准
 
-MDN 上 Object.create() 的 [Polyfill](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) 没考虑参数为 null 的情况。
+MDN 上 Object.create() 的 Polyfill<sup>注2</sup> 没考虑参数为 null 的情况。
 
-Object.prototype 的 __proto__ 属性是存取属性（getter 和 setter 方法），由于绝大多数浏览器都支持这个属性，所以被加到了 [ES6 标准的附录 B](http://www.ecma-international.org/ecma-262/6.0/#sec-additional-properties-of-the-object.prototype-object) 之中。
+Object.prototype 的 __proto__ 属性是存取属性（getter 和 setter 方法），由于绝大多数浏览器都支持这个属性，所以被加到了 ES6 标准的附录 B<sup>注3</sup> 之中。
 
-可以通过将对象的 __proto__ 属性设置为 null，达到和 Object.create(null) 的效果。所以可以直接使用 var obj = {__proto__: null} 语句创建“空对象”。不过性能不如前者，[查看测试结果](https://jsperf.com/object-create-null-vs-literal/24)。
+可以通过将对象的 __proto__ 属性设置为 null，达到和 Object.create(null) 的效果。所以可以直接使用 var obj = {__proto__: null} 语句创建“空对象”。不过性能不如前者<sup>注4</sup>。
 
 >直接更改对象的原型，在每个浏览器以及 JavaScript 引擎中的性能都很低，推荐使用 Object.create(prototype) 方法。
 
@@ -70,7 +70,16 @@ Object.prototype 的 __proto__ 属性是存取属性（getter 和 setter 方法�
 
 #### 兼容性
 
-不支持 __proto__ 属性的浏览器，可以通过 iframe 来创建“空对象”，具体实现请参考 [es-sham](https://github.com/es-shims/es5-shim/blob/master/es5-sham.js#LC195)。
+不支持 __proto__ 属性的浏览器，可以通过 iframe 来创建“空对象”，具体实现请参考 es-sham<sup>注5</sup>。
+
+---
+
+#### 注解
+* 注1: [Object.create(null) vs {}](https://jsperf.com/object-create-null-vs-literal/2)
+* 注2: [MDN Object.create()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+* 注3: [ES6 标准的附录 B](http://www.ecma-international.org/ecma-262/6.0/#sec-additional-properties-of-the-object.prototype-object)
+* 注4: [Object.create(null) vs {__proto__: null}](https://jsperf.com/object-create-null-vs-literal/24)
+* 注5: [es-sham __proto__](https://github.com/es-shims/es5-shim/blob/master/es5-sham.js#LC195)
 
 
 [1]: http://stackoverflow.com/questions/32262809/is-it-bad-practice-to-use-object-createnull-versus
