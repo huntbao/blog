@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Object.create(null) 的使用场景
+title: Object.create(null) 的用法
 category: js
 tag: js
 ---
