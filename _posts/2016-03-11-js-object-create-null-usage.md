@@ -19,13 +19,13 @@ Object.create(null)，返回一个新创建的对象，它的原型是 null，�
   * isPrototypeOf
   * propertyIsEnumerable
 
-那么本文要讨论的问题也可以换一种问法：创建的对象需不需要用到上面的方法？
+那么本文要讨论的问题相当于：创建的对象需不需要用到上面的方法？
 
-我们先来看下这些方法的功能。
+我们先来看下这些方法。
 
 ##### hasOwnProperty
 
-在使用语句 for(var key in obj) 遍历对象的时候，经常需要判断 key 是否为 obj 对象自身的属性，此时只能使用 hasOwnProperty 方法。
+在使用语句 for(var key in obj) 遍历对象的时候，只能使用 hasOwnProperty 判断 key 是否为 obj 对象自身的属性。
 
 >现在可以使用 Object.keys(obj).forEach(...) 来遍历对象。
 
@@ -36,9 +36,9 @@ Object.create(null)，返回一个新创建的对象，它的原型是 null，�
 valueOf 很少直接使用。在隐式转换类型时，JavaScript 引擎会调用 valueOf 方法，强制把对象转换成原始值：
 
 {% highlight javascript %}
-> var obj = Object.create(null);
-> obj + 1;
-Uncaught TypeError: Cannot convert object to primitive value
+var obj = Object.create(null);
+obj + 1;
+// Uncaught TypeError: Cannot convert object to primitive value
 {% endhighlight %}
 
 ##### toString、isPrototypeOf 和 propertyIsEnumerable
@@ -49,7 +49,7 @@ Uncaught TypeError: Cannot convert object to primitive value
 
 因此，我们可以得出结论：当创建的对象只在当前执行环境中使用并且不会用到任何从 Object.prototype 上继承来的方法，也不会将该对象作为其他对象的原型的时候，那么可以使用 Object.create(null)。比如，Map(Dictionary) 对象，遍历这种对象时也无需再使用 hasOwnProperty 方法。
 
-### 延伸阅读
+### 其他问题
 
 #### 性能
 
@@ -59,7 +59,7 @@ Object.create(null) 的性能不如 {}<sup>注1</sup>。
 
 MDN 上 Object.create() 的 Polyfill<sup>注2</sup> 没考虑参数为 null 的情况。
 
-Object.prototype 的 `__proto__` 属性是存取属性（通过 getter 和 setter 方法），由于绝大多数浏览器都支持这个属性，所以被加到了 ES6 标准的附录 B<sup>注3</sup> 之中。
+Object.prototype 的 `__proto__` 属性是存取属性（通过 getter 和 setter 方法），由于绝大多数浏览器都支持这个属性，所以它被加到了 ES6 标准的附录 B<sup>注3</sup> 之中。
 
 >ES6 附录 B 中的内容也是正式标准，但不是核心标准。这部分的标准主要针对浏览器环境，而其他环境(如 Node.js)是可以选择实现的。
 
@@ -81,7 +81,7 @@ console.log(Object.getPrototypeOf(obj) === Object.prototype) // true
 console.log(Object.keys(obj)) // ['__proto__']
 {% endhighlight %}
 
->计算属性(computed property)是指该属性也需要求值。它使用 [] 的语法，和对象的取值方式 obj[property] 类似。
+>计算属性(computed property)是指该属性也需要求值。它使用 [] 语法，和对象的取值方式 obj[property] 类似。
 
 #### 兼容性
 
@@ -90,11 +90,11 @@ console.log(Object.keys(obj)) // ['__proto__']
 ---
 
 #### 注解
-* 注1: [Object.create(null) vs {}](https://jsperf.com/object-create-null-vs-literal/2)
-* 注2: [MDN Object.create()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
-* 注3: [ES6 标准的附录 B](http://www.ecma-international.org/ecma-262/6.0/#sec-additional-properties-of-the-object.prototype-object)
-* 注4: [Object.create(null) vs {__proto__: null}](https://jsperf.com/object-create-null-vs-literal/24)
-* 注5: [es-sham __proto__](https://github.com/es-shims/es5-shim/blob/master/es5-sham.js#LC195)
+* 注1: [`Object.create(null) vs {}`](https://jsperf.com/object-create-null-vs-literal/2)
+* 注2: [`MDN Object.create()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+* 注3: [`ES6 标准的附录 B`](http://www.ecma-international.org/ecma-262/6.0/#sec-additional-properties-of-the-object.prototype-object)
+* 注4: [`Object.create(null) vs {__proto__: null}`](https://jsperf.com/object-create-null-vs-literal/24)
+* 注5: [`es-sham __proto__`](https://github.com/es-shims/es5-shim/blob/master/es5-sham.js#LC195)
 
 
 [1]: http://stackoverflow.com/questions/32262809/is-it-bad-practice-to-use-object-createnull-versus

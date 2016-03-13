@@ -190,6 +190,10 @@ blockquote {
     border-left: .25rem solid #e5e5e5;
 }
 
+blockquote p:first-child {
+    margin-top: 0;
+}
+
 blockquote p:last-child {
     margin-bottom: 0;
 }
