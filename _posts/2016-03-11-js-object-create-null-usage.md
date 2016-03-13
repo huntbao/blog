@@ -7,7 +7,7 @@ tag: js
 
 Object.create(null)，返回一个新创建的对象，它的原型是 null，意味着它没有继承任何对象。
 
-本文要讨论的问题是：什么时候才需要使用这种对象？
+本文要讨论的问题是：什么时候才需要用到这种对象？
 
 ### Object.create(null) vs {}
 
@@ -19,13 +19,13 @@ Object.create(null)，返回一个新创建的对象，它的原型是 null，�
   * isPrototypeOf
   * propertyIsEnumerable
 
-那么本文要讨论的问题也可以换一种问法：创建的对象需不需要用到上面方法？
+那么本文要讨论的问题也可以换一种问法：创建的对象需不需要用到上面的方法？
 
 我们先来看下这些方法的功能。
 
 ##### hasOwnProperty
 
-在使用 for(var key in obj) 语句遍历对象的时候，一般来说都需要判断 key 是否为 obj 对象自身的属性，此时只能使用 hasOwnProperty 方法。
+在使用语句 for(var key in obj) 遍历对象的时候，经常需要判断 key 是否为 obj 对象自身的属性，此时只能使用 hasOwnProperty 方法。
 
 >现在可以使用 Object.keys(obj).forEach(...) 来遍历对象。
 
@@ -43,11 +43,11 @@ Uncaught TypeError: Cannot convert object to primitive value
 
 ##### toString、isPrototypeOf 和 propertyIsEnumerable
 
-这几个方法直接使用的情况较小，但自己的代码中不用并不表示别人写的代码不会用。比如，有些框架可能会调用 toString 方法来判断结果是否为 [object Object]。
+这几个方法直接使用的情况较少，但自己的代码中不用并不表示别人写的代码不会调用。比如，有些框架可能会调用 toString 方法来判断结果是否为 [object Object]。
 
 ### 结论
 
-因此，我们可以得出结论：当创建的对象只在当前执行环境中使用并且不会用到任何从 Object.prototype 上继承来的方法，也不会将该对象作为其他对象的原型，那么可以使用 Object.create(null)。比如，Map(Dictionary) 对象，遍历这种对象时也无需再使用 hasOwnProperty 方法。
+因此，我们可以得出结论：当创建的对象只在当前执行环境中使用并且不会用到任何从 Object.prototype 上继承来的方法，也不会将该对象作为其他对象的原型的时候，那么可以使用 Object.create(null)。比如，Map(Dictionary) 对象，遍历这种对象时也无需再使用 hasOwnProperty 方法。
 
 ### 延伸阅读
 
@@ -59,11 +59,11 @@ Object.create(null) 的性能不如 {}<sup>注1</sup>。
 
 MDN 上 Object.create() 的 Polyfill<sup>注2</sup> 没考虑参数为 null 的情况。
 
-Object.prototype 的 __proto__ 属性是存取属性（getter 和 setter 方法），由于绝大多数浏览器都支持这个属性，所以被加到了 ES6 标准的附录 B<sup>注3</sup> 之中。
+Object.prototype 的 `__proto__` 属性是存取属性（通过 getter 和 setter 方法），由于绝大多数浏览器都支持这个属性，所以被加到了 ES6 标准的附录 B<sup>注3</sup> 之中。
 
->附录 B 中的内容也是 ES6 标准，但不是核心标准。这部分的标准主要针对浏览器环境，而其他环境(如 Node.js)是可选的。
+>ES6 附录 B 中的内容也是正式标准，但不是核心标准。这部分的标准主要针对浏览器环境，而其他环境(如 Node.js)是可以选择实现的。
 
-可以通过将对象的 __proto__ 属性设置为 null，达到和 Object.create(null) 的效果。所以可以直接使用下面的语句来创建“空对象”。不过性能不如前者<sup>注4</sup>。
+可以通过将对象的 `__proto__` 属性设置为 null，达到和 Object.create(null) 一样的效果。所以可以直接使用下面的语句来创建“空对象”。不过性能不如前者<sup>注4</sup>。
 
 {% highlight javascript %}
 var obj = {__proto__: null}
@@ -71,9 +71,9 @@ var obj = {__proto__: null}
 
 >直接更改对象的原型，在每个浏览器以及 JavaScript 引擎中的性能都很低，推荐使用 Object.create(prototype) 方法。
 
->尽管 __proto__ 属性是标准的，但这只是为了浏览器的兼容性考虑。推荐使用 Object.getPrototypeOf() 和 Object.setPrototypeOf()。
+>尽管 `__proto__` 属性是标准的，但这只是为了浏览器的兼容性考虑。推荐使用 Object.getPrototypeOf() 和 Object.setPrototypeOf()。
 
-如果想给对象添加 __proto__ 属性，而又不影响它的原型，则需要使用 ES6 中的“计算属性”(computed property):
+如果想给对象添加 `__proto__` 属性，而又不影响它的原型，则可以使用 ES6 中的“计算属性”:
 
 {% highlight javascript %}
 var obj = {['__proto__']: null};
@@ -85,7 +85,7 @@ console.log(Object.keys(obj)) // ['__proto__']
 
 #### 兼容性
 
-不支持 __proto__ 属性的浏览器，可以通过 iframe 来创建“空对象”，具体实现请参考 es-sham<sup>注5</sup>。
+不支持 `__proto__` 属性的浏览器，可以通过 iframe 来创建“空对象”，具体实现请参考 es-sham<sup>注5</sup>。
 
 ---
 
