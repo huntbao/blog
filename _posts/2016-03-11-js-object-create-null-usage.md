@@ -90,11 +90,12 @@ console.log(Object.keys(obj)) // ['__proto__']
 ---
 
 #### 参考资料
-* \[1\]: [`Object.create(null) vs {}`](https://jsperf.com/object-create-null-vs-literal/2)
-* \[2\]: [`MDN Object.create()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
-* \[3\]: [`ES6 标准的附录 B`](http://www.ecma-international.org/ecma-262/6.0/#sec-additional-properties-of-the-object.prototype-object)
-* \[4\]: [`Object.create(null) vs {__proto__: null}`](https://jsperf.com/object-create-null-vs-literal/24)
-* \[5\]: [`es-sham __proto__`](https://github.com/es-shims/es5-shim/blob/master/es5-sham.js#LC195)
+
+\[1\]: [`Object.create(null) vs {}`](https://jsperf.com/object-create-null-vs-literal/2)<br/>
+\[2\]: [`MDN Object.create()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)<br/>
+\[3\]: [`ES6 标准的附录 B`](http://www.ecma-international.org/ecma-262/6.0/#sec-additional-properties-of-the-object.prototype-object)<br/>
+\[4\]: [`Object.create(null) vs {__proto__: null}`](https://jsperf.com/object-create-null-vs-literal/24)<br/>
+\[5\]: [`es-sham __proto__`](https://github.com/es-shims/es5-shim/blob/master/es5-sham.js#LC195)
 
 
 [1]: http://stackoverflow.com/questions/32262809/is-it-bad-practice-to-use-object-createnull-versus
