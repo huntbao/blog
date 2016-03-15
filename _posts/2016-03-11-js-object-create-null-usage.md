@@ -85,7 +85,7 @@ console.log(Object.keys(obj)) // ['__proto__']
 
 #### 兼容性
 
-不支持 \_\_proto\_\_ 属性的浏览器，可以通过 iframe 来创建“空对象”，具体实现请参考 es-sham<sup>\[5\]</sup>。
+不支持 \_\_proto\_\_ 属性的浏览器，可以将 Object.prototype 上的方法和属性都删除，这样就能得到“空对象”。当然，我们不能直接在当前执行环境中做这样的操作，由于 iframe 有自己的执行环境，所以可以通过 iframe 来创建“空对象”，具体实现请参考 es-sham<sup>\[5\]</sup>。
 
 ---
 
