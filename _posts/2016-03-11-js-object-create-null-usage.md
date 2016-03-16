@@ -15,9 +15,10 @@ Object.create(null)，返回一个新创建的对象，它的原型是 null，�
 
   * hasOwnProperty
   * valueOf
-  * toString
+  * toString/toLocaleString
   * isPrototypeOf
   * propertyIsEnumerable
+  * constructor
 
 那么本文要讨论的问题相当于：创建的对象需不需要用到上面的方法？
 
@@ -49,7 +50,7 @@ obj + 1;
 
 因此，我们可以得出结论：当创建的对象只在当前执行环境中使用并且不会用到任何从 Object.prototype 上继承来的方法，也不会将该对象作为其他对象的原型的时候，那么可以使用 Object.create(null)。比如，Map(Dictionary) 对象，遍历这种对象时也无需再使用 hasOwnProperty 方法。
 
-### 其他问题
+### 延伸阅读
 
 #### 性能
 
@@ -87,16 +88,18 @@ console.log(Object.keys(obj)) // ['__proto__']
 
 不支持 \_\_proto\_\_ 属性的浏览器，可以将 Object.prototype 上的方法和属性都删除，这样就能得到“空对象”。当然，我们不能直接在当前执行环境中做这样的操作，由于 iframe 有自己的执行环境，所以可以通过 iframe 来创建“空对象”，具体实现请参考 es-sham<sup>\[5\]</sup>。
 
+#### Object.create 的历史
+待写...
+
 ---
 
-#### 参考资料
+#### 引用资料
 
 \[1\]: [Object.create(null) vs {}](https://jsperf.com/object-create-null-vs-literal/2)<br/>
 \[2\]: [MDN Object.create()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)<br/>
 \[3\]: [ES6 标准的附录 B](http://www.ecma-international.org/ecma-262/6.0/#sec-additional-properties-of-the-object.prototype-object)<br/>
 \[4\]: [Object.create(null) vs {\_\_proto\_\_: null}](https://jsperf.com/object-create-null-vs-literal/24)<br/>
 \[5\]: [es-sham \_\_proto\_\_](https://github.com/es-shims/es5-shim/blob/master/es5-sham.js#LC195)
-
 
 [1]: http://stackoverflow.com/questions/32262809/is-it-bad-practice-to-use-object-createnull-versus
 [2]: http://ferrante.pl/frontend/javascript/objectcreate-history-and-memory-leaks/
