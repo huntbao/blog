@@ -32,6 +32,17 @@ Object.create(null)，返回一个新创建的对象，它的原型是 null，�
 
 >不能通过 if(obj[property]) 来判断，因为 obj[property] 可能是"假值"，这样 if 条件就不成立。我相信绝大多数人都踩过这个坑。
 
+这里有必要提下 with 语句，它的作用是扩展当前执行环境的作用域链，将 obj 置于作用域链的始端：
+
+{% highlight javascript %}
+with (obj)
+  statement
+{% endhighlight %}
+
+执行语句 statement 时，其中的非限定名（unqualified name）会按作用链查找，先检查它是不是 obj 自身的属性，如果不是，还会往上查找 obj 的原型。所以这里很可能需要使用 hasOwnProperty 方法，或者说需要一个“空对象”。
+
+>with 的设计违背了词法作用域，导致程序无法分析 js 代码<sup>\[1\]</sup>，在 ES6 的 strict mode 中已被禁用。
+
 ##### valueOf
 
 valueOf 很少直接使用。在隐式转换类型时，JavaScript 引擎会调用 valueOf 方法，强制把对象转换成原始值：
@@ -54,17 +65,17 @@ obj + 1;
 
 #### 性能
 
-Object.create(null) 的性能不如 {}<sup>\[1\]</sup>。
+Object.create(null) 的性能不如 {}<sup>\[2\]</sup>。
 
 #### 标准
 
-MDN 上 Object.create() 的 Polyfill<sup>\[2\]</sup> 没考虑参数为 null 的情况。
+MDN 上 Object.create() 的 Polyfill<sup>\[3\]</sup> 没考虑参数为 null 的情况。
 
-Object.prototype 的 \_\_proto\_\_ 属性是存取属性（通过 getter 和 setter 方法），由于绝大多数浏览器都支持这个属性，所以它被加到了 ES6 标准的附录 B<sup>\[3\]</sup> 之中。
+Object.prototype 的 \_\_proto\_\_ 属性是存取属性（通过 getter 和 setter 方法），由于绝大多数浏览器都支持这个属性，所以它被加到了 ES6 标准的附录 B<sup>\[4\]</sup> 之中。
 
 >ES6 附录 B 中的内容也是正式标准，但不是核心标准。这部分的标准主要针对浏览器环境，而其他环境(如 Node.js)是可以选择实现的。
 
-可以通过将对象的 \_\_proto\_\_ 属性设置为 null，达到和 Object.create(null) 一样的效果。所以可以直接使用下面的语句来创建“空对象”。不过性能不如前者<sup>\[4\]</sup>。
+可以通过将对象的 \_\_proto\_\_ 属性设置为 null，达到和 Object.create(null) 一样的效果。所以可以直接使用下面的语句来创建“空对象”。不过性能不如前者<sup>\[5\]</sup>。
 
 {% highlight javascript %}
 var obj = {__proto__: null}
@@ -86,20 +97,18 @@ console.log(Object.keys(obj)) // ['__proto__']
 
 #### 兼容性
 
-不支持 \_\_proto\_\_ 属性的浏览器，可以将 Object.prototype 上的方法和属性都删除，这样就能得到“空对象”。当然，我们不能直接在当前执行环境中做这样的操作，由于 iframe 有自己的执行环境，所以可以通过 iframe 来创建“空对象”，具体实现请参考 es-sham<sup>\[5\]</sup>。
-
-#### Object.create 的历史
-待写...
+不支持 \_\_proto\_\_ 属性的浏览器，可以将 Object.prototype 上的方法和属性都删除，这样就能得到“空对象”。当然，我们不能直接在当前执行环境中做这样的操作，由于 iframe 有自己的执行环境，所以可以通过 iframe 来创建“空对象”，具体实现请参考 es-sham<sup>\[6\]</sup>。
 
 ---
 
 #### 引用资料
 
-\[1\]: [Object.create(null) vs {}](https://jsperf.com/object-create-null-vs-literal/2)<br/>
-\[2\]: [MDN Object.create()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)<br/>
-\[3\]: [ES6 标准的附录 B](http://www.ecma-international.org/ecma-262/6.0/#sec-additional-properties-of-the-object.prototype-object)<br/>
-\[4\]: [Object.create(null) vs {\_\_proto\_\_: null}](https://jsperf.com/object-create-null-vs-literal/24)<br/>
-\[5\]: [es-sham \_\_proto\_\_](https://github.com/es-shims/es5-shim/blob/master/es5-sham.js#LC195)
+\[1\]: [Brendan Eich's tweet](https://twitter.com//#!/BrendanEich/status/68001466471817216)<br/>
+\[2\]: [Object.create(null) vs {}](https://jsperf.com/object-create-null-vs-literal/2)<br/>
+\[3\]: [MDN Object.create()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)<br/>
+\[4\]: [ES6 标准的附录 B](http://www.ecma-international.org/ecma-262/6.0/#sec-additional-properties-of-the-object.prototype-object)<br/>
+\[5\]: [Object.create(null) vs {\_\_proto\_\_: null}](https://jsperf.com/object-create-null-vs-literal/24)<br/>
+\[6\]: [es-sham \_\_proto\_\_](https://github.com/es-shims/es5-shim/blob/master/es5-sham.js#LC195)
 
 [1]: http://stackoverflow.com/questions/32262809/is-it-bad-practice-to-use-object-createnull-versus
 [2]: http://ferrante.pl/frontend/javascript/objectcreate-history-and-memory-leaks/
