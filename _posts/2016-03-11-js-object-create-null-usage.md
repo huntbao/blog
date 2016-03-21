@@ -103,7 +103,7 @@ console.log(Object.keys(obj)) // ['__proto__']
 
 #### 引用资料
 
-\[1\]: [Brendan Eich's tweet](https://twitter.com//#!/BrendanEich/status/68001466471817216)<br/>
+\[1\]: [Brendan Eich's tweet about with statement](https://twitter.com//#!/BrendanEich/status/68001466471817216)<br/>
 \[2\]: [Object.create(null) vs {}](https://jsperf.com/object-create-null-vs-literal/2)<br/>
 \[3\]: [MDN Object.create()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)<br/>
 \[4\]: [ES6 标准的附录 B](http://www.ecma-international.org/ecma-262/6.0/#sec-additional-properties-of-the-object.prototype-object)<br/>
