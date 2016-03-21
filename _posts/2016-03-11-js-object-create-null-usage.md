@@ -18,7 +18,6 @@ Object.create(null)，返回一个新创建的对象，它的原型是 null，�
   * toString/toLocaleString
   * isPrototypeOf
   * propertyIsEnumerable
-  * constructor
 
 那么本文要讨论的问题相当于：创建的对象需不需要用到上面的方法？
 
