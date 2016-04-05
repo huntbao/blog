@@ -1,0 +1,338 @@
+---
+title: 有范云协作介绍
+category: presentation
+tag: presentation, youfan
+permalink: youfan-introduction
+---
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>有范云协作介绍</title>
+    <meta name="author" content="HuntBao">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="/public/reveal/css/reveal.css">
+    <link rel="stylesheet" href="/public/reveal/css/theme/black.css" id="theme">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="/public/reveal/lib/css/zenburn.css">
+    <style>
+        .tal {
+            text-align: left;
+        }
+
+        .reveal pre {
+            width: 100%;
+        }
+
+        .reveal pre code {
+            border-radius: 5px;
+            padding: 12px;
+        }
+        .reveal sup {
+            font-size: 12px;
+            margin: -8px 4px 0;
+            vertical-align: top;
+        }
+    </style>
+    <base target="_blank">
+</head>
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+        <section>
+            <h1>有范云协作</h1>
+            <h3>让项目的协作姿势更有范儿！</h3>
+            <p>
+                <small><a href="https://github.com/huntbao">包勇明</a> / <a href="http://weibo.com/gzooler">@huntbao</a>
+                </small>
+            </p>
+        </section>
+
+        <section>
+            <h2>简介</h2>
+            <p>一套集规范、工具、平台于一体的工程化解决方案</p>
+            <img src="/public/youfan/p1.png">
+            <p><a href="http://youfan.netease.com">http://youfan.netease.com</a></p>
+        </section>
+
+        <section>
+            <h2>演示项目</h2>
+            <p>使用有范云协作开发 Todo App</p>
+            <img src="/public/youfan/todo.jpg">
+        </section>
+
+        <section class="tal">
+            <h2>课程内容及目标</h2>
+            <p>通过演示项目, 掌握以下工具的使用:</p>
+            <ul>
+                <li>接口管理平台 <a href="http://nei.hz.netease.com">NEI</a></li>
+                <li>构建工具 <a href="https://github.com/genify/nei">NEI-toolkit</a></li>
+                <li>本地模拟容器 <a href="https://github.com/leeluolee/puer">Puer</a></li>
+                <li>接口测试工具 <a href="https://chrome.google.com/webstore/detail/piaeaaejbhdohaihefehocabkanhlpoh">Phosphorus</a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="tal">
+            <h2>接口管理平台 <a href="http://nei.hz.netease.com">NEI</a> 介绍</h2>
+            <ul>
+                <li>项目组/项目</li>
+                <li>用户组</li>
+                <li>页面管理</li>
+                <li>
+                    <div>资源库</div>
+                    <ul>
+                        <li>异步接口</li>
+                        <li>数据类型</li>
+                        <li>模板资源</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section class="tal">
+            <section>
+                <h2>Todo App 分析: 产品划分</h2>
+                <ul>
+                    <li>Official site</li>
+                    <li>Web App</li>
+                    <li>Mobile App</li>
+                    <li>其他子产品, 比如运营后台</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Todo Web App 分析: 页面</h2>
+                <ul>
+                    <li>
+                        <div>登录页面</div>
+                        <ul>
+                            <li>/login</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div>主页面</div>
+                        <ul>
+                            <li>/main</li>
+                            <li>NEI 中的单页应用如何管理?</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Todo Web App 分析: 数据类型</h2>
+                <ul>
+                    <li>
+                        <div>用户对象: User<sup>简化版</sup></div>
+                        <div data-markdown>
+                            ```json
+                            {
+                                "id": "{用户id}",
+                                "name": "{用户名称}"
+                            }
+                            ```
+                        </div>
+                    </li>
+                    <li>
+                        <div>todo 对象: Todo<sup>简化版</sup></div>
+                        <div data-markdown>
+                            ```json
+                            {
+                                "id": "{todo id}",
+                                "text": "{todo 内容}",
+                                "completed": "{是否完成}"
+                            }
+                            ```
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Todo Web App 分析: 接口</h2>
+                <p>获取 todo 列表:</p>
+                <ul>
+                    <li>地址: /api/todos/</li>
+                    <li>方法: GET</li>
+                    <li>输入: 无</li>
+                    <li>
+                        <div>输出: </div>
+                        <div data-markdown>
+                            ```json
+                            {
+                                "code": "{响应状态码}",
+                                "message": "{响应消息}",
+                                "result": "Array{Todo}"
+                            }
+                            ```
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Todo Web App 分析: 接口</h2>
+                <p>添加单个 todo:</p>
+                <ul>
+                    <li>地址: /api/todos/</li>
+                    <li>方法: POST</li>
+                    <li>
+                        <div>输入:</div>
+                        <div data-markdown>
+                            ```json
+                            {
+                                "text": "{todo 内容}"
+                            }
+                            ```
+                        </div>
+                    </li>
+                    <li>
+                        <div>输出: </div>
+                        <div data-markdown>
+                            ```json
+                            {
+                                "code": "{响应状态码}",
+                                "message": "{响应消息}",
+                                "result": "{Todo}"
+                            }
+                            ```
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Todo Web App 分析: 接口</h2>
+                <p>更新单个 todo 的内容:</p>
+                <ul>
+                    <li>地址: /api/todos/:todoId</li>
+                    <li>方法: PUT</li>
+                    <li>
+                        <div>输入:</div>
+                        <div data-markdown>
+                            ```json
+                            {
+                                "text": "{新的 todo 内容}"
+                            }
+                            ```
+                        </div>
+                    </li>
+                    <li>
+                        <div>输出: </div>
+                        <div data-markdown>
+                            ```json
+                            {
+                                "code": "{响应状态码}",
+                                "message": "{响应消息}",
+                                "result": "{Todo}"
+                            }
+                            ```
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Todo Web App 分析: 接口</h2>
+                <p>批量更新 todo 的完成状态:</p>
+                <ul>
+                    <li>地址: /api/todos/</li>
+                    <li>方法: PUT</li>
+                    <li>
+                        <div>输入:</div>
+                        <div data-markdown>
+                            ```json
+                            {
+                                "completed": "{是否完成}",
+                                "ids": "Array{todoId}"
+                            }
+                            ```
+                        </div>
+                    </li>
+                    <li>
+                        <div>输出: </div>
+                        <div data-markdown>
+                            ```json
+                            {
+                                "code": "{响应状态码}",
+                                "message": "{响应消息}",
+                                "result": "Array{Todo}"
+                            }
+                            ```
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Todo Web App 分析: 接口</h2>
+                <p>删除单个 todo:</p>
+                <ul>
+                    <li>地址: /api/todos/:todoId</li>
+                    <li>方法: DELETE</li>
+                    <li>输入: 无</li>
+                    <li>
+                        <div>输出: </div>
+                        <div data-markdown>
+                            ```json
+                            {
+                                "code": "{响应状态码}",
+                                "message": "{响应消息}",
+                                "result": "{Todo}"
+                            }
+                            ```
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <h2><a href="http://nei.hz.netease.com">NEI</a> 操作演示</h2>
+        </section>
+    </div>
+</div>
+
+<script src="/public/reveal/lib/js/head.min.js"></script>
+<script src="/public/reveal/js/reveal.js"></script>
+<script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: '/public/reveal/lib/js/classList.js',
+                condition: function () {
+                    return !document.body.classList;
+                }
+            },
+            {
+                src: '/public/reveal/plugin/markdown/marked.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: '/public/reveal/plugin/markdown/markdown.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: '/public/reveal/plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+            {src: '/public/reveal/plugin/zoom-js/zoom.js', async: true},
+            {src: '/public/reveal/plugin/notes/notes.js', async: true}
+        ]
+    });
+</script>
+</body>
+</html>
