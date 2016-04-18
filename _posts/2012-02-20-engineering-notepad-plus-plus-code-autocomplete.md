@@ -1,5 +1,6 @@
 ---
 layout: post
+category: engineering
 title: Notepad++ 代码自动完成制作方法
 ---
 

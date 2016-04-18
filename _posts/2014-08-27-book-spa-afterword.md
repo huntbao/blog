@@ -1,5 +1,6 @@
 ---
 layout: post
+category: book
 title: 单页Web应用 译后记
 ---
 

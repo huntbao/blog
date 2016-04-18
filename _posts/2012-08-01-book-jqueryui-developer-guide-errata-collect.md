@@ -1,5 +1,6 @@
 ---
 layout: post
+category: book
 title: jQuery UI开发指南 勘误收集
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 为什么软件工程师的脾气都这么暴躁
+category: engineering
 ---
 
 ##### 译者按：本文译自 Nicholas C.Zakas 的最近一篇博客。Nicholas C.Zakas是业界知名的前端工程师，著有《JavaScript高级程序设计》等书籍。阅读本文时请始终记住这一点，对理解本文有帮助。

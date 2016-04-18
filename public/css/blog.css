@@ -138,6 +138,16 @@ pre code {
     background-color: transparent;
 }
 
+.title-cate {
+    font-size: 11px;
+    background: #d22323;
+    padding: 1px 3px;
+    border-radius: 3px;
+    color: #fff;
+    font-family: arial;
+    cursor: default;
+}
+
 .highlight {
     border-radius: 4px;
     margin: 1rem .1rem;

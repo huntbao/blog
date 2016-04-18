@@ -1,5 +1,6 @@
 ---
 layout: post
+category: book
 title: jQuery、jQuery UI及jQuery Mobile技巧与示例 勘误收集
 ---
 

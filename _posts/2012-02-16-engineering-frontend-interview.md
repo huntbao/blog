@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 老外的前端面试题
+category: engineering
 ---
 
 **注**：翻译水平实在有限，看的不明白之处还请查看[原文](http://darcyclarke.me/development/front-end-job-interview-questions/){:target="_blank"}

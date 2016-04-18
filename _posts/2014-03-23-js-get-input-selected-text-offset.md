@@ -1,5 +1,6 @@
 ---
 layout: post
+category: js
 title: 获取输入框中选中文本相对于页面的偏移
 ---
 
