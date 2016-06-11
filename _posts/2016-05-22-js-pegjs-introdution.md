@@ -3,6 +3,7 @@ layout: post
 title: 如何愉快地编写 Parser —— PEG.js 介绍
 category: js
 tag: js pegjs
+hidden: true
 ---
 在编写程序的时候，我们经常需要处理文本内容，从目标文本中提取有效信息，然后再交给其他程序进行处理。最常用的文本处理工具就是正则表达式，相信大家都已经用过。还有一种方式就是编写 Parser。[Mustache.js](https://github.com/janl/mustache.js) 的最初版本也是用正则表达式编写的，后来被其他人改用了 Parser，这一点也让作者唏嘘不已。
 
