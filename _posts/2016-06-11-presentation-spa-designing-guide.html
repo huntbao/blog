@@ -19,8 +19,16 @@ permalink: spa-designing-guide
   <!-- Code syntax highlighting -->
   <link rel="stylesheet" href="/public/reveal/lib/css/zenburn.css">
   <style>
-    section {
+    .reveal section {
       text-align: left;
+    }
+
+    .reveal .center {
+      position: absolute;
+      left: 50%;
+      top: 40% !important;
+      transform: translate(-50%, -48%);
+      text-align: center;
     }
 
     .reveal pre {
@@ -40,6 +48,7 @@ permalink: spa-designing-guide
 
     .reveal h2 {
       text-transform: none;
+      color: #ff6347;
     }
 
     code {
@@ -61,7 +70,7 @@ permalink: spa-designing-guide
 
   <div class="slides">
 
-    <section style="text-align: center;">
+    <section class="center">
       <h1>SPA</h1>
       <h3>单页应用设计指南</h3>
       <p>
@@ -71,12 +80,40 @@ permalink: spa-designing-guide
     </section>
 
     <section>
-      <h2>SPA 定义</h2>
-      <p>单页应用（SPA，Single Page Application）是指在浏览器中运行的应用，在使用期间页面不会重新加载</p>
+      <h2>SPA 的推荐读法</h2>
+      <p>英文：[es] - [pi:] - [ei]</p>
+      <p>中文：单页应用</p>
     </section>
 
-    <section style="text-align: center;">
-      <h2>Thank You</h2>
+    <section>
+      <h2>SPA 的定义</h2>
+      <div data-markdown>
+        From Wikipedia: 
+        > A single-page application (SPA) is a web application or web site that fits on a single web page with the goal of providing a more fluid user experience similar to a desktop application. 
+      </div>
+      <em style="font-size:20px;line-height: 30px; display: block;">In a SPA, either all necessary code – HTML, JavaScript, and CSS – is retrieved with a single page load, or the appropriate resources are dynamically loaded and added to the page as necessary, usually in response to user actions. The page does not reload at any point in the process, nor does control transfer to another page, although the location hash can be used to provide the perception and navigability of separate logical pages in the application, as can the HTML5 pushState() API . Interaction with the single page application often involves dynamic communication with the web server behind the scenes.</em>
+    </section>
+
+    <section>
+      <h2>可以用来实现 SPA 的技术</h2>
+      <ul>
+        <li>Ajax</li>
+        <li>Websocket</li>
+        <li>Server Sent Event (SSE)</li>
+        <li>浏览器插件：Silverlight、Flash、Java Applet等</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>SPA 前后端数据通信</h2>
+      <ul>
+        <li>JSON (XML ?) </li>
+        <li>HTML 片段</li>
+      </ul>
+    </section>
+
+    <section class="center">
+      <h1>Thank You</h1>
       <h3>Q & A</h3>
       <p>
         <small><a href="https://github.com/huntbao">包勇明</a> / <a href="http://weibo.com/gzooler">@huntbao</a>
@@ -96,7 +133,7 @@ permalink: spa-designing-guide
     controls: true,
     progress: true,
     history: true,
-    center: true,
+    center: false,
     transition: 'slide', // none/fade/slide/convex/concave/zoom
     // Optional reveal.js plugins
     dependencies: [
