@@ -51,6 +51,11 @@ permalink: spa-designing-guide
       color: #ff6347;
     }
 
+    .reveal strong {
+      font-weight: bold;
+      color: #bf616a;
+    }
+
     code {
       padding: .25em .1em;
       font-size: 85%;
@@ -80,9 +85,9 @@ permalink: spa-designing-guide
     </section>
 
     <section>
-      <h2>SPA 的推荐读法</h2>
-      <p>英文：[es] - [pi:] - [ei]</p>
-      <p>中文：单页应用</p>
+      <h2>SPA 的读法</h2>
+      <p>英文：[es] - [pi:] - [ei] <strong>vs</strong> [spɑː]</p>
+      <p>中文：单页应用 <strong>vs</strong> 单页面应用</p>
     </section>
 
     <section>
@@ -91,16 +96,56 @@ permalink: spa-designing-guide
         From Wikipedia: 
         > A single-page application (SPA) is a web application or web site that fits on a single web page with the goal of providing a more fluid user experience similar to a desktop application. 
       </div>
-      <em style="font-size:20px;line-height: 30px; display: block;">In a SPA, either all necessary code – HTML, JavaScript, and CSS – is retrieved with a single page load, or the appropriate resources are dynamically loaded and added to the page as necessary, usually in response to user actions. The page does not reload at any point in the process, nor does control transfer to another page, although the location hash can be used to provide the perception and navigability of separate logical pages in the application, as can the HTML5 pushState() API . Interaction with the single page application often involves dynamic communication with the web server behind the scenes.</em>
+      <em style="font-size:20px;line-height: 30px; display: block;">In a SPA, either all necessary code – HTML, JavaScript, and CSS – is retrieved with a single page load, or the appropriate resources are dynamically loaded and added to the page as necessary, usually in response to user actions. <strong>The page does not reload at any point in the process</strong>, nor does control transfer to another page, although the location hash can be used to provide the perception and navigability of separate logical pages in the application, as can the HTML5 pushState() API . Interaction with the single page application often involves dynamic communication with the web server behind the scenes.</em>
     </section>
 
     <section>
-      <h2>可以用来实现 SPA 的技术</h2>
+      <h2>实现 SPA 的技术</h2>
       <ul>
-        <li>Ajax</li>
-        <li>Websocket</li>
-        <li>Server Sent Event (SSE)</li>
-        <li>浏览器插件：Silverlight、Flash、Java Applet等</li>
+        <li>
+          <p>无需插件(JavaScript)：</p>
+          <ul>
+            <li>Ajax</li>
+            <li>Websocket</li>
+            <li>Server Sent Event (SSE)</li>
+          </ul>
+        </li>
+        <li>
+          <p>需要插件：</p>
+          <ul>
+            <li>Silverlight</li>
+            <li>Flash</li>
+            <li>Java Applet</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>JavaScript 开发 SPA 的优势</h2>
+      <ul>
+        <li>
+          <p>借助浏览器的优势：</p>
+          <ul>
+            <li>浏览器是最广泛使用的应用</li>
+            <li>浏览器中的 JavaScript 是分布最广的执行环境之一</li>
+            <li>跨平台</li>
+          </ul>
+        </li>
+        <li>
+          <p>自身的优势：</p>
+          <ul>
+            <li>高级特性在不断添加，引擎性能在不断提升</li>
+            <li>
+              <p>全栈 JavaScript：</p>
+              <ul>
+                <li>Node.js</li>
+                <li>MongoDB, CouchDB</li>
+                <li>JSON</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
       </ul>
     </section>
 
