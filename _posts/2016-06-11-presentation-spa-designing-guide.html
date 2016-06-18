@@ -1,5 +1,5 @@
 ---
-title: 单页应用的架构设计
+title: 单页应用设计指南
 category: presentation
 tag: presentation, spa
 permalink: spa-designing-guide
@@ -38,6 +38,9 @@ permalink: spa-designing-guide
     .reveal pre code {
       border-radius: 5px;
       padding: 12px;
+      max-height: inherit;
+      background-color: #000;
+      color: #080;
     }
 
     .reveal sup {
@@ -86,63 +89,67 @@ permalink: spa-designing-guide
 
     <section>
       <h2>SPA 的读法</h2>
-      <p>英文：[es] - [pi:] - [ei] <strong>vs</strong> [spɑː]</p>
-      <p>中文：单页应用 <strong>vs</strong> 单页面应用</p>
+      <p>英文：<span class="fragment highlight-green">[es] - [pi:] - [ei]</span> <strong>vs</strong> [spɑː]</p>
+      <p>中文：<span class="fragment highlight-green">单页应用</span> <strong>vs</strong> 单页面应用</p>
     </section>
 
     <section>
       <h2>SPA 的定义</h2>
       <div data-markdown>
-        From Wikipedia: 
-        > A single-page application (SPA) is a web application or web site that fits on a single web page with the goal of providing a more fluid user experience similar to a desktop application. 
+        From Wikipedia:
+        > A single-page application (SPA) is a web application or web site that fits on a single web page with
+        the goal of providing a more fluid user experience similar to a desktop application</span>.
       </div>
-      <em style="font-size:20px;line-height: 30px; display: block;">In a SPA, either all necessary code – HTML, JavaScript, and CSS – is retrieved with a single page load, or the appropriate resources are dynamically loaded and added to the page as necessary, usually in response to user actions. <strong>The page does not reload at any point in the process</strong>, nor does control transfer to another page, although the location hash can be used to provide the perception and navigability of separate logical pages in the application, as can the HTML5 pushState() API . Interaction with the single page application often involves dynamic communication with the web server behind the scenes.</em>
+      <em style="font-size:20px;line-height: 30px; display: block;">In a SPA, either all necessary code – HTML,
+        JavaScript, and CSS – is retrieved with a single page load, or the appropriate resources are dynamically
+        loaded and added to the page as necessary, usually in response to user actions. <span class="fragment highlight-green">The page does
+          not reload at any point in the process</span>, nor does control transfer to another page, although
+        the location hash can be used to provide the perception and navigability of separate logical pages in
+        the application, as can the HTML5 pushState() API . Interaction with the single page application often
+        involves dynamic communication with the web server behind the scenes.</em>
     </section>
 
     <section>
       <h2>实现 SPA 的技术</h2>
-      <ul>
-        <li>
-          <p>无需插件(JavaScript)：</p>
-          <ul>
-            <li>Ajax</li>
-            <li>Websocket</li>
-            <li>Server Sent Event (SSE)</li>
-          </ul>
-        </li>
-        <li>
-          <p>需要插件：</p>
-          <ul>
-            <li>Silverlight</li>
-            <li>Flash</li>
-            <li>Java Applet</li>
-          </ul>
-        </li>
-      </ul>
+      <section>
+        <ul>
+          <li>
+            <p>无需插件(JavaScript):</p>
+            <ul>
+              <li class="fragment highlight-green">Ajax</li>
+              <li>Websocket</li>
+              <li>Server Sent Event (SSE)</li>
+            </ul>
+          </li>
+          <li>
+            <p>需要插件:</p>
+            <ul>
+              <li>Silverlight</li>
+              <li>Flash</li>
+              <li>Java Applet</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
     </section>
 
     <section>
       <h2>JavaScript 开发 SPA 的优势</h2>
       <ul>
         <li>
-          <p>借助浏览器的优势：</p>
+          <p>借助浏览器的优势:</p>
           <ul>
-            <li>浏览器是最广泛使用的应用</li>
-            <li>浏览器中的 JavaScript 是分布最广的执行环境之一</li>
+            <li>使用最广泛的应用</li>
             <li>跨平台</li>
+            <li>引擎性能在不断提升</li>
           </ul>
         </li>
         <li>
-          <p>自身的优势：</p>
+          <p>自身优势:</p>
           <ul>
-            <li>高级特性在不断添加，引擎性能在不断提升</li>
+            <li>语言在不断完善</li>
             <li>
-              <p>全栈 JavaScript：</p>
-              <ul>
-                <li>Node.js</li>
-                <li>MongoDB, CouchDB</li>
-                <li>JSON</li>
-              </ul>
+              <p>Node.js 的发布</p>
             </li>
           </ul>
         </li>
@@ -150,11 +157,545 @@ permalink: spa-designing-guide
     </section>
 
     <section>
+      <h2>话题：Compile to JavaScript</h2>
+      <section>
+        <p data-markdown>
+          >浏览器只支持 JavaScript，是基于浏览器编程的无可争辩的标准
+        </p>
+      </section>
+      <section>
+        <p>一些理由：</p>
+        <ul>
+          <li>熟悉度</li>
+          <li>框架</li>
+          <li>多目标</li>
+          <li>成熟度</li>
+        </ul>
+      </section>
+      <section>
+        <p data-markdown>
+          >褒贬不一，但对 JavaScript 语言的发展无疑是有积极的推进作用的
+        </p>
+      </section>
+      <section>
+        <p>常见的有：</p>
+        <ul>
+          <li>
+            <a href="http://coffeescript.org/">CoffeeScript</a>
+          </li>
+          <li>
+            <a href="https://www.typescriptlang.org/">TypeScript</a>
+          </li>
+          <li>
+            <a href="https://babeljs.io/">Babel</a>
+          </li>
+          <li>
+            <a href="https://www.dartlang.org/">Dart</a>
+          </li>
+          <li>
+            <a href="http://code.google.com/webtoolkit/">GWT</a>
+          </li>
+          <li>
+            <a href="https://github.com/jashkenas/coffeescript/wiki/List-of-languages-that-compile-to-JS">Other languages</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section>
       <h2>SPA 前后端数据通信</h2>
       <ul>
-        <li>JSON (XML ?) </li>
+        <li><span class="fragment highlight-green">JSON</span></li>
         <li>HTML 片段</li>
       </ul>
+    </section>
+
+    <section class="center">
+      <h2>SPA 面临的挑战</h2>
+    </section>
+
+    <section>
+      <h2>SPA 面临的挑战</h2>
+      <section>
+        <ul>
+          <li>工程师的分工</li>
+          <li>前端工程师的专业素质</li>
+          <li>SEO</li>
+        </ul>
+      </section>
+      <section>
+        <p>SEO</p>
+        <ul>
+          <li>受登录保护的应用没有 SEO 的问题</li>
+          <li>
+            <p>不受登录保护的应用：</p>
+            <ul>
+              <li>搜索引擎自身的解决方案</li>
+              <li>专门为搜索引擎生成页面</li>
+            </ul>
+          </li>
+        </ul>
+        <div data-markdown class="fragment">
+          >相信总有那么一天，SPA 的 SEO 不会再是一个问题
+        </div>
+      </section>
+      <section>
+        <p>前端工程师的专业素质</p>
+        <ul>
+          <li>
+            <p>不断涌现的新技术、框架、开发思想</p>
+            <ul>
+              <li>模块加载技术</li>
+              <li>DOM --> Data Model</li>
+            </ul>
+          </li>
+          <li class="fragment">
+            <p>心态：</p>
+            <ul>
+              <li>开放</li>
+              <li>学习</li>
+              <li>创新</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <p>工程师的分工</p>
+        <ul>
+          <li>
+            <p>前后端工程师的分工：前后端分离，并行开发</p>
+            <ul>
+              <li>
+                <p>后端工程师专注 API 开发：RESTful API</p>
+              </li>
+              <li>前端工程师负责界面和用户交互逻辑</li>
+            </ul>
+          </li>
+          <li class="fragment">
+            <p>前端工程师团队内部的分工</p>
+            <ul>
+              <li>模块化</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="center">
+      <h2>SPA 的架构设计</h2>
+    </section>
+
+    <section>
+      <h2>SPA 的架构设计</h2>
+      <ul>
+        <li>主控制模块</li>
+        <li>路由模块</li>
+        <li>功能模块</li>
+        <li>数据模块</li>
+        <li>应用启动模块</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>主控制模块</h2>
+      <ul>
+        <li>渲染和管理功能模块</li>
+        <li>管理应用状态</li>
+        <li>协调功能模块</li>
+      </ul>
+      <div data-markdown class="fragment">
+        >主控制模块是功能模块和业务逻辑以及通用浏览器接口（像 URI 或者 Cookie）之间的协调者，是架构的中枢
+      </div>
+    </section>
+
+    <section>
+      <h2>路由：为什么要使用？</h2>
+      <section>
+        <ul class="fragment">
+          <li>前进、后退</li>
+          <li>收藏 URL</li>
+          <li>发送 URL</li>
+          <li>应用内部跳转</li>
+        </ul>
+        <div data-markdown class="fragment" style="text-align: center;">
+          >建议为每个模块分配单独的路由
+        </div>
+      </section>
+    </section>
+
+    <section>
+      <h2>路由：实现原理</h2>
+      <section>
+        <ul>
+          <li class="fragment">
+            <p>location hash</p>
+            <ul>
+              <li>hash change event</li>
+              <li>iframe hack</li>
+            </ul>
+          </li>
+          <li class="fragment">HTML5 PushState</li>
+        </ul>
+        <div data-markdown class="fragment">
+          >SPA 框架一般都会提供路由功能，比如 Backbone 的 Router， NEJ 的 UMI 等
+        </div>
+      </section>
+    </section>
+
+    <section>
+      <h2>路由：模块职责</h2>
+      <div data-markdown>
+        >简单来说，路由模块的职责是在路由变化时，通知应用的主控制模块，主控制模块根据路由模块提供的路由信息做相应的处理
+      </div>
+    </section>
+
+    <section>
+      <h2>路由：使用 URI 来驱动页面状态</h2>
+      <section data-markdown>
+        >功能模块可能会引起应用状态的变化，此时功能模块不用做任何处理，只要调用路由模块提供的更改路由的 API 即可
+      </section>
+      <section data-markdown>
+        >比如，功能模块 A 中有一个链接需要跳转到功能模块 B，跳转后左边菜单栏的高亮选项需要变化。菜单高亮在两个时刻需要考虑，一是应用初始化时，二是用户使用过程中。此时，A 不需要去调用菜单模块提供的高亮方法，A 只需要调用路由模块提供的更改路由的方法，接下来的过程等同于应用的初始化逻辑
+      </section>
+      <section data-markdown>
+        >提示：可以为所有会引起应用状态变化的元素增加特殊的 class 类名，然后使用事件代理的方法监听这些元素的点击事件
+      </section>
+    </section>
+
+    <section>
+      <h2>路由：主控制模块监听路由变化</h2>
+      <p>发生变化时：</p>
+      <ul>
+        <li>将当前状态和新的路由表示的状态做比较</li>
+        <li>根据比较确定的结果，尝试更改需要修改的应用部分</li>
+        <li>如果不能处理请求的变化，则保持当前的状态，并恢复路由，以便和状态匹配</li>
+      </ul>
+    </section>
+
+    <section class="center">
+      <h2>一件很重要的事情</h2>
+      <h3 class="fragment">文件结构的创建和命名</h3>
+    </section>
+
+    <section>
+      <h2>文件结构的创建和命名：方式一</h2>
+      <section data-markdown>
+        ```shell
+          +-- css
+          | +-- reset.css
+          | +-- commom.css
+          | `-- modules
+          |     +-- module.xxx.css
+          |     `-- module.zzz.css
+          +-- js
+          | +-- libs
+          |     +-- jquery.js
+          |     `-- backbone.js
+          | +-- modules
+          |     +-- module.xxx.js
+          |     +-- module.yyy.js
+          |     `-- module.zzz.js
+          | +-- common.js
+          | `-- spa.shell.js
+          `-- res
+        ```
+      </section>
+      <section>
+        <ul>
+          <li>有单独的 css 和 js 目录</li>
+          <li>css 和 js 保持平行结构</li>
+          <li>css 选择器都带相应模块的前缀，以免全局样式冲突</li>
+          <li>js 以模块名为名字空间，使用立即执行表达式，以免污染全局名字空间</li>
+        </ul>
+        <div class="fragment">
+          <p>不足之处：</p>
+          <ul>
+            <li>开发时有切换成本</li>
+            <li>css 和 js 不一定完全平行，有些模块没有自己的 css</li>
+            <li>模块移植性差</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+
+    <section>
+      <h2>话题：CSS 预处理器</h2>
+      <section>
+        <img src="/public/spadg/6.jpg">
+      </section>
+      <section>
+        <img src="/public/spadg/7.jpg">
+      </section>
+    </section>
+
+    <section>
+      <h2>文件结构的创建和命名：方式二</h2>
+      <section data-markdown>
+        ```shell
+          +-- common
+          | +-- reset.css
+          | +-- commom.css
+          | `-- commom.js
+          +-- lib
+          | +-- jquery.js
+          | `-- backbone.js
+          +-- module
+          | +-- module.xxx
+          |     +-- module.xxx.css
+          |     `-- module.xxx.js
+          | +-- module.yyy
+          |     `-- module.yyy.js
+          | `-- module.zzz
+          |     +-- module.zzz.css
+          |     `-- module.zzz.js
+          `-- pages
+        ```
+      </section>
+      <section>
+        <ul>
+          <li>common 目录中放置应用中会统一引入的资源</li>
+          <li>lib 目录中放置第三方的库和框架</li>
+          <li>
+            <p>module 目录中放置具体的模块</p>
+            <ul>
+              <li>模块有自己的文件夹，里面放置自己的 css 和 js 文件</li>
+              <li>模块的 css 和 js 文件名和模块名保持一致</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <p>不足之处：</p>
+        <div data-markdown>
+          >由于所有的功能模块有一定的相似性，在新建模块时，很有可能是拷贝其他已创建好的模块，然后再更改文件的名称以及代码中相应的名字空间，有一定的体力成本，整个过程略显枯燥
+        </div>
+      </section>
+    </section>
+
+    <section>
+      <h2>话题：模块 vs 组件</h2>
+      <ul>
+        <li>
+          <p>模块</p>
+          <ul>
+            <li>单例</li>
+            <li>负责具体的业务逻辑</li>
+          </ul>
+        </li>
+        <li>
+          <p>组件</p>
+          <ul>
+            <li>可以被多次实例化</li>
+            <li>是从业务模块中抽象出来的可复用功能</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>文件结构的创建和命名：方式二</h2>
+      <div data-markdown>
+        >方式二中并没有严格区分模块还是组件，统一放在 module 目录下面，在实际开发中，可以根据情况再做划分
+      </div>
+    </section>
+
+    <section>
+      <h2>文件结构的创建和命名：方式三</h2>
+      <section data-markdown>
+        ```shell
+          +-- common
+          | +-- reset.css
+          | +-- commom.css
+          | `-- commom.js
+          +-- libs
+          | +-- jquery.js
+          | `-- backbone.js
+          +-- modules
+          | +-- module.xxx
+          |     +-- index.css
+          |     `-- index.js
+          | +-- module.yyy
+          |     `-- index.js
+          | `-- module.zzz
+          |     +-- index.css
+          |     `-- index.js
+          `-- pages
+        ```
+      </section>
+      <section>
+        <ul>
+          <li>
+            <p>模块的 css 和 js 文件使用相同的名称</p>
+          </li>
+        </ul>
+        <div class="fragment">
+          <p>不足之处：</p>
+          <ul>
+            <li>搜索文件时相当痛苦</li>
+            <li>IDE tab 中文件名的显示问题</li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <img src="/public/spadg/1.jpg">
+      </section>
+      <section>
+        <img src="/public/spadg/2.jpg">
+      </section>
+      <section>
+        <img src="/public/spadg/3.jpg">
+        <img src="/public/spadg/4.jpg">
+        <img src="/public/spadg/5.jpg">
+      </section>
+    </section>
+
+    <section>
+      <h2>HTML 模板放在哪儿？</h2>
+      <section>
+        <ul>
+          <li class="fragment">
+            <p>放在模块文件夹中，名称为 module.xxx.html</p>
+            <ul>
+              <li>开发时设置跨域可加载</li>
+              <li>上线时使用工具将 html 字符串化，和 JS 打包在一起</li>
+            </ul>
+          </li>
+          <li class="fragment">
+            <p>以字符串的形式放置在模块的 js 中</p>
+            <ul>
+              <li>字符串拼接，有点麻烦。可以增强编辑器的功能，比如一键将 html 转换成字符串拼接的格式</li>
+              <li>ES6 中的字符串模板技术</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <img src="/public/spadg/8.jpg">
+      </section>
+    </section>
+
+    <section>
+      <h2>话题：JSX</h2>
+      <div data-markdown>
+        >使用 JSX，可以在 JavaScript 中编写 HTML 模板，还集成了常见的模板引擎功能
+      </div>
+      <div data-markdown class="fragment">
+        >很多人表示难以接受 JSX。一种新技术的推出，最难以接受的部分往往也是它创新最大的部分。
+      </div>
+    </section>
+
+    <section>
+      <h2>功能模块</h2>
+      <ul class="fragment">
+        <li>设计良好的 API</li>
+        <li>强隔离性</li>
+      </ul>
+      <div class="fragment" data-markdown>
+        >精力放在创建能增值的核心模块上，次要的模块可以交给第三方
+      </div>
+      <div class="fragment" data-markdown>
+        >只要时间和资源允许，就可以有选择性地用更好的模块来替换第三方模块
+      </div>
+      <div class="fragment" data-markdown>
+        >可以在多个项目之间重用模块
+      </div>
+    </section>
+
+    <section>
+      <h2>话题：第三方模块</h2>
+      <section>
+        <p>代表应用：</p>
+        <ul>
+          <li>GA</li>
+          <li>DisQus</li>
+          <li>AddThis、ShareThis、JiaThis</li>
+        </ul>
+      </section>
+      <section>
+        <p>一些共同特征：</p>
+        <ul>
+          <li>在自己的容器内渲染，容器要么由别人提供，要么由它们自己添加到文档上</li>
+          <li>提供了精心设计的 API，以便控制它们的行为</li>
+          <li>通过将自己的 JavaScript、数据和 CSS 精心地隔离，以免污染主页面</li>
+        </ul>
+      </section>
+      <section>
+        <p>一些缺陷：</p>
+        <ul>
+          <li>依赖于第三方的代码和服务</li>
+          <li>功能过剩，经常要比自己的模块要慢</li>
+          <li>隐私问题</li>
+          <li>缺乏灵活性，经常不能无缝地集成</li>
+          <li>跨功能通信很难或者是不可能的</li>
+          <li>定制化的模块很难或者是不可能的</li>
+        </ul>
+      </section>
+      <section>
+        <div data-markdown>
+          >把功能模块当作第三方模块一样来开发，能使我们从中获益
+        </div>
+        <ul class="fragment">
+          <li>团队更加高效，因为开发人员可以根据模块来划分职责</li>
+          <li>不会有未使用的或者是不想要的功能</li>
+          <li>代码维护和重用变得更加容易</li>
+        </ul>
+      </section>
+      <section data-markdown>
+        >应用的非核心功能使用第三方模块，然后在时间和资源允许时，有选择性地使用自己的功能模块来替换它们，这样就能更好地集成、运行更快、侵入性更小，或者是以上全部的好处
+      </section>
+    </section>
+
+    <section>
+      <h2>功能模块：在架构中的位置</h2>
+      <section style="text-align: center;">
+        <img src="/public/spadg/9.png">
+      </section>
+      <section>
+        <ul>
+          <li>主控制模块可以调用任何功能模块</li>
+          <li>功能模块只调用共享的公用模块</li>
+          <li><span class="fragment highlight-green">功能模块之间不允许相互调用</span></li>
+          <li>功能模块的唯一数据源或者功能只能来自主控制模块，在配置和初始化期间以参数的形式传给模块的公开方法</li>
+        </ul>
+      </section>
+    </section>
+
+    <section>
+      <h2>功能模块：不允许相互调用</h2>
+      <p>假设可以互相调用：</p>
+      <ul>
+        <li>当模块 A 出错或者崩溃的时候，则所有调用 A 的模块都有可能出问题</li>
+        <li>就算系统运行良好，重构或者替换某个模块也会很困难</li>
+        <li>随着系统中模块的不断增加，系统的耦合性会越来越强</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>功能模块：通过中介者通信</h2>
+      <section style="text-align: center;">
+        <img src="/public/spadg/10.png">
+      </section>
+      <section>
+        <ul>
+          <li>功能模块只发布事件</li>
+          <li>中介者订阅事件、调用相应的功能模块完成任务</li>
+        </ul>
+        <div class="fragment" data-markdown>
+          >本架构设计中，中介者由主控制模块担当
+        </div>
+      </section>
+    </section>
+
+    <section>
+      <h2>数据模块</h2>
+    </section>
+
+    <section>
+      <h2>话题：CSS代码的复用</h2>
+    </section>
+
+    <section>
+      <h2>话题：JS要不要有基类？继承如何使用？允许继承多少层？</h2>
     </section>
 
     <section class="center">
