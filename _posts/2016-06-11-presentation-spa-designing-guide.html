@@ -89,7 +89,7 @@ permalink: spa-designing-guide
 
     <section>
       <h2>SPA 的读法</h2>
-      <p>英文：<span class="fragment highlight-green">[es] - [pi:] - [ei]</span> <strong>vs</strong> [spɑː]</p>
+      <p>英文：<span class="fragment highlight-green">[es] - [pi:] - [ei]</span> <strong>vs</strong> [spɑ:]</p>
       <p>中文：<span class="fragment highlight-green">单页应用</span> <strong>vs</strong> 单页面应用</p>
     </section>
 
@@ -288,11 +288,21 @@ permalink: spa-designing-guide
     <section>
       <h2>SPA 的架构设计</h2>
       <ul>
-        <li>主控制模块</li>
-        <li>路由模块</li>
-        <li>功能模块</li>
-        <li>数据模块</li>
-        <li>应用启动模块</li>
+        <li>
+          <p>核心：</p>
+          <ul>
+            <li>主控制模块</li>
+            <li>路由模块</li>
+            <li>功能模块</li>
+            <li>数据模块</li>
+          </ul>
+        </li>
+        <li>
+          <p>其他：</p>
+          <ul>
+            <li>第三方模块</li>
+          </ul>
+        </li>
       </ul>
     </section>
 
@@ -425,6 +435,23 @@ permalink: spa-designing-guide
       </section>
       <section>
         <img src="/public/spadg/7.jpg">
+      </section>
+    </section>
+
+    <section>
+      <h2>话题：CSS 代码的复用</h2>
+      <div data-markdown>
+        >除了一些全局的基础样式、button、form control、layout 等，不推荐其他样式的刻意复用。适当的代码冗余可以避免令人头痛的样式冲突问题。
+      </div>
+    </section>
+
+    <section>
+      <h2>话题：组件继承</h2>
+      <section data-markdown>
+        >继承会产生耦合。JavaScript 是动态类型语言，在运行时可以赋于其他类型的值，所以 IDE 无法通过词法就能分析出对象间是否有继承关系，加之在 ES6 之前又没有原生 Class 对象这一雪上加霜的严酷事实，导致在 IDE 中跟踪代码变得非常困难。不推荐多层级的继承。
+      </section>
+      <section data-markdown>
+        >根据之前带团队的经验，一个前端团队需要有一些基础组件的沉淀，包括但不限于详细的开发规范和编码规范。这有利于提升团队的工作效率，在团队新增成员时，效果尤其明显。还有一个额外的好处是，会显著增加团队成员间的沟通机会，有助于团队氛围的营造。
       </section>
     </section>
 
@@ -677,25 +704,99 @@ permalink: spa-designing-guide
       </section>
       <section>
         <ul>
-          <li>功能模块只发布事件</li>
+          <li>功能模块只发布事件，通知中介者发生了什么事情或者需要做什么操作，接下来的工作就全部交给中介者</li>
+          <li>该功能模块不需要知道其他模块的存在</li>
           <li>中介者订阅事件、调用相应的功能模块完成任务</li>
         </ul>
         <div class="fragment" data-markdown>
           >本架构设计中，中介者由主控制模块担当
         </div>
       </section>
+      <section>
+        <p>缺陷：</p>
+        <ul>
+          <li>由于模块之间是间接通信，所以有些许性能损耗</li>
+          <li>对于模块很少的简单系统，可能会显得多此一举</li>
+        </ul>
+      </section>
     </section>
 
     <section>
       <h2>数据模块</h2>
+      <div data-markdown style="text-align: center;">
+        >让人纠结的模块
+      </div>
+      <div data-markdown class="fragment">
+        >如果按照第三方模块的设计思路，模块需要维护自己的数据，也就是系统没有统一的数据模块
+      </div>
     </section>
 
     <section>
-      <h2>话题：CSS代码的复用</h2>
+      <h2>数据模块</h2>
+      <p>没有数据模块的时候：</p>
+      <ul>
+        <li>移植很容易</li>
+        <li>前端工程师更加“解耦”</li>
+      </ul>
+      <div class="fragment">
+        <p>带来的问题：</p>
+        <ul>
+          <li>代码会有冗余，浪费工程师资源，劳动密集性的做法</li>
+          <li>无法对数据进行统一的管理和自动化测试</li>
+          <li>对系统的整体理解困难</li>
+        </ul>
+      </div>
     </section>
 
     <section>
-      <h2>话题：JS要不要有基类？继承如何使用？允许继承多少层？</h2>
+      <h2>数据模块</h2>
+      <div data-markdown>
+        >根据近几年的实践来看，在不同系统之间移植模块，大多数时候没有这样的需求，是假想的美好设计
+      </div>
+      <div data-markdown class="fragment">
+        >推荐使用统一的数据模块，并建议对它进行全面的自动化测试
+      </div>
+    </section>
+
+    <section>
+      <h2>数据模块：在构架中的位置</h2>
+      <div style="text-align: center;">
+        <img src="/public/spadg/11.png">
+      </div>
+    </section>
+
+    <section>
+      <h2>数据模块：职责</h2>
+      <div data-markdown style="text-align: center;">
+        >负责业务逻辑和数据管理
+      </div>
+      <div data-markdown class="fragment">
+        >虽然所有的业务逻辑和数据都是通过数据模块访问的，但并不意味着必须只能使用一个（可能非常大）JavaScript 文件来存放数据模型。可以使用名字空间，把数据模型分成多个容易管理的小文件
+      </div>
+    </section>
+
+    <section>
+      <h2>数据模块：实例</h2>
+      <div data-markdown style="text-align: center;">
+        >React 中的 Store
+      </div>
+      <div data-markdown style="text-align: center;">
+        >NEJ 中的 Cache
+      </div>
+    </section>
+
+    <section>
+      <h2>话题：Flux</h2>
+      <div style="text-align: center;">
+        <img src="/public/spadg/flux.png">
+      </div>
+    </section>
+
+    <section>
+      <h2>话题：NEJ Cache</h2>
+      <div style="text-align: center;">
+        <img src="/public/spadg/nejcache.png">
+      </div>
     </section>
 
     <section class="center">
