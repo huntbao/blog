@@ -340,10 +340,10 @@ permalink: youfan-introduction
       <div data-markdown>
         ```bash
         // 1. 生成工程
-        nei build 11443 -p ./todoweb /* 11443 是 todo 项目的 id */
+        nei build 11443 -p ./todoweb -t node -engine ejs /* 11443 是 todo 项目的 id */
 
         // 2. 安装依赖
-        cd todoweb/src/main/webapp/
+        cd public/src/
         bower install
         ```
       </div>
