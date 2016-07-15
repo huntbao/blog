@@ -365,13 +365,8 @@ permalink: youfan-introduction
 
     <section class="tal">
       <h2>运行 Todo Web</h2>
-      <div data-markdown>
-        Todo Web 项目中定义了两张页面, 路径是 `/login` 和 `/index`，所以它们的访问地址是:
-        ```html
-        http://localhost:8002/login
-        http://localhost:8002/index
-        ```
-      </div>
+      <p data-markdown>Todo Web 项目中定义了两张页面, 路径是 `/login` 和 `/index`，所以它们的访问地址是</p>
+      <img src="/public/youfan/nei_index.jpg">
     </section>
 
     <section class="tal">
@@ -386,19 +381,16 @@ permalink: youfan-introduction
       <h2>调试 Todo Web</h2>
       <div data-markdown>`(1)使用本地 mock 数据:`</div>
       <div data-markdown>
-        测试数据默认从 NEI 获取，util.js:
+        测试数据默认从本地获取，jtr.js:
         ```js
-        var ROOT = {
-        API:'http://nei.hz.netease.com/api/parameter/getTestData?api&type=%s&id=%s'
-        }
+        /* nei项目的在线数据url, 没有该字段时使用本地mock数据 */
+        // neiApi: 'http://nei.hz.netease.com/api/parameter/getTestData?api&type=%s&id=%s',
+        /* 同步模块mock数据路径 */
+        mockTpl: '/Users/huntbao/youfan-todoweb-sample-node/mock.data/template/',
+        /* 异步接口mock数据路径 */
+        mockApi: '/Users/huntbao/youfan-todoweb-sample-node/mock.data/interface/',
         ```
-        将 puer.js 中的 `offline` 改为 `true`:
-        ```js
-        module.exports = {
-        "offline": true //使用本地 mock 数据
-        }
-        ```
-        >注：更改配置文件后，需要重启服务
+        >注：更改配置文件后，不需要重启服务
       </div>
     </section>
 
@@ -408,7 +400,7 @@ permalink: youfan-introduction
       <div data-markdown>
         修改 mock 数据文件, 例如 todo 列表文件:
         ```bash
-        /src/main/webapp/src/mock/get/api/todos.json
+        /youfan-todoweb-sample-node/mock.data/interface/get/api/todos/data.json
         ```
         无需刷新页面, 就能即时看到修改变化
       </div>
@@ -418,18 +410,20 @@ permalink: youfan-introduction
       <h2>调试 Todo Web</h2>
       <div data-markdown>`(3)连接服务器`</div>
       <div data-markdown>
-        修改 route.js, 所有请求使用所要连接的服务器地址:
+        修改 jtr.js, 所有请求使用所要连接的服务器地址:
         ```bash
-        module.exports = {
-        "ALL /api/*": "http://localhost:3000", // 本地起的服务器, 其他同事的服务器, 测试服务器, 线上服务器等
-
-        //"DELETE /api/todo/:todoId":u.p(15763,"delete/api/todo/todoId"),
-        //"GET /api/todos":u.p(15759,"get/api/todos"),
-        //"POST /api/todos":u.p(15760,"post/api/todos"),
-        //"PUT /api/todos":u.p(15762,"put/api/todos"),
-        //"PUT /api/todos/:todoId":u.p(15761,"put/api/todos/todoId"),
-        "GET /index":u.r(0,[{"i":11032,"p":"pages/index"}]),
-        "GET /login":u.r(0,[{"i":11031,"p":"pages/login"}])
+        /* 路由 */
+        routes: {
+        //"ALL /api/*": "INPUT YOUR SEVER HOST",
+        "GET /page/detail/:todoId": {type: 'tpl', name: 'Todo 详情页', index: 0, list: [{"id":11141,"path":"page/detail"}]},
+        "GET /login": {type: 'tpl', name: '登录页面', index: 0, list: [{"id":11031,"path":"pages/login"}]},
+        "GET /index": {type: 'tpl', name: '首页', index: 0, list: [{"id":11032,"path":"pages/index"}]},
+        "PUT /api/todos/:todoId": {id: '15818', type: 'api', path: 'put/api/todos/_/todoId/data'},
+        "DELETE /api/todos/:todoId": {id: '15763', type: 'api', path: 'delete/api/todos/_/todoId/data'},
+        "PUT /api/todos": {id: '15762', type: 'api', path: 'put/api/todos/data'},
+        "POST /api/todos": {id: '15760', type: 'api', path: 'post/api/todos/data'},
+        "GET /api/todos": {id: '15759', type: 'api', path: 'get/api/todos/data'}
+        }
         };
         ```
         >刷新页面就能看到变化, 不需要重启服务
