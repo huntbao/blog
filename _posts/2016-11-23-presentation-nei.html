@@ -1,0 +1,474 @@
+---
+title: NEI接口管理平台
+category: presentation
+tag: presentation, nei
+permalink: nei
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>NEI接口管理平台</title>
+  <meta name="author" content="HuntBao">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="/public/reveal/css/reveal.css">
+  <link rel="stylesheet" href="/public/reveal/css/theme/black.css" id="theme">
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="/public/reveal/lib/css/zenburn.css">
+  <style>
+    .tal {
+      text-align: left;
+    }
+
+    .reveal pre {
+      width: 100%;
+    }
+
+    .reveal pre code {
+      border-radius: 5px;
+      padding: 12px;
+    }
+
+    .reveal sup {
+      font-size: 12px;
+      margin: -8px 4px 0;
+      vertical-align: top;
+    }
+
+    .reveal h2 {
+      text-transform: none;
+    }
+
+    code {
+      padding: .25em .1em;
+      font-size: 85%;
+      color: #bf616a;
+    }
+
+    .reveal blockquote {
+      padding: 0 20px;
+      border-radius: 5px;
+    }
+  </style>
+  <base target="_blank">
+</head>
+<body>
+
+<div class="reveal">
+
+  <div class="slides">
+    <section>
+      <img src="/public/youfan/logo.png" style="border:none;background:none;width: 60px;">
+      <h1>NEI接口管理平台</h1>
+      <h3>规范化、自动化、云协作</h3>
+      <p>
+        <small><a href="https://github.com/huntbao">包勇明</a> / <a href="http://weibo.com/gzooler">@huntbao</a>
+        </small>
+      </p>
+    </section>
+
+    <section class="tal">
+      <h2>内容介绍</h2>
+      <ul>
+        <li>基本概念及术语</li>
+        <li>接口测试</li>
+        </li>
+      </ul>
+    </section>
+
+    <section class="tal">
+      <h2>基本概念及术语</h2>
+      <ul>
+        <li>项目和项目组</li>
+        <li>页面</li>
+        <li>数据模型</li>
+        <li>异步接口</li>
+        <li>规则函数</li>
+        <li>业务分组</li>
+        <li>工程规范</li>
+      </ul>
+    </section>
+
+    <section class="tal">
+      <h2>项目和项目组</h2>
+      <p>一个产品可能有多个子产品，比如 PC 端、Android 端、iOS 端、后台管理系统等等。NEI 中有项目组的概念，在项目组中可以创建多个项目。所以，可以把项目组当作产品，其中的项目分别对应产品的各个子产品。</p>
+      <p>创建好项目组后，在项目组的“团队管理”选项卡中，可以把其他人加到项目组里面来。</p>
+      <div data-markdown>
+        >注意:
+        >人是加到项目组上的，而不是加在项目上。
+        >在创建项目组的时候，会自动创建公共资源库，用来存放所有项目共享的资源
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>Todo Web App 分析: 页面</h2>
+      <ul>
+        <li>
+          <div>登录页面</div>
+          <ul>
+            <li>/login</li>
+          </ul>
+        </li>
+        <li>
+          <div>主页面</div>
+          <ul>
+            <li>/main</li>
+            <li>NEI 中的单页应用如何管理?</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="tal">
+      <h2>Todo Web App 分析: 数据类型</h2>
+      <ul>
+        <li>
+          <div>用户对象: User<sup>简化版</sup></div>
+          <div data-markdown>
+            ```json
+            {
+            "id": "{用户id}",
+            "name": "{用户名称}"
+            }
+            ```
+          </div>
+        </li>
+        <li>
+          <div>todo 对象: Todo<sup>简化版</sup></div>
+          <div data-markdown>
+            ```json
+            {
+            "id": "{todo id}",
+            "text": "{todo 内容}",
+            "completed": "{是否完成}"
+            }
+            ```
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="tal">
+      <h2>Todo Web App 分析: 接口</h2>
+      <p>获取 todo 列表:</p>
+      <ul>
+        <li>地址: /api/todos/(不需要输入 host)</li>
+        <li>方法: GET</li>
+        <li>输入: 无</li>
+        <li>
+          <div>输出:</div>
+          <div data-markdown>
+            ```json
+            {
+            "code": "{响应状态码}",
+            "message": "{响应消息}",
+            "result": "Array{Todo}"
+            }
+            ```
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="tal">
+      <h2>Todo Web App 分析: 接口</h2>
+      <p>添加单个 todo:</p>
+      <ul>
+        <li>地址: /api/todos/</li>
+        <li>方法: POST</li>
+        <li>
+          <div>输入:</div>
+          <div data-markdown>
+            ```json
+            {
+            "text": "{todo 内容}"
+            }
+            ```
+          </div>
+        </li>
+        <li>
+          <div>输出:</div>
+          <div data-markdown>
+            ```json
+            {
+            "code": "{响应状态码}",
+            "message": "{响应消息}",
+            "result": "{Todo}"
+            }
+            ```
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="tal">
+      <h2>Todo Web App 分析: 接口</h2>
+      <p>更新单个 todo 的内容:</p>
+      <ul>
+        <li>地址: /api/todos/:todoId</li>
+        <li>方法: PATCH</li>
+        <li>
+          <div>输入:</div>
+          <div data-markdown>
+            ```json
+            {
+            "text": "{新的 todo 内容}"
+            }
+            ```
+          </div>
+        </li>
+        <li>
+          <div>输出:</div>
+          <div data-markdown>
+            ```json
+            {
+            "code": "{响应状态码}",
+            "message": "{响应消息}",
+            "result": "{Todo}"
+            }
+            ```
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="tal">
+      <h2>Todo Web App 分析: 接口</h2>
+      <p>批量更新 todo 的完成状态:</p>
+      <ul>
+        <li>地址: /api/todos/</li>
+        <li>方法: PATCH</li>
+        <li>
+          <div>输入:</div>
+          <div data-markdown>
+            ```json
+            {
+            "completed": "{是否完成}",
+            "ids": "Array{todoId}"
+            }
+            ```
+          </div>
+        </li>
+        <li>
+          <div>输出:</div>
+          <div data-markdown>
+            ```json
+            {
+            "code": "{响应状态码}",
+            "message": "{响应消息}",
+            "result": "Array{Todo}"
+            }
+            ```
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="tal">
+      <h2>Todo Web App 分析: 接口</h2>
+      <p>删除单个 todo:</p>
+      <ul>
+        <li>地址: /api/todos/:todoId</li>
+        <li>方法: DELETE</li>
+        <li>输入: 无</li>
+        <li>
+          <div>输出:</div>
+          <div data-markdown>
+            ```json
+            {
+            "code": "{响应状态码}",
+            "message": "{响应消息}",
+            "result": "{Todo}"
+            }
+            ```
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><a href="http://nei.hz.netease.com">NEI</a> 操作演示</h2>
+    </section>
+
+    <section class="tal">
+      <h2>构建工具 <a href="https://github.com/NEYouFan/nei-toolkit">NEI-toolkit</a></h2>
+      <p>
+        将 NEI 上定义好的规范（异步接口、数据类型、模板）翻译成指定语言的程序代码。目前支持的工程类型有：
+      <ul>
+        <li>
+          <div>Web</div>
+          <ul>
+            <li>Java</li>
+            <li>Node.js</li>
+            <li>不断增加中...</li>
+          </ul>
+        </li>
+        <li>Android</li>
+        <li>iOS</li>
+      </ul>
+      </p>
+    </section>
+
+    <section class="tal">
+      <h2><a href="https://github.com/NEYouFan/nei-toolkit">NEI-toolkit</a>: 生成 Todo Web 工程</h2>
+      <div data-markdown>
+        ```bash
+        // 1. 生成工程
+        nei build 11443 -p ./todoweb -t node -engine ejs /* 11443 是 todo 项目的 id */
+
+        // 2. 安装依赖
+        cd public/src/
+        bower install
+        ```
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>运行 Todo Web</h2>
+      <p>在项目根目录下面运行下面的命令:</p>
+      <div data-markdown>
+        ```bash
+        nei server
+        ```
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>运行 Todo Web</h2>
+      <p data-markdown>Todo Web 项目中定义了两张页面, 路径是 `/login` 和 `/index`，所以它们的访问地址是:</p>
+      <img src="/public/youfan/nei_index.jpg">
+    </section>
+
+    <section class="tal">
+      <h2>前端开发调试要点</h2>
+      <ul>
+        <li>修改 mock 数据要方便</li>
+        <li>切换服务器地址要方便</li>
+      </ul>
+    </section>
+
+    <section class="tal">
+      <h2>调试 Todo Web</h2>
+      <div data-markdown>`(1)使用本地 mock 数据:`</div>
+      <div data-markdown>
+        测试数据默认从本地获取，jtr.js:
+        ```js
+        /* nei项目的在线数据url, 没有该字段时使用本地mock数据 */
+        // neiApi: 'http://nei.hz.netease.com/api/parameter/getTestData?api&type=%s&id=%s',
+        /* 同步模块mock数据路径 */
+        mockTpl: '/Users/huntbao/youfan-todoweb-sample-node/mock.data/template/',
+        /* 异步接口mock数据路径 */
+        mockApi: '/Users/huntbao/youfan-todoweb-sample-node/mock.data/interface/',
+        ```
+        >注：更改配置文件后，不需要重启服务
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>调试 Todo Web</h2>
+      <div data-markdown>`(2)修改本地 mock 数据:`</div>
+      <div data-markdown>
+        修改 mock 数据文件, 例如 todo 列表文件:
+        ```bash
+        /youfan-todoweb-sample-node/mock.data/interface/get/api/todos/data.json
+        ```
+        无需刷新页面, 就能即时看到修改变化
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>调试 Todo Web</h2>
+      <div data-markdown>`(3)连接服务器`</div>
+      <div data-markdown>
+        修改 jtr.js, 所有请求使用所要连接的服务器地址:
+        ```bash
+        /* 路由 */
+        routes: {
+        //"ALL /api/*": "INPUT YOUR SEVER HOST",
+        "GET /page/detail/:todoId": {type: 'tpl', name: 'Todo 详情页', index: 0, list: [{"id":11141,"path":"page/detail"}]},
+        "GET /login": {type: 'tpl', name: '登录页面', index: 0, list: [{"id":11031,"path":"pages/login"}]},
+        "GET /index": {type: 'tpl', name: '首页', index: 0, list: [{"id":11032,"path":"pages/index"}]},
+        "PUT /api/todos/:todoId": {id: '15818', type: 'api', path: 'put/api/todos/_/todoId/data'},
+        "DELETE /api/todos/:todoId": {id: '15763', type: 'api', path: 'delete/api/todos/_/todoId/data'},
+        "PUT /api/todos": {id: '15762', type: 'api', path: 'put/api/todos/data'},
+        "POST /api/todos": {id: '15760', type: 'api', path: 'post/api/todos/data'},
+        "GET /api/todos": {id: '15759', type: 'api', path: 'get/api/todos/data'}
+        }
+        };
+        ```
+        >刷新页面就能看到变化, 不需要重启服务
+      </div>
+    </section>
+
+    <section>
+      <h2>接口测试工具 <a href="https://chrome.google.com/webstore/detail/piaeaaejbhdohaihefehocabkanhlpoh">Phosphorus</a>
+      </h2>
+      <img src="/public/youfan/phosphorus.png" style="width: 78%; margin:0;">
+      <p>一款类似 Postman 的接口测试工具, 无缝对接有范云协作</p>
+      <p>项目地址: <a href="https://github.com/NEYouFan/phosphorus">https://github.com/NEYouFan/phosphorus</a></p>
+    </section>
+
+    <section>
+      <h2><a href="https://chrome.google.com/webstore/detail/piaeaaejbhdohaihefehocabkanhlpoh">Phosphorus</a> 操作演示</h2>
+    </section>
+
+    <section>
+      <h2>Thank You</h2>
+      <h3>Q & A</h3>
+      <p>
+        <small><a href="https://github.com/huntbao">包勇明</a> / <a href="http://weibo.com/gzooler">@huntbao</a>
+        </small>
+      </p>
+    </section>
+
+  </div>
+</div>
+
+<script src="/public/reveal/lib/js/head.min.js"></script>
+<script src="/public/reveal/js/reveal.js"></script>
+<script>
+  // Full list of configuration options available at:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    transition: 'slide', // none/fade/slide/convex/concave/zoom
+    // Optional reveal.js plugins
+    dependencies: [
+      {
+        src: '/public/reveal/lib/js/classList.js',
+        condition: function () {
+          return !document.body.classList;
+        }
+      },
+      {
+        src: '/public/reveal/plugin/markdown/marked.js',
+        condition: function () {
+          return !!document.querySelector('[data-markdown]');
+        }
+      },
+      {
+        src: '/public/reveal/plugin/markdown/markdown.js',
+        condition: function () {
+          return !!document.querySelector('[data-markdown]');
+        }
+      },
+      {
+        src: '/public/reveal/plugin/highlight/highlight.js',
+        async: true,
+        callback: function () {
+          hljs.initHighlightingOnLoad();
+        }
+      },
+      {src: '/public/reveal/plugin/zoom-js/zoom.js', async: true},
+      {src: '/public/reveal/plugin/notes/notes.js', async: true}
+    ]
+  });
+</script>
+</body>
+</html>
