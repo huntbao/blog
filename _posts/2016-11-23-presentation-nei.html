@@ -61,12 +61,11 @@ permalink: nei
 
   <div class="slides">
     <section>
-      <img src="/public/youfan/logo.png" style="border:none;background:none;width: 60px;">
+      <img src="/public/nei/logo.png" style="border:none;background:none;width:90px;">
       <h1>NEI接口管理平台</h1>
       <h3>规范化、自动化、云协作</h3>
       <p>
-        <small><a href="https://github.com/huntbao">包勇明</a> / <a href="http://weibo.com/gzooler">@huntbao</a>
-        </small>
+        <small><a href="https://github.com/huntbao">包勇明</a> / <a href="http://weibo.com/gzooler">@huntbao</a></small>
       </p>
     </section>
 
@@ -75,7 +74,6 @@ permalink: nei
       <ul>
         <li>基本概念及术语</li>
         <li>接口测试</li>
-        </li>
       </ul>
     </section>
 
@@ -104,315 +102,245 @@ permalink: nei
     </section>
 
     <section class="tal">
-      <h2>Todo Web App 分析: 页面</h2>
+      <h2>页面</h2>
+      <p>指可以通过地址访问的普通页面，它包含了以下元素：</p>
       <ul>
-        <li>
-          <div>登录页面</div>
-          <ul>
-            <li>/login</li>
-          </ul>
-        </li>
-        <li>
-          <div>主页面</div>
-          <ul>
-            <li>/main</li>
-            <li>NEI 中的单页应用如何管理?</li>
-          </ul>
-        </li>
+        <li>访问地址</li>
+        <li>查询参数</li>
+        <li>模板列表</li>
+        <li>接口列表</li>
       </ul>
     </section>
 
     <section class="tal">
-      <h2>Todo Web App 分析: 数据类型</h2>
-      <ul>
-        <li>
-          <div>用户对象: User<sup>简化版</sup></div>
-          <div data-markdown>
-            ```json
-            {
-            "id": "{用户id}",
-            "name": "{用户名称}"
-            }
-            ```
-          </div>
-        </li>
-        <li>
-          <div>todo 对象: Todo<sup>简化版</sup></div>
-          <div data-markdown>
-            ```json
-            {
-            "id": "{todo id}",
-            "text": "{todo 内容}",
-            "completed": "{是否完成}"
-            }
-            ```
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section class="tal">
-      <h2>Todo Web App 分析: 接口</h2>
-      <p>获取 todo 列表:</p>
-      <ul>
-        <li>地址: /api/todos/(不需要输入 host)</li>
-        <li>方法: GET</li>
-        <li>输入: 无</li>
-        <li>
-          <div>输出:</div>
-          <div data-markdown>
-            ```json
-            {
-            "code": "{响应状态码}",
-            "message": "{响应消息}",
-            "result": "Array{Todo}"
-            }
-            ```
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section class="tal">
-      <h2>Todo Web App 分析: 接口</h2>
-      <p>添加单个 todo:</p>
-      <ul>
-        <li>地址: /api/todos/</li>
-        <li>方法: POST</li>
-        <li>
-          <div>输入:</div>
-          <div data-markdown>
-            ```json
-            {
-            "text": "{todo 内容}"
-            }
-            ```
-          </div>
-        </li>
-        <li>
-          <div>输出:</div>
-          <div data-markdown>
-            ```json
-            {
-            "code": "{响应状态码}",
-            "message": "{响应消息}",
-            "result": "{Todo}"
-            }
-            ```
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section class="tal">
-      <h2>Todo Web App 分析: 接口</h2>
-      <p>更新单个 todo 的内容:</p>
-      <ul>
-        <li>地址: /api/todos/:todoId</li>
-        <li>方法: PATCH</li>
-        <li>
-          <div>输入:</div>
-          <div data-markdown>
-            ```json
-            {
-            "text": "{新的 todo 内容}"
-            }
-            ```
-          </div>
-        </li>
-        <li>
-          <div>输出:</div>
-          <div data-markdown>
-            ```json
-            {
-            "code": "{响应状态码}",
-            "message": "{响应消息}",
-            "result": "{Todo}"
-            }
-            ```
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section class="tal">
-      <h2>Todo Web App 分析: 接口</h2>
-      <p>批量更新 todo 的完成状态:</p>
-      <ul>
-        <li>地址: /api/todos/</li>
-        <li>方法: PATCH</li>
-        <li>
-          <div>输入:</div>
-          <div data-markdown>
-            ```json
-            {
-            "completed": "{是否完成}",
-            "ids": "Array{todoId}"
-            }
-            ```
-          </div>
-        </li>
-        <li>
-          <div>输出:</div>
-          <div data-markdown>
-            ```json
-            {
-            "code": "{响应状态码}",
-            "message": "{响应消息}",
-            "result": "Array{Todo}"
-            }
-            ```
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section class="tal">
-      <h2>Todo Web App 分析: 接口</h2>
-      <p>删除单个 todo:</p>
-      <ul>
-        <li>地址: /api/todos/:todoId</li>
-        <li>方法: DELETE</li>
-        <li>输入: 无</li>
-        <li>
-          <div>输出:</div>
-          <div data-markdown>
-            ```json
-            {
-            "code": "{响应状态码}",
-            "message": "{响应消息}",
-            "result": "{Todo}"
-            }
-            ```
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section>
-      <h2><a href="http://nei.hz.netease.com">NEI</a> 操作演示</h2>
-    </section>
-
-    <section class="tal">
-      <h2>构建工具 <a href="https://github.com/NEYouFan/nei-toolkit">NEI-toolkit</a></h2>
-      <p>
-        将 NEI 上定义好的规范（异步接口、数据类型、模板）翻译成指定语言的程序代码。目前支持的工程类型有：
-      <ul>
-        <li>
-          <div>Web</div>
-          <ul>
-            <li>Java</li>
-            <li>Node.js</li>
-            <li>不断增加中...</li>
-          </ul>
-        </li>
-        <li>Android</li>
-        <li>iOS</li>
-      </ul>
-      </p>
-    </section>
-
-    <section class="tal">
-      <h2><a href="https://github.com/NEYouFan/nei-toolkit">NEI-toolkit</a>: 生成 Todo Web 工程</h2>
+      <h2>页面 - 访问地址</h2>
+      <p>在创建页面的时候，可以指定页面的路径，比如 /index，那么它的访问地址是: {host}/index。</p>
       <div data-markdown>
-        ```bash
-        // 1. 生成工程
-        nei build 11443 -p ./todoweb -t node -engine ejs /* 11443 是 todo 项目的 id */
-
-        // 2. 安装依赖
-        cd public/src/
-        bower install
-        ```
+        >注意：在填写路径的时候，只要写相对地址即可，host 的值由环境决定，比如在本地开发时，它的值就是 http://127.0.0.1 ；在测试环境时，它的值可能是 http://test.nei.netease.com
       </div>
     </section>
 
     <section class="tal">
-      <h2>运行 Todo Web</h2>
-      <p>在项目根目录下面运行下面的命令:</p>
+      <h2>页面 - 查询参数</h2>
+      <p>页面参数指的是在访问页面时，传给服务端的参数，它可以通过 url 参数传入，此时页面的访问方式一般是 GET；也可以放在请求体中，此时页面的访问方式一般是 POST（比如页面作为 form 表单的提交地址）。</p>
+      <p>比如定义了参数 userId，它的类型是 String，这个时候页面的开发人员就知道，访问该页面的时候将会传入 userId 参数，即访问地址是：http://127.0.0.1?userId={userId}，根据 userId 参数可以做一些相应的业务逻辑。</p>
+    </section>
+
+    <section class="tal">
+      <h2>页面 - 模板列表</h2>
+      <p>每张页面都至少有一个模板。创建页面时填写的模板，只是声明页面会用到哪些模板资源。</p>
+      <p>模板一般需要模板引擎来解析生成最终的 html 内容，常见的模板引擎有 freemarker(模板扩展名是 .ftl)、velocity(模板扩展名是 .vm)、EJS(模板扩展名是 .ejs)等。</p>
+      <p>创建页面的时候，也可以填写多个模板，此时每个模板作为页面的某个状态，比如 成功、失败 等状态，服务端根据业务逻辑返回相应的模板。</p>
+    </section>
+
+    <section class="tal">
+      <h2>页面 - 接口列表</h2>
+      <p>和模板列表类似，只是表明该页面会用到哪些异步接口。</p>
+    </section>
+
+    <section class="tal">
+      <h2>数据模型（一）</h2>
+      <p>数据模型是 NEI 中最重要的概念之一，在使用 NEI 系统之前应该需要研究一下它的具体使用方法。在创建其他资源的时候，也要思考是不是可以将一些经常出现的输入或输出作为数据模型呢？</p>
+      <p>数据模型是基础资源，其他资源几乎都会用到。拿 NEI 项目本身来说，它有 User、UserGroup、Project、ProjectGroup、Page、Parameter 等等可以抽象出来的对象。这些对象和程序的编写以及数据的持久化都是息息相关的。创建数据模型的时候，可以指定字段的默认值，默认值的优先级会高于 Mock 出来的随机数据。也可以定义生成规则，根据自己的逻辑生成 Mock 数据。</p>
+    </section>
+
+    <section class="tal">
+      <h2>数据模型（二）</h2>
       <div data-markdown>
-        ```bash
-        nei server
-        ```
-      </div>
-    </section>
-
-    <section class="tal">
-      <h2>运行 Todo Web</h2>
-      <p data-markdown>Todo Web 项目中定义了两张页面, 路径是 `/login` 和 `/index`，所以它们的访问地址是:</p>
-      <img src="/public/youfan/nei_index.jpg">
-    </section>
-
-    <section class="tal">
-      <h2>前端开发调试要点</h2>
-      <ul>
-        <li>修改 mock 数据要方便</li>
-        <li>切换服务器地址要方便</li>
-      </ul>
-    </section>
-
-    <section class="tal">
-      <h2>调试 Todo Web</h2>
-      <div data-markdown>`(1)使用本地 mock 数据:`</div>
-      <div data-markdown>
-        测试数据默认从本地获取，jtr.js:
-        ```js
-        /* nei项目的在线数据url, 没有该字段时使用本地mock数据 */
-        // neiApi: 'http://nei.hz.netease.com/api/parameter/getTestData?api&type=%s&id=%s',
-        /* 同步模块mock数据路径 */
-        mockTpl: '/Users/huntbao/youfan-todoweb-sample-node/mock.data/template/',
-        /* 异步接口mock数据路径 */
-        mockApi: '/Users/huntbao/youfan-todoweb-sample-node/mock.data/interface/',
-        ```
-        >注：更改配置文件后，不需要重启服务
-      </div>
-    </section>
-
-    <section class="tal">
-      <h2>调试 Todo Web</h2>
-      <div data-markdown>`(2)修改本地 mock 数据:`</div>
-      <div data-markdown>
-        修改 mock 数据文件, 例如 todo 列表文件:
-        ```bash
-        /youfan-todoweb-sample-node/mock.data/interface/get/api/todos/data.json
-        ```
-        无需刷新页面, 就能即时看到修改变化
-      </div>
-    </section>
-
-    <section class="tal">
-      <h2>调试 Todo Web</h2>
-      <div data-markdown>`(3)连接服务器`</div>
-      <div data-markdown>
-        修改 jtr.js, 所有请求使用所要连接的服务器地址:
-        ```bash
-        /* 路由 */
-        routes: {
-        //"ALL /api/*": "INPUT YOUR SEVER HOST",
-        "GET /page/detail/:todoId": {type: 'tpl', name: 'Todo 详情页', index: 0, list: [{"id":11141,"path":"page/detail"}]},
-        "GET /login": {type: 'tpl', name: '登录页面', index: 0, list: [{"id":11031,"path":"pages/login"}]},
-        "GET /index": {type: 'tpl', name: '首页', index: 0, list: [{"id":11032,"path":"pages/index"}]},
-        "PUT /api/todos/:todoId": {id: '15818', type: 'api', path: 'put/api/todos/_/todoId/data'},
-        "DELETE /api/todos/:todoId": {id: '15763', type: 'api', path: 'delete/api/todos/_/todoId/data'},
-        "PUT /api/todos": {id: '15762', type: 'api', path: 'put/api/todos/data'},
-        "POST /api/todos": {id: '15760', type: 'api', path: 'post/api/todos/data'},
-        "GET /api/todos": {id: '15759', type: 'api', path: 'get/api/todos/data'}
+        比如 User 对象，它的结构一般如下所示：
+        ```json
+        {
+          "id": "[number]",
+          "name": "[string]",
+          "email": "[string]"
         }
-        };
         ```
-        >刷新页面就能看到变化, 不需要重启服务
+        其中，中括号里面的值表示该字段的类型。
+
+        创建了 User 数据模型后，整个系统就变得规范了，如果各个环节的代码都是严格按照 NEI 上的定义来实现的话，那么所有地方的 User 都是一致的，不会出现这里的 id 的类型和那里的不一致的情形，这固然有点理想主义，但也不是不能做到。这么做的好处是显而易见的，自动化测试方便了，甚至整个系统都可能变得更加严谨和正确。
       </div>
     </section>
 
-    <section>
-      <h2>接口测试工具 <a href="https://chrome.google.com/webstore/detail/piaeaaejbhdohaihefehocabkanhlpoh">Phosphorus</a>
-      </h2>
-      <img src="/public/youfan/phosphorus.png" style="width: 78%; margin:0;">
-      <p>一款类似 Postman 的接口测试工具, 无缝对接有范云协作</p>
-      <p>项目地址: <a href="https://github.com/NEYouFan/phosphorus">https://github.com/NEYouFan/phosphorus</a></p>
+    <section class="tal">
+      <h2>数据模型（三）</h2>
+      <div data-markdown>
+        然后就可以在其他地方使用这个 User 对象。比如某个异步接口，输入参数是用户 id，要求返回的是 User 对象。接口开发者一看 NEI 上的定义就知道要返回什么样的数据，省去了很多沟通成本。
+
+        刚才说的 User 对象，在 NEI 中称为哈希类型，其实就是大家常说的 Map 对象。另外还有 6 种类型：枚举、数组、字符、数值、布尔、文件，也很好理解。
+
+        注意，在创建某个数据模型时，如果某个字段的类型是未知的，则选择 Variable 即可，表示可变类型，在具体使用的时候再指定它的类型。
+
+        数据模型 一般对应服务端的 Model。
+      </div>
     </section>
 
-    <section>
-      <h2><a href="https://chrome.google.com/webstore/detail/piaeaaejbhdohaihefehocabkanhlpoh">Phosphorus</a> 操作演示</h2>
+    <section class="tal">
+      <h2>异步接口</h2>
+      <div data-markdown>
+        最核心的项目资源，它包含以下元素：
+
+        * 请求地址、方式
+        * 请求头信息
+        * 请求参数
+        * 发送规则
+        * 响应头
+        * 响应结果
+        * 接收规则
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>异步接口 – 请求地址、方式</h2>
+      <div data-markdown>
+        和页面类似，请求地址也是相对地址。
+
+        请求方式可以自定义，系统内置了常见的方式：GET、POST、DELETE、PUT、PATCH等
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>异步接口 – 请求头、请求参数</h2>
+      <div data-markdown>
+        请求头即在发送请求的时候添加到 Request Headers 中的参数
+
+        请求数据即要发送的数据。NEI 默认的输入参数类型是一个哈希对象。我们知道 JSON 可以表示 4 种基本类型 (string，number，boolean 和 null) 和 2 种结构化类型 (object 和 array)。除了 null 之外，其他类型 NEI 都支持。
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>异步接口 – 响应头、响应参数</h2>
+      <div data-markdown>
+        响应头即服务器需要返回的头信息。
+
+        返回结果即异步接口返回的数据，格式同输入参数。
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>异步接口 – 响应参数定义技巧</h2>
+      <div data-markdown>
+        一般我们希望输出参数具有某种固定格式，这样客户端就可以统一处理一些逻辑，比如 404、500 等异常。比如，可以先定义一个叫 ResultData 的数据模型，它的结构如下所示：
+        ```json
+        {
+          "code": "[number]",
+          "msg": "[string]",
+          "result": "[Variable]"
+        }
+        ```
+        code 是请求返回的状态码，msg 是返回的信息（比如一些异常信息），result 是真正的数据部分，定义数据模型的时候它是可变的。
+
+        然后点击 导入 按钮，选择 ResultData，然后再选择 result 的具体类型，比如它是一个数组，数组的每一项都是一个 User 对象。
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>异步接口 – 发送、接收规则</h2>
+      <div data-markdown>
+        发送规则：在发送数据之前，对数据进行一些特殊处理，比如对密码进行加密等
+
+        接收规则：在服务器返回数据后，对数据进行一些特殊处理后再返回给客户端脚本代码
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>页面模板</h2>
+      <div data-markdown>
+        模板就是服务端的模板。
+
+        一般模板里面会有很多变量需要使用真实数据来替换，在创建模板时，数据选项一栏指的就是这些真实的数据。数据一般就对应服务端的 Model，通过 Controller 提供给模板。
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>规则函数</h2>
+      <div data-markdown>
+        顾名思义，它们都是函数。在创建数据模型的属性或者异步接口的参数时，可以指定它们的生成规则，如果它们没有默认值，则会调用生成规则函数并将它的返回值作为最终的 Mock 数据。
+
+        >注意：虽然数据模型的生成规则、异步接口的发送和接收规则都可以编写 JavaScript 脚本，但我们还是建议它们都是调用规则函数的代码，以达到复用的目的，管理和维护也更加方便
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>业务分组</h2>
+      <div data-markdown>
+        一个项目可以有多条业务线，业务分组可以用来更好地组织资源，它是唯一的。
+
+        业务分组和标签有所不同，例如，资源可以有多个标签，但只能属于一个分组
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>工程规范</h2>
+      <div data-markdown>
+        工程规范定义了工程的初始化目录结构，在使用构建工具构建项目的时候，会按照定义好的目录和文件数据在本地生成相应的目录和文件。
+
+        工程规范和项目的关联方式：在项目的"工具设置"中，我们可以分别指定项目的"WEB工程规范"、"AOS工程规范"、"iOS工程规范"以及"测试工程规范"
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>工程规范 – 目录</h2>
+      <div data-markdown>
+        除了常规目录外，还有以下特殊目录:
+
+        * 静态资源根目录：在使用本地模拟容器时，需要该信息，该目录用来存放静态资源
+
+        * 模板根目录：在使用本地模拟容器时，需要该信息，该目录用来存放页面模板
+
+        * 接口MOCK数据根目录：使用本工具生成的异步接口的mock数据会放到该目录下面
+
+        * 模板MOCK数据根目录：使用本工具生成的页面模板的mock数据会放到该目录下面
+
+        * JAR包根目录：存放自定义JAR包，ftl模板可以直接调用JAR包中的静态方法
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>工程规范 – 文件（一）</h2>
+      <div data-markdown>
+        除了常规文件外，还有以下特殊文件:
+
+        * 接口列表填充：使用项目中定义的异步接口数据列表作为数据源，每个异步接口都会生成一个文件
+
+        * 数据模型列表填充：使用项目中定义的数据模型数据列表作为数据源，每个数据模型都会生成一个文件。为了保持通用性，我们区分了枚举类型和非枚举类型.如果需要使用枚类型的数据类型列表，需要在文件名后面加上`!!enum`
+
+        * 页面模板列表填充：使用项目中定义的页面模板数据列表作为数据源，每个页面模板都会生成一个文件
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>工程规范 – 文件（二）</h2>
+      <div data-markdown>
+        * 视图列表填充：使用项目中定义的视图数据列表作为数据源，每个视图都会生成一个文件
+
+        * 命令行参数配置文件：该文件的内容须为有效的 json，它的值会作为本构建工具的命令行参数
+
+        * 自定义Handlebars辅助函数：构建工具会运行这个文件，从而注册自定义方法
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>工程规范 – 模板数据</h2>
+      <div data-markdown>
+        传给模板的数据格式说明请参数 github 上面详细的说明：
+
+        [传给模板的数据说明](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/传给模板的数据说明.md)
+
+        Handlebars 辅助函数集说明：
+
+        [Handlebars辅助函数集](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/Handlebars辅助函数集.md)
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>接口测试</h2>
+      <div data-markdown>
+        选中某个异步接口，可以新建测试用例
+
+        测试用例可以保存下来，可以批量运行
+
+        可以验证接口返回数据的正确性，目前会检测字段类型、期望值、字段缺失情况等
+      </div>
     </section>
 
     <section>
