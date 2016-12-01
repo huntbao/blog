@@ -12,8 +12,7 @@ permalink: nei
   <meta name="author" content="HuntBao">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="/public/reveal/css/reveal.css">
   <link rel="stylesheet" href="/public/reveal/css/theme/black.css" id="theme">
   <!-- Code syntax highlighting -->
@@ -52,6 +51,10 @@ permalink: nei
       padding: 0 20px;
       border-radius: 5px;
     }
+
+    .reveal section img {
+      box-shadow: none;
+    }
   </style>
   <base target="_blank">
 </head>
@@ -61,7 +64,7 @@ permalink: nei
 
   <div class="slides">
     <section>
-      <img src="/public/nei/logo.png" style="border:none;background:none;width:90px;">
+      <img src="/public/nei/logo.png" style="border:none;background:none;width:120px;">
       <h1>NEI接口管理平台</h1>
       <h3>规范化、自动化、云协作</h3>
       <p>
@@ -72,13 +75,15 @@ permalink: nei
     <section class="tal">
       <h2>内容介绍</h2>
       <ul>
-        <li>基本概念及术语</li>
+        <li>基本概念</li>
         <li>接口测试</li>
+        <li>构建工具</li>
+        <li>工程规范</li>
       </ul>
     </section>
 
     <section class="tal">
-      <h2>基本概念及术语</h2>
+      <h2>基本概念</h2>
       <ul>
         <li>项目和项目组</li>
         <li>页面</li>
@@ -86,27 +91,39 @@ permalink: nei
         <li>异步接口</li>
         <li>规则函数</li>
         <li>业务分组</li>
-        <li>工程规范</li>
       </ul>
     </section>
 
     <section class="tal">
-      <h2>项目和项目组</h2>
-      <p>一个产品可能有多个子产品，比如 PC 端、Android 端、iOS 端、后台管理系统等等。NEI 中有项目组的概念，在项目组中可以创建多个项目。所以，可以把项目组当作产品，其中的项目分别对应产品的各个子产品。</p>
-      <p>创建好项目组后，在项目组的“团队管理”选项卡中，可以把其他人加到项目组里面来。</p>
+      <h2>现代产品的基本形态</h2>
+      <div data-markdown style="background: #fff;text-align: center;">
+        ![](/public/nei/product-a.png)
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>项目组和项目</h2>
+      <div data-markdown style="background: #fff;text-align: center; height: 90%;">
+        ![](/public/nei/project-group.png)
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>项目组和项目</h2>
       <div data-markdown>
-        >注意:
-        >人是加到项目组上的，而不是加在项目上。
+        创建好项目组后，在项目组的“团队管理”选项卡中，可以把其他人加到项目组里面来。
+        >人是加到项目组上的，而不是在项目上
+
         >在创建项目组的时候，会自动创建公共资源库，用来存放所有项目共享的资源
       </div>
     </section>
 
     <section class="tal">
       <h2>页面</h2>
-      <p>指可以通过地址访问的普通页面，它包含了以下元素：</p>
+      <p>指可以通过地址访问的普通页面，它主要包含了：</p>
       <ul>
         <li>访问地址</li>
-        <li>查询参数</li>
+        <li>参数列表</li>
         <li>模板列表</li>
         <li>接口列表</li>
       </ul>
@@ -114,34 +131,74 @@ permalink: nei
 
     <section class="tal">
       <h2>页面 - 访问地址</h2>
-      <p>在创建页面的时候，可以指定页面的路径，比如 /index，那么它的访问地址是: {host}/index。</p>
+      <p>在创建页面的时候，可以指定页面的访问地址，比如 /index，那么它的访问地址是: {host}/index。</p>
       <div data-markdown>
-        >注意：在填写路径的时候，只要写相对地址即可，host 的值由环境决定，比如在本地开发时，它的值就是 http://127.0.0.1 ；在测试环境时，它的值可能是 http://test.nei.netease.com
+        >在填写访问地址的时候，只要写相对地址即可，host 的值由环境决定，比如在本地开发时，它的值就是 http://127.0.0.1 ；在测试环境时，它的值可能是 http://test.nei.netease.com
       </div>
     </section>
 
     <section class="tal">
-      <h2>页面 - 查询参数</h2>
-      <p>页面参数指的是在访问页面时，传给服务端的参数，它可以通过 url 参数传入，此时页面的访问方式一般是 GET；也可以放在请求体中，此时页面的访问方式一般是 POST（比如页面作为 form 表单的提交地址）。</p>
-      <p>比如定义了参数 userId，它的类型是 String，这个时候页面的开发人员就知道，访问该页面的时候将会传入 userId 参数，即访问地址是：http://127.0.0.1?userId={userId}，根据 userId 参数可以做一些相应的业务逻辑。</p>
+      <h2>页面 - 参数列表</h2>
+      <div data-markdown>
+        有两种传递方式：
+
+        * GET：通过 url 传入
+
+        * POST：通过 form 表单
+
+        比如，定义了参数 userId，此时页面的开发人员就知道，访问该页面的时候将会传入 userId 参数，即访问地址是：http://127.0.0.1?userId={userId} ，根据 userId 参数可以做一些相应的业务逻辑</p>
+      </div>
     </section>
 
     <section class="tal">
       <h2>页面 - 模板列表</h2>
-      <p>每张页面都至少有一个模板。创建页面时填写的模板，只是声明页面会用到哪些模板资源。</p>
-      <p>模板一般需要模板引擎来解析生成最终的 html 内容，常见的模板引擎有 freemarker(模板扩展名是 .ftl)、velocity(模板扩展名是 .vm)、EJS(模板扩展名是 .ejs)等。</p>
-      <p>创建页面的时候，也可以填写多个模板，此时每个模板作为页面的某个状态，比如 成功、失败 等状态，服务端根据业务逻辑返回相应的模板。</p>
+      <div data-markdown>
+        * 每张页面都至少有一个模板
+
+        * 模板一般需要模板引擎来解析生成 html，常见的模板引擎有 freemarker(.ftl)、velocity(.vm)、ejs(.ejs)等
+
+        * 页面可以有多个模板，每个模板表示页面的某种状态，比如`成功`、`失败`等状态，服务端根据业务逻辑返回相应的模板
+
+        > 创建页面时填写的模板，只是声明页面会用到哪些模板资源
+      </div>
     </section>
 
     <section class="tal">
       <h2>页面 - 接口列表</h2>
-      <p>和模板列表类似，只是表明该页面会用到哪些异步接口。</p>
+      <p>和模板列表类似，只是表明该页面会用到哪些异步接口</p>
     </section>
 
     <section class="tal">
       <h2>数据模型（一）</h2>
-      <p>数据模型是 NEI 中最重要的概念之一，在使用 NEI 系统之前应该需要研究一下它的具体使用方法。在创建其他资源的时候，也要思考是不是可以将一些经常出现的输入或输出作为数据模型呢？</p>
-      <p>数据模型是基础资源，其他资源几乎都会用到。拿 NEI 项目本身来说，它有 User、UserGroup、Project、ProjectGroup、Page、Parameter 等等可以抽象出来的对象。这些对象和程序的编写以及数据的持久化都是息息相关的。创建数据模型的时候，可以指定字段的默认值，默认值的优先级会高于 Mock 出来的随机数据。也可以定义生成规则，根据自己的逻辑生成 Mock 数据。</p>
+      <div data-markdown>
+        * 数据模型是 NEI 中最重要的概念之一，是基础资源，很多地方都会用到
+        * NEI 项目有 User、Project、ProjectGroup等数据模型
+
+        ```json
+        {
+          "id": "[number]",
+          "name": "[string]",
+          "type": "[string]",
+          "creator": "[user]",
+          "createTime": "[number]",
+          "namePinyin": "[string]",
+          "progroupId": "[number]",
+          "toolKey": "[string]",
+          "toolSpecWeb": "[number]",
+          "toolSpecAos": "[number]",
+          "toolSpecIos": "[number]",
+          "isTop": "[boolean]",
+          "description": "[string]"
+        }
+        ```
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>数据模型（二）</h2>
+      <div data-markdown>
+        * 创建数据模型的时候，可以指定字段的默认值，默认值的优先级会高于 Mock 出来的随机数据。也可以定义生成规则，根据自己的逻辑生成 Mock 数据
+      </div>
     </section>
 
     <section class="tal">
@@ -279,16 +336,26 @@ permalink: nei
     </section>
 
     <section class="tal">
-      <h2>工程规范 – 目录</h2>
-      <div data-markdown>
-        除了常规目录外，还有以下特殊目录:
+      <h2>工程规范 - 实现原理</h2>
+      <div data-markdown style="text-align: center;background: #fff;">
+        ![工程规范 - 实现原理](/public/nei/spec.png)
+      </div>
+    </section>
 
+    <section class="tal">
+      <h2>工程规范 – 特殊目录（一）</h2>
+      <div data-markdown>
         * 静态资源根目录：在使用本地模拟容器时，需要该信息，该目录用来存放静态资源
 
         * 模板根目录：在使用本地模拟容器时，需要该信息，该目录用来存放页面模板
 
         * 接口MOCK数据根目录：使用本工具生成的异步接口的mock数据会放到该目录下面
+      </div>
+    </section>
 
+    <section class="tal">
+      <h2>工程规范 – 特殊目录（二）</h2>
+      <div data-markdown>
         * 模板MOCK数据根目录：使用本工具生成的页面模板的mock数据会放到该目录下面
 
         * JAR包根目录：存放自定义JAR包，ftl模板可以直接调用JAR包中的静态方法
@@ -296,20 +363,18 @@ permalink: nei
     </section>
 
     <section class="tal">
-      <h2>工程规范 – 文件（一）</h2>
+      <h2>工程规范 – 特殊文件（一）</h2>
       <div data-markdown>
-        除了常规文件外，还有以下特殊文件:
-
         * 接口列表填充：使用项目中定义的异步接口数据列表作为数据源，每个异步接口都会生成一个文件
 
-        * 数据模型列表填充：使用项目中定义的数据模型数据列表作为数据源，每个数据模型都会生成一个文件。为了保持通用性，我们区分了枚举类型和非枚举类型.如果需要使用枚类型的数据类型列表，需要在文件名后面加上`!!enum`
+        * 数据模型列表填充：使用项目中定义的数据模型数据列表作为数据源，每个数据模型都会生成一个文件。为了保持通用性，我们区分了枚举类型和非枚举类型。如果需要使用枚类型的数据类型列表，需要在文件名后面加上`!!enum`
 
         * 页面模板列表填充：使用项目中定义的页面模板数据列表作为数据源，每个页面模板都会生成一个文件
       </div>
     </section>
 
     <section class="tal">
-      <h2>工程规范 – 文件（二）</h2>
+      <h2>工程规范 – 特殊文件（二）</h2>
       <div data-markdown>
         * 视图列表填充：使用项目中定义的视图数据列表作为数据源，每个视图都会生成一个文件
 
