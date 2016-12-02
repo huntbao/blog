@@ -8,7 +8,7 @@ permalink: nei
 <html>
 <head>
   <meta charset="utf-8">
-  <title>NEI接口管理平台</title>
+  <title>NEI平台使用教程</title>
   <meta name="author" content="HuntBao">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -20,6 +20,7 @@ permalink: nei
   <style>
     .tal {
       text-align: left;
+      top: 0 !important;
     }
 
     .reveal pre {
@@ -65,7 +66,7 @@ permalink: nei
   <div class="slides">
     <section>
       <img src="/public/nei/logo.png" style="border:none;background:none;width:120px;">
-      <h1>NEI接口管理平台</h1>
+      <h1>NEI平台使用教程</h1>
       <h3>规范化、自动化、云协作</h3>
       <p>
         <small><a href="https://github.com/huntbao">包勇明</a> / <a href="http://weibo.com/gzooler">@huntbao</a></small>
@@ -84,14 +85,16 @@ permalink: nei
 
     <section class="tal">
       <h2>基本概念</h2>
-      <ul>
-        <li>项目和项目组</li>
-        <li>页面</li>
-        <li>数据模型</li>
-        <li>异步接口</li>
-        <li>规则函数</li>
-        <li>业务分组</li>
-      </ul>
+      <div data-markdown>
+        * 项目组和项目
+        * 项目资源
+          * 数据模型
+          * 异步接口
+          * 页面
+          * 页面模板
+          * 规则函数
+          * 业务分组
+      </div>
     </section>
 
     <section class="tal">
@@ -109,12 +112,57 @@ permalink: nei
     </section>
 
     <section class="tal">
-      <h2>项目组和项目</h2>
+      <h2>项目组</h2>
       <div data-markdown>
-        创建好项目组后，在项目组的“团队管理”选项卡中，可以把其他人加到项目组里面来。
-        >人是加到项目组上的，而不是在项目上
+        * 用户首次登录时，系统会自动创建一个叫“默认分组”的项目组
+        * 鼠标 hover 到项目组名称上，会显示该项目组的创建者信息
+        * 项目组被锁定后，切换到“只读”状态
 
-        >在创建项目组的时候，会自动创建公共资源库，用来存放所有项目共享的资源
+        > 锁定后，项目引用的工程规范还能修改，工程规范也可以被锁定
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>项目组 - 公共资源库</h2>
+      <div data-markdown>
+        * 对于某个产品，有些资源对所有项目都是适用的，比如用户模型 User，登录接口等
+
+        ```json
+        /* User Model */
+
+        {
+          "id": "number",
+          "name": "string",
+          "email": "string"
+        }
+        ```
+
+        * 公共资源库，用来存放所有项目共享的资源，避免创建重复资源，以达到资源复用的目的
+
+        > 功能单一的资源才适合放到公共资源库
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>项目组 - 公共资源库</h2>
+      <div data-markdown>
+        * 在创建项目组的时候，系统会自动创建“公共资源库”
+        * 公共资源库中的资源会出现在所有项目中
+
+        >前面有黄色共享图标的表示是共享资源
+
+        >公共资源库只有异步接口、数据模型和规则函数
+
+        >`不要把公共资源库当作实际项目来使用`
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>项目组 - 成员管理</h2>
+      <div data-markdown>
+        * 创建好项目组后，在项目组的“团队管理”选项卡中，可以把其他人加到项目组中来
+
+        >人是加到项目组上的，而不是在项目上
       </div>
     </section>
 
@@ -153,19 +201,21 @@ permalink: nei
     <section class="tal">
       <h2>页面 - 模板列表</h2>
       <div data-markdown>
-        * 每张页面都至少有一个模板
+        * 每张页面至少有一个模板
 
-        * 模板一般需要模板引擎来解析生成 html，常见的模板引擎有 freemarker(.ftl)、velocity(.vm)、ejs(.ejs)等
+        * 模板需要模板引擎来解析生成 html，常见的模板引擎有 freemarker、velocity、ejs 等
+
+        * 创建时无需填写扩展名(.ftl、.vm、.ejs 等)，扩展名在工程规范中指定
 
         * 页面可以有多个模板，每个模板表示页面的某种状态，比如`成功`、`失败`等状态，服务端根据业务逻辑返回相应的模板
 
-        > 创建页面时填写的模板，只是声明页面会用到哪些模板资源
+        >如果模板没有被页面引用，则构建工具不会生成这个模板文件
       </div>
     </section>
 
     <section class="tal">
       <h2>页面 - 接口列表</h2>
-      <p>和模板列表类似，只是表明该页面会用到哪些异步接口</p>
+      <p>只是表明该页面会用到哪些异步接口</p>
     </section>
 
     <section class="tal">
