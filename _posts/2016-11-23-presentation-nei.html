@@ -216,10 +216,12 @@ permalink: nei
     <section class="tal">
       <h2>数据模型</h2>
       <div data-markdown>
-        * 最重要的概念之一，会被其他资源引用，是基础资源
-        * 两种常见用法：
-          * 对应数据库实体，比如 User、Project、Datatype 等
-          * 为了复用，比如需要在多处使用的格式相同的异步接口响应参数
+        * 最强大的功能之一，其他资源可以引用，是基础资源：
+          * 对应数据库实体，比如 Project、Datatype 等
+          * 复用，比如需要在多处使用的异步接口响应参数，它们有着相同的格式
+        * 修改数据模型时，所有引用它的资源都会更新，换句话说，引用数据模型并不会产生新的数据模型，数据库只存了一份数据
+
+        >需要一定的总结和抽象能力，才能正确合理地使用数据模型，并为之后的其他功能做好准备
       </div>
     </section>
 
@@ -241,16 +243,7 @@ permalink: nei
     <section class="tal">
       <h2>数据模型 - 哈希</h2>
       <div data-markdown>
-        * JavaScript 中称为 Object，Java 中称为 Map，由键值对构成
-        *
-      </div>
-    </section>
-
-    <section class="tal">
-      <h2>数据模型</h2>
-      <div data-markdown>
-        * 最重要的概念之一，是基础资源，很多地方都会用到
-        * NEI 项目有 User、Project、ProjectGroup 等数据模型
+        最常见的类型，比如 NEI 中的 Project:
 
         ```json
         /* Project Model */
@@ -261,16 +254,31 @@ permalink: nei
           "type": "[string]",
           "creator": "[user]",
           "createTime": "[number]",
-          "namePinyin": "[string]",
           "progroupId": "[number]",
           "toolKey": "[string]",
-          "toolSpecWeb": "[number]",
-          "toolSpecAos": "[number]",
-          "toolSpecIos": "[number]",
-          "isTop": "[boolean]",
           "description": "[string]"
         }
         ```
+
+        > 字段的类型可以是任何数据模型，比如 creator 的类型是自定义类型 user
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>数据模型 - 哈希 - 创建方式</h2>
+      <div data-markdown>
+        * 在第一行的第一个输入框，粘贴 JSON 字符串
+        * 点击“导入JSON”按钮，和上述功能相同
+        * 导入其他数据模型：会将导入的字段当作一个整体来对待，详情页面也做了特殊显示处理
+        * 从接口导入：会识别接口返回的 JSON 数据，支持 GET 和 POST 两种类型的接口
+        * 从 JavaBean 导入
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>数据模型 - 枚举</h2>
+      <div data-markdown>
+        * 
       </div>
     </section>
 
