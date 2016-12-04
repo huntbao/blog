@@ -112,13 +112,57 @@ permalink: nei
     </section>
 
     <section class="tal">
-      <h2>项目组</h2>
+      <h2>项目组 - 默认分组</h2>
       <div data-markdown>
         * 用户首次登录时，系统会自动创建一个叫“默认分组”的项目组
-        * 鼠标 hover 到项目组名称上，会显示该项目组的创建者信息
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>项目组 - 创建者</h2>
+      <div data-markdown>
+        * 鼠标 hover 到项目组名称上，会显示该项目组的创建者
+        * 在“团队管理”中也可以看到该项目组的创建者
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>项目组 - 锁定</h2>
+      <div data-markdown>
         * 项目组被锁定后，切换到“只读”状态
 
         > 锁定后，项目引用的工程规范还能修改，工程规范也可以被锁定
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>项目组 - 团队管理</h2>
+      <div data-markdown>
+        * 创建好项目组后，在项目组的“团队管理”选项卡中，可以把其他人加到项目组中来
+
+        >人是加到项目组上的，而不是在项目上
+
+        >可以将其他项目组的成员一并导入
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>项目组 - 成员权限</h2>
+      <div data-markdown>
+        * 创建者：拥有所有操作权限
+        * 管理员：拥有除删除项目组之外的所有操作权限
+        * 开发者和测试者：拥有项目资源的所有操作权限，对项目组本身没有操作权限
+        * 观察者：“只读”权限
+
+        >除创建者外，其他角色都可以有多个
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>项目组 - 加入项目组</h2>
+      <div data-markdown>
+        * 访问没权限的项目组或者项目时，会出现“申请加入”的按钮
+        * 点击“我的项目组”，在“我的申请列表”区域的搜索框中输入项目组或者项目的名称
       </div>
     </section>
 
@@ -158,73 +202,59 @@ permalink: nei
     </section>
 
     <section class="tal">
-      <h2>项目组 - 成员管理</h2>
+      <h2>项目组 - 共享资源</h2>
       <div data-markdown>
-        * 创建好项目组后，在项目组的“团队管理”选项卡中，可以把其他人加到项目组中来
+        * 项目中的异步接口、数据模型、规则函数可以共享
+        * 资源被共享后，无法取消共享，操作时须谨慎
 
-        >人是加到项目组上的，而不是在项目上
+        > 共享资源的时候，还会将它所有引用的资源一并共享
+
+        > 如果不小心共享了某个资源，可以把它复制到目标项目，然后再将其删除
       </div>
     </section>
 
     <section class="tal">
-      <h2>页面</h2>
-      <p>指可以通过地址访问的普通页面，它主要包含了：</p>
-      <ul>
-        <li>访问地址</li>
-        <li>参数列表</li>
-        <li>模板列表</li>
-        <li>接口列表</li>
-      </ul>
-    </section>
-
-    <section class="tal">
-      <h2>页面 - 访问地址</h2>
-      <p>在创建页面的时候，可以指定页面的访问地址，比如 /index，那么它的访问地址是: {host}/index。</p>
+      <h2>数据模型</h2>
       <div data-markdown>
-        >在填写访问地址的时候，只要写相对地址即可，host 的值由环境决定，比如在本地开发时，它的值就是 http://127.0.0.1 ；在测试环境时，它的值可能是 http://test.nei.netease.com
+        * 最重要的概念之一，会被其他资源引用，是基础资源
+        * 两种常见用法：
+          * 对应数据库实体，比如 User、Project、Datatype 等
+          * 为了复用，比如需要在多处使用的格式相同的异步接口响应参数
       </div>
     </section>
 
     <section class="tal">
-      <h2>页面 - 参数列表</h2>
+      <h2>数据模型 - 类别</h2>
       <div data-markdown>
-        有两种传递方式：
+        共有七大类别，涵盖了编程语言的常见数据类型：
 
-        * GET：通过 url 传入
-
-        * POST：通过 form 表单
-
-        比如，定义了参数 userId，此时页面的开发人员就知道，访问该页面的时候将会传入 userId 参数，即访问地址是：http://127.0.0.1?userId={userId} ，根据 userId 参数可以做一些相应的业务逻辑</p>
+        * 哈希
+        * 枚举
+        * 数组
+        * 字符
+        * 数值
+        * 布尔
+        * 文件
       </div>
     </section>
 
     <section class="tal">
-      <h2>页面 - 模板列表</h2>
+      <h2>数据模型 - 哈希</h2>
       <div data-markdown>
-        * 每张页面至少有一个模板
-
-        * 模板需要模板引擎来解析生成 html，常见的模板引擎有 freemarker、velocity、ejs 等
-
-        * 创建时无需填写扩展名(.ftl、.vm、.ejs 等)，扩展名在工程规范中指定
-
-        * 页面可以有多个模板，每个模板表示页面的某种状态，比如`成功`、`失败`等状态，服务端根据业务逻辑返回相应的模板
-
-        >如果模板没有被页面引用，则构建工具不会生成这个模板文件
+        * JavaScript 中称为 Object，Java 中称为 Map，由键值对构成
+        *
       </div>
     </section>
 
     <section class="tal">
-      <h2>页面 - 接口列表</h2>
-      <p>只是表明该页面会用到哪些异步接口</p>
-    </section>
-
-    <section class="tal">
-      <h2>数据模型（一）</h2>
+      <h2>数据模型</h2>
       <div data-markdown>
-        * 数据模型是 NEI 中最重要的概念之一，是基础资源，很多地方都会用到
-        * NEI 项目有 User、Project、ProjectGroup等数据模型
+        * 最重要的概念之一，是基础资源，很多地方都会用到
+        * NEI 项目有 User、Project、ProjectGroup 等数据模型
 
         ```json
+        /* Project Model */
+
         {
           "id": "[number]",
           "name": "[string]",
@@ -257,9 +287,9 @@ permalink: nei
         比如 User 对象，它的结构一般如下所示：
         ```json
         {
-          "id": "[number]",
-          "name": "[string]",
-          "email": "[string]"
+        "id": "[number]",
+        "name": "[string]",
+        "email": "[string]"
         }
         ```
         其中，中括号里面的值表示该字段的类型。
@@ -329,9 +359,9 @@ permalink: nei
         一般我们希望输出参数具有某种固定格式，这样客户端就可以统一处理一些逻辑，比如 404、500 等异常。比如，可以先定义一个叫 ResultData 的数据模型，它的结构如下所示：
         ```json
         {
-          "code": "[number]",
-          "msg": "[string]",
-          "result": "[Variable]"
+        "code": "[number]",
+        "msg": "[string]",
+        "result": "[Variable]"
         }
         ```
         code 是请求返回的状态码，msg 是返回的信息（比如一些异常信息），result 是真正的数据部分，定义数据模型的时候它是可变的。
@@ -347,6 +377,58 @@ permalink: nei
 
         接收规则：在服务器返回数据后，对数据进行一些特殊处理后再返回给客户端脚本代码
       </div>
+    </section>
+
+    <section class="tal">
+      <h2>页面</h2>
+      <p>指可以通过地址访问的普通页面，它主要包含了：</p>
+      <ul>
+        <li>访问地址</li>
+        <li>参数列表</li>
+        <li>模板列表</li>
+        <li>接口列表</li>
+      </ul>
+    </section>
+
+    <section class="tal">
+      <h2>页面 - 访问地址</h2>
+      <p>在创建页面的时候，可以指定页面的访问地址，比如 /index，那么它的访问地址是: {host}/index。</p>
+      <div data-markdown>
+        >在填写访问地址的时候，只要写相对地址即可，host 的值由环境决定，比如在本地开发时，它的值就是 http://127.0.0.1 ；在测试环境时，它的值可能是 http://test.nei.netease.com
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>页面 - 参数列表</h2>
+      <div data-markdown>
+        有两种传递方式：
+
+        * GET：通过 url 传入
+
+        * POST：通过 form 表单
+
+        比如，定义了参数 userId，此时页面的开发人员就知道，访问该页面的时候将会传入 userId 参数，即访问地址是：http://127.0.0.1?userId={userId} ，根据 userId 参数可以做一些相应的业务逻辑</p>
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>页面 - 模板列表</h2>
+      <div data-markdown>
+        * 每张页面至少有一个模板
+
+        * 模板需要模板引擎来解析生成 html，常见的模板引擎有 freemarker、velocity、ejs 等
+
+        * 创建时无需填写扩展名(.ftl、.vm、.ejs 等)，扩展名在工程规范中指定
+
+        * 页面可以有多个模板，每个模板表示页面的某种状态，比如`成功`、`失败`等状态，服务端根据业务逻辑返回相应的模板
+
+        >如果模板没有被页面引用，则构建工具不会生成这个模板文件
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>页面 - 接口列表</h2>
+      <p>只是表明该页面会用到哪些异步接口</p>
     </section>
 
     <section class="tal">
