@@ -56,6 +56,10 @@ permalink: nei
     .reveal section img {
       box-shadow: none;
     }
+
+    .reveal hr {
+      opacity: 0;
+    }
   </style>
   <base target="_blank">
 </head>
@@ -78,8 +82,8 @@ permalink: nei
       <ul>
         <li>基本概念</li>
         <li>接口测试</li>
-        <li>构建工具</li>
         <li>工程规范</li>
+        <li>构建工具</li>
       </ul>
     </section>
 
@@ -95,6 +99,10 @@ permalink: nei
           * 规则函数
           * 业务分组
       </div>
+    </section>
+
+    <section>
+      <h2>项目组和项目</h2>
     </section>
 
     <section class="tal">
@@ -213,15 +221,19 @@ permalink: nei
       </div>
     </section>
 
+    <section>
+      <h2>数据模型</h2>
+    </section>
+
     <section class="tal">
       <h2>数据模型</h2>
       <div data-markdown>
         * 最强大的功能之一，其他资源可以引用，是基础资源：
-          * 对应数据库实体，比如 Project、Datatype 等
+          * 对应数据库实体，比如 Project、Page 等
           * 复用，比如需要在多处使用的异步接口响应参数，它们有着相同的格式
         * 修改数据模型时，所有引用它的资源都会更新，换句话说，引用数据模型并不会产生新的数据模型，数据库只存了一份数据
 
-        >需要一定的总结和抽象能力，才能正确合理地使用数据模型，并为之后的其他功能做好准备
+        >正确合理地使用数据模型，需要一定的总结和抽象能力，可以为之后的其他功能做好准备
       </div>
     </section>
 
@@ -237,6 +249,8 @@ permalink: nei
         * 数值
         * 布尔
         * 文件
+
+        >在新建数据模型时，请选择相应类别的单选按钮
       </div>
     </section>
 
@@ -265,6 +279,25 @@ permalink: nei
     </section>
 
     <section class="tal">
+      <h2>数据模型 - 哈希 - 可变字段</h2>
+      <div data-markdown>
+        在定义数据模型时，有时某个字段的类型还无法确定，比如统一的异步接口返回参数格式：
+
+        ```json
+        {
+          "code": "[number]",
+          "message": "[string]",
+          "result": "[variable]"
+        }
+        ```
+
+        为了满足不同的应用场景，result 字段的类型可以是数组，也可以是对象，它的类型是 `variable`，表示类型是可变的。
+
+        >在使用这种数据模型时，需要明确指定 result 字段的类型
+      </div>
+    </section>
+
+    <section class="tal">
       <h2>数据模型 - 哈希 - 创建方式</h2>
       <div data-markdown>
         * 在第一行的第一个输入框，粘贴 JSON 字符串
@@ -278,45 +311,136 @@ permalink: nei
     <section class="tal">
       <h2>数据模型 - 枚举</h2>
       <div data-markdown>
-        * 
+        枚举的类型可以是字符串或者数值，枚举的值是必填的，键是选填的：
+
+        | 值  | 类型 | 键(可选) | 描述 |
+        | :--- | :--- | :--- | :--- |
+        | 0 | number | | 常规项目 |
+        | 1 | number | | 公共资源库 |
+        | 2 | number | | 隐藏项目 |
+
+        >类型也可以是自定义的字符串或者数值
       </div>
     </section>
 
     <section class="tal">
-      <h2>数据模型（二）</h2>
+      <h2>数据模型 - 枚举</h2>
       <div data-markdown>
-        * 创建数据模型的时候，可以指定字段的默认值，默认值的优先级会高于 Mock 出来的随机数据。也可以定义生成规则，根据自己的逻辑生成 Mock 数据
+        包含键名的枚举类型：
+
+        | 值  | 类型 | 键(可选) | 描述 |
+        | :--- | :--- | :--- | :--- |
+        | 200 | number | SUCCESS | 成功 |
+        | 500 | number | FAIL | 失败 |
+
+        >键在生成模型代码时会用到
       </div>
     </section>
 
     <section class="tal">
-      <h2>数据模型（二）</h2>
+      <h2>数据模型 - 枚举 - 创建方式</h2>
       <div data-markdown>
-        比如 User 对象，它的结构一般如下所示：
-        ```json
-        {
-        "id": "[number]",
-        "name": "[string]",
-        "email": "[string]"
-        }
-        ```
-        其中，中括号里面的值表示该字段的类型。
-
-        创建了 User 数据模型后，整个系统就变得规范了，如果各个环节的代码都是严格按照 NEI 上的定义来实现的话，那么所有地方的 User 都是一致的，不会出现这里的 id 的类型和那里的不一致的情形，这固然有点理想主义，但也不是不能做到。这么做的好处是显而易见的，自动化测试方便了，甚至整个系统都可能变得更加严谨和正确。
+        * 导入其他枚举类型
+        * “从JSON导入”，此时导入的是值
       </div>
     </section>
 
     <section class="tal">
-      <h2>数据模型（三）</h2>
+      <h2>数据模型 - 数组</h2>
       <div data-markdown>
-        然后就可以在其他地方使用这个 User 对象。比如某个异步接口，输入参数是用户 id，要求返回的是 User 对象。接口开发者一看 NEI 上的定义就知道要返回什么样的数据，省去了很多沟通成本。
+        NEI 中的数组有两种表示方式：
 
-        刚才说的 User 对象，在 NEI 中称为哈希类型，其实就是大家常说的 Map 对象。另外还有 6 种类型：枚举、数组、字符、数值、布尔、文件，也很好理解。
+        * 在定义某个字段时，先选择类型 `Array`，多出来的另外一个下拉选择框表示数组元素的类型
+        * 直接定义数组类别的数据模型
 
-        注意，在创建某个数据模型时，如果某个字段的类型是未知的，则选择 Variable 即可，表示可变类型，在具体使用的时候再指定它的类型。
-
-        数据模型 一般对应服务端的 Model。
+        >第一种表示方式是第二种的简便运用，两种表示方式是等价的
       </div>
+    </section>
+
+    <section class="tal">
+      <h2>数据模型 - 数组 - 多维数组</h2>
+      <div data-markdown>
+        NEI 也支持多维数组的定义：
+
+        * 数组元素的类型如果是数组，即可表示多维数组
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>数据模型 - 数组 - 创建方式</h2>
+      <div data-markdown>
+        * 从JSON导入
+        * 从接口导入
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>数据模型 - 字符、数值、布尔、文件</h2>
+      <div data-markdown>
+        * 为了满足不同的开发人员的需求，NEI 可以自定义基本数据类型，比如 Objective-C 里面的 NSString、NSNumber 等
+
+        * 文件类型主要用在上传文件的异步接口中，在接口测试工具中也会有相应体现
+
+        >自定义数据模型的使用方式和系统预置的是相同的
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>功能：MOCK 数据</h2>
+      <div data-markdown>
+        数据模型、异步接口的请求及响应参数、页面模板的参数等，系统提供了 MOCK 数据展示，优先级关系如下：
+
+        `默认值 > 生成规则 > 随机数据`
+
+        >生成规则可以是 JavaScript 脚本代码，但我们还是建议使用调用规则函数的代码，函数可以复用，管理维护也更方便
+
+        >枚举类型的 Mock 数据是其中的某个值
+      </div>
+    </section>
+
+    <section>
+      <h2>规则函数</h2>
+    </section>
+
+    <section class="tal">
+      <h2>规则函数</h2>
+      <div data-markdown>
+        * 即 JavaScript 函数，定义时需要指定函数名和函数体
+        * 参数需要通过 `arguments` 对象获取，请参考 [arguments对象说明](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments)
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>规则函数 - 分类</h2>
+      <div data-markdown>
+        * 生成规则：参数的 Mock 数据
+        * 发送规则：异步接口的发送前调用规则
+        * 接收规则：异步接口的返回后调用规则
+
+        >不同类型的规则函数，参数值是不同的，请参考 [NEI平台规则函数使用说明](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/NEI%E5%B9%B3%E5%8F%B0%E8%A7%84%E5%88%99%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>规则函数 - 系统预置规则</h2>
+      <div data-markdown>
+        为了区别自定义的规则函数，系统预置的规则函数都挂在 `NEI` 对象下，目前共有 10 个，更多信息请参考[文档](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/NEI%E5%B9%B3%E5%8F%B0%E8%A7%84%E5%88%99%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)：
+
+        * `NEI.num()`，生成随机数字
+        * `NEI.url()`，生成随机URL地址
+        * `NEI.chinese()`，生成随机中文字符串
+        * `NEI.email()`，生成随机邮箱地址
+        * `NEI.id()`，生成唯一标识
+        * `NEI.str()`，生成随机字符串
+        * `NEI.bool()`，生成随机布尔值
+        * `NEI.var()`，生成随机类型的值
+        * `NEI.repeat()`，生成指定元素个数的数组
+        * `NEI.loop()`，生成指定层数的数据
+      </div>
+    </section>
+
+    <section>
+      <h2>异步接口</h2>
     </section>
 
     <section class="tal">
@@ -335,56 +459,147 @@ permalink: nei
     </section>
 
     <section class="tal">
+      <h2>RESTful API 设计概要</h2>
+      <div data-markdown>
+        * 资源“增删改查”的标准，通信的数据格式使用 json
+        * 以 User 实体为例，它的“增删改查”分别是：
+          * 获取列表：`GET /users/`
+          * 获取某个：`GET /users/:id`
+          * 创建：`POST /users/`
+          * 更新某个：`PATCH /users/:id`
+          * 删除某个：`DELETE /users/:id`
+          * 删除多个：`DELETE /users/?ids=id1,id2,...`
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>RESTful API 设计概要</h2>
+      <div data-markdown>
+        NEI 项目中的一些实践：
+
+        * 统一使用复数(users)，统一使用小写
+        * url 前面可以加限定，比如 `/api/users`
+        * url 中不出现动词，比如 `/deleteUser/`
+        * DELETE 的请求体有些代理会不识别，最好放在 url 中
+        * 详细的操作动词放到查询参数中，比如更新 user 头像：
+          * `PATCH /users?changeavatar`
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>RESTful API 设计概要</h2>
+      <div data-markdown>
+        使用正确的 http 响应状态码，常见的有：
+
+        * 200，OK，操作成功
+        * 201，OK，创建成功
+        * 204，OK，删除成功
+        * 400，Bad Request，请求无效
+        * 401，Unauthorized，未授权
+        * 405，Method Not Allowed，方法不允许
+        * 500，Internal Server Error，服务器异常
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>RESTful API 设计概要</h2>
+      <div data-markdown>
+        * NEI 默认对 RESTful API 支持良好
+          * 内置了常见的请求方式：GET、POST、DELETE、PUT、PATCH 等
+          * 数据模型有 CRUD 的功能，可以一键生成相应的“增删改查”接口
+      </div>
+    </section>
+
+    <section class="tal">
       <h2>异步接口 – 请求地址、方式</h2>
       <div data-markdown>
-        和页面类似，请求地址也是相对地址。
+        * 在创建异步接口时，需要指定请求地址，比如 /users
 
-        请求方式可以自定义，系统内置了常见的方式：GET、POST、DELETE、PUT、PATCH等
+        >在填写访问地址的时候，只要写相对地址即可，host 的值由环境决定，比如：
+          * 本地 http://127.0.0.1/users
+          * 线上 https://nei.netease.com/users/
+
+        * 请求方式一般使用系统内置的方法即可：GET、POST、DELETE、PUT、PATCH 等
       </div>
     </section>
 
     <section class="tal">
       <h2>异步接口 – 请求头、请求参数</h2>
       <div data-markdown>
-        请求头即在发送请求的时候添加到 Request Headers 中的参数
+        * 请求头即在发送请求的时候添加到 Request Headers 中的参数
 
-        请求数据即要发送的数据。NEI 默认的输入参数类型是一个哈希对象。我们知道 JSON 可以表示 4 种基本类型 (string，number，boolean 和 null) 和 2 种结构化类型 (object 和 array)。除了 null 之外，其他类型 NEI 都支持。
+        * 请求数据即要发送的数据。NEI 默认的请求参数类型是哈希对象
+
+        >JSON 共有 6 种类型：string、number、boolean、null、object、array。除了 null 之外，其他类型 NEI 都支持
       </div>
     </section>
 
     <section class="tal">
       <h2>异步接口 – 响应头、响应参数</h2>
       <div data-markdown>
-        响应头即服务器需要返回的头信息。
+        * 响应头即服务器需要返回的头信息
 
-        返回结果即异步接口返回的数据，格式同输入参数。
+        * 返回结果即异步接口返回的数据，格式同请求参数
       </div>
     </section>
 
     <section class="tal">
       <h2>异步接口 – 响应参数定义技巧</h2>
       <div data-markdown>
-        一般我们希望输出参数具有某种固定格式，这样客户端就可以统一处理一些逻辑，比如 404、500 等异常。比如，可以先定义一个叫 ResultData 的数据模型，它的结构如下所示：
+        * 响应参数一般具有某种固定格式，这样客户端就可以统一处理，比如 404、500 等异常。比如，可以先定义一个叫 ResultData 的数据模型，它的结构如下所示：
+
         ```json
         {
-        "code": "[number]",
-        "msg": "[string]",
-        "result": "[Variable]"
+          "code": "[number]", // 请求返回的状态码
+          "msg": "[string]", // 返回的信息
+          "result": "[variable]" // 真正的数据部分, 类型可变
         }
         ```
-        code 是请求返回的状态码，msg 是返回的信息（比如一些异常信息），result 是真正的数据部分，定义数据模型的时候它是可变的。
 
-        然后点击 导入 按钮，选择 ResultData，然后再选择 result 的具体类型，比如它是一个数组，数组的每一项都是一个 User 对象。
+        * 点击“导入”按钮，选择 ResultData，然后再选择 result 的具体类型，比如它是一个数组，数组的每一项都是一个 User 对象
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>异步接口 – 响应参数定义技巧</h2>
+      <div data-markdown>
+        某些接口返回的参数格式可能是这样的：
+
+        ```json
+        {
+          "code": "[number]",
+          "message": "[string]",
+          "result": {
+            "data": "[variable]",
+            "total": "[number]"
+          }
+        }
+        ```
+
+        即 result 是一个对象，除了数据部分外，还包括了一些其他信息，但字段名称不确定，所以无法使用通用的格式
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>异步接口 – 响应参数定义技巧</h2>
+      <div data-markdown>
+        可以使用二级参数的功能，即在定义的时候，result 字段的类型选择为 Object 即可
+
+        >老版本的 NEI，无法很好地支持这个功能：需要给每一种响应增加一种数据模型，很繁琐，而且新增的数据模型无法复用，数据模型本身也没有意义
       </div>
     </section>
 
     <section class="tal">
       <h2>异步接口 – 发送、接收规则</h2>
       <div data-markdown>
-        发送规则：在发送数据之前，对数据进行一些特殊处理，比如对密码进行加密等
+        * 发送规则：在发送数据之前，对数据进行一些特殊处理，比如对密码进行加密等
 
-        接收规则：在服务器返回数据后，对数据进行一些特殊处理后再返回给客户端脚本代码
+        * 接收规则：在服务器返回数据后，对数据进行一些特殊处理后再返回给客户端脚本代码
       </div>
+    </section>
+
+    <section>
+      <h2>页面</h2>
     </section>
 
     <section class="tal">
@@ -400,9 +615,8 @@ permalink: nei
 
     <section class="tal">
       <h2>页面 - 访问地址</h2>
-      <p>在创建页面的时候，可以指定页面的访问地址，比如 /index，那么它的访问地址是: {host}/index。</p>
       <div data-markdown>
-        >在填写访问地址的时候，只要写相对地址即可，host 的值由环境决定，比如在本地开发时，它的值就是 http://127.0.0.1 ；在测试环境时，它的值可能是 http://test.nei.netease.com
+        * 和异步接口类似，也使用相对地址
       </div>
     </section>
 
@@ -423,12 +637,9 @@ permalink: nei
       <h2>页面 - 模板列表</h2>
       <div data-markdown>
         * 每张页面至少有一个模板
-
         * 模板需要模板引擎来解析生成 html，常见的模板引擎有 freemarker、velocity、ejs 等
-
         * 创建时无需填写扩展名(.ftl、.vm、.ejs 等)，扩展名在工程规范中指定
-
-        * 页面可以有多个模板，每个模板表示页面的某种状态，比如`成功`、`失败`等状态，服务端根据业务逻辑返回相应的模板
+        * 一张页面可以有多个模板，每个模板表示页面的某种状态，比如`成功`、`失败`等状态，服务端根据业务逻辑返回相应的模板
 
         >如果模板没有被页面引用，则构建工具不会生成这个模板文件
       </div>
@@ -436,42 +647,72 @@ permalink: nei
 
     <section class="tal">
       <h2>页面 - 接口列表</h2>
-      <p>只是表明该页面会用到哪些异步接口</p>
+      <div data-markdown>
+        * 只是表明该页面会用到哪些异步接口
+      </div>
+    </section>
+
+    <section>
+      <h2>页面模板</h2>
     </section>
 
     <section class="tal">
       <h2>页面模板</h2>
       <div data-markdown>
-        模板就是服务端的模板。
+        * 模板就是服务端的模板
 
-        一般模板里面会有很多变量需要使用真实数据来替换，在创建模板时，数据选项一栏指的就是这些真实的数据。数据一般就对应服务端的 Model，通过 Controller 提供给模板。
+        * 一般模板里面会有很多变量需要使用真实数据来替换，在创建模板时，数据选项一栏指的就是这些真实的数据。数据一般就对应服务端的 Model，通过 Controller 提供给模板
       </div>
     </section>
 
-    <section class="tal">
-      <h2>规则函数</h2>
-      <div data-markdown>
-        顾名思义，它们都是函数。在创建数据模型的属性或者异步接口的参数时，可以指定它们的生成规则，如果它们没有默认值，则会调用生成规则函数并将它的返回值作为最终的 Mock 数据。
-
-        >注意：虽然数据模型的生成规则、异步接口的发送和接收规则都可以编写 JavaScript 脚本，但我们还是建议它们都是调用规则函数的代码，以达到复用的目的，管理和维护也更加方便
-      </div>
+    <section>
+      <h2>业务分组</h2>
     </section>
 
     <section class="tal">
       <h2>业务分组</h2>
       <div data-markdown>
-        一个项目可以有多条业务线，业务分组可以用来更好地组织资源，它是唯一的。
+        * 一个项目可以有多条业务线，业务分组可以用来更好地组织资源，它是唯一的
 
-        业务分组和标签有所不同，例如，资源可以有多个标签，但只能属于一个分组
+        * 业务分组和标签有所不同，例如，资源可以有多个标签，但只能属于一个分组
       </div>
+    </section>
+
+    <section>
+      <h2>接口测试</h2>
+    </section>
+
+    <section class="tal">
+      <h2>接口测试</h2>
+      <div data-markdown>
+        * 根据接口定义，验证接口实现的正确性
+          * 填写服务器地址
+          * 填写请求数据
+          * 填写期望值和出错提示，选填
+
+        * 批量运行测试用例，方便回归
+
+        >目前会检测字段类型、期望值、字段缺失等情况，测试完成后会有详细的测试报告
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>接口测试 - 开发计划</h2>
+      <div data-markdown>
+        * 依赖测试：前一个接口的返回作为后一个接口的输入
+        * 对接 JIRA：测试失败时可以提 bug 到 JIRA 系统
+        * 其他需求收集中...
+      </div>
+    </section>
+
+    <section>
+      <h2>工程规范</h2>
     </section>
 
     <section class="tal">
       <h2>工程规范</h2>
       <div data-markdown>
-        工程规范定义了工程的初始化目录结构，在使用构建工具构建项目的时候，会按照定义好的目录和文件数据在本地生成相应的目录和文件。
-
-        工程规范和项目的关联方式：在项目的"工具设置"中，我们可以分别指定项目的"WEB工程规范"、"AOS工程规范"、"iOS工程规范"以及"测试工程规范"
+        * 定义了工程的初始化结构，构建工具会按照定义数据在本地生成相应的结构
       </div>
     </section>
 
@@ -479,6 +720,69 @@ permalink: nei
       <h2>工程规范 - 实现原理</h2>
       <div data-markdown style="text-align: center;background: #fff;">
         ![工程规范 - 实现原理](/public/nei/spec.png)
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>工程规范 - 和项目关联</h2>
+      <div data-markdown>
+        * 在项目的“工具设置”中，可以分别指定项目的“WEB、Android、iOS 和 测试”工程规范
+
+        >工程规范也可以当做脚手架来使用
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>工程规范 - 变量映射规则</h2>
+      <div data-markdown>
+        * 在生成代码时，可以将某种类型映射成另外一种类型，比如将所有的 `String` 映射成为 `NSString`
+        * 可以在三个地方设置变量映射规则，优先级关系如下：
+
+        >`项目 > 项目组 > 工程规范`
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>工程规范 - JAR 包映射规则</h2>
+      <div data-markdown>
+        * 对于 Java 项目，在 ftl 模板中可以直接调用 JAR 包提供的静态方法，比如 `StringUtil.highlight()` ，此时需要建立注入模板的实例名和类名的映射关系，比如：
+
+        | 实例名  | 类名 |
+        | :--- | :--- |
+        | `StringUtil` | `com.netease.util` |
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>话题 - fmpp 加载 JAR 文件</h2>
+      <div data-markdown>
+        有两种方法：
+        * 在 ftl 模板通过 pp.loadData 加载：
+
+        ```html
+          <#assign Util=pp.loadData('eval', '
+            return new Util();
+          ')>
+        ```
+
+        * 通过配置文件的 data 属性添加：
+
+        ```json
+            data: {
+              {"Util":eval('new Util();')}
+            }
+        ```
+
+        > NEI 使用的是第二种方式
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>工程规范 - 分享</h2>
+      <div data-markdown>
+        * 可以分享工程规范，对所有用户可见
+
+        >如果只想对项目组内用户可见，只要在“工具设置”中关联该工程规范即可
       </div>
     </section>
 
@@ -527,34 +831,111 @@ permalink: nei
     <section class="tal">
       <h2>工程规范 – 模板数据</h2>
       <div data-markdown>
-        传给模板的数据格式说明请参数 github 上面详细的说明：
+        * 传给模板的数据格式说明请参考：
 
-        [传给模板的数据说明](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/传给模板的数据说明.md)
+          * [传给模板的数据说明](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/传给模板的数据说明.md)
 
-        Handlebars 辅助函数集说明：
+        * Handlebars 辅助函数集说明：
 
-        [Handlebars辅助函数集](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/Handlebars辅助函数集.md)
+          * [Handlebars辅助函数集](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/Handlebars辅助函数集.md)
+      </div>
+    </section>
+
+    <section>
+      <h2>构建工具</h2>
+    </section>
+
+    <section class="tal">
+      <h2>构建工具</h2>
+      <div data-markdown>
+        * 地址：[https://github.com/NEYouFan/nei-toolkit](https://github.com/NEYouFan/nei-toolkit)
+        * 主要功能：
+          * 根据 NEI 平台定义的工程规范，生成工程的初始化目录结构
+          * 自动集成在 NEI 上定义的资源：页面、异步接口、数据模型、页面模板、业务分组等
+          * 本地模拟容器
       </div>
     </section>
 
     <section class="tal">
-      <h2>接口测试</h2>
+      <h2>构建工具 - 安装</h2>
       <div data-markdown>
-        选中某个异步接口，可以新建测试用例
+        * 通过以下命令安装构建工具：
 
-        测试用例可以保存下来，可以批量运行
+        >`npm install nei –g`
 
-        可以验证接口返回数据的正确性，目前会检测字段类型、期望值、字段缺失情况等
+        * 构建工具基于 Node.js 平台，安装的 Node.js 版本须为 v4.2 及以上
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>构建工具 - build</h2>
+      <div data-markdown>
+        * 根据定义的工程规范，生成工程的初始化结构，指令：
+
+        >`nei build -k [key] [参数]`
+
+        ---
+
+        >项目有唯一的 key，通过这个 key 可以加载项目的数据
+
+        >工程规范也有唯一的 key，参数为 `sk`
+
+        >如果 k 和 sk 参数同时存在, 系统会优先考虑 sk 参数
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>构建工具 - update</h2>
+      <div data-markdown>
+        * 更新通过 nei build 构建的项目，指令：
+
+        >`nei update [参数]`
+
+        ---
+
+        >可以先在本地创建项目目录，然后在该目录下使用 `nei build` 和 `nei update` 命令，使用默认值即可
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>构建工具 - server</h2>
+      <div data-markdown>
+        * 启动内置的本地模拟容器，指令：
+
+        >`nei server [参数]`
+
+        ---
+
+        >本地模拟容器会 Mock 定义好的异步接口和页面，也会返回按照定义生成的 Mock 数据，从而使得前后端并行开发成为可能，更多信息请参考：[使用 NEI 进行前后端并行开发](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/%E4%BD%BF%E7%94%A8NEI%E8%BF%9B%E8%A1%8C%E5%89%8D%E5%90%8E%E7%AB%AF%E5%B9%B6%E8%A1%8C%E5%BC%80%E5%8F%91.md)
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>构建工具 - template</h2>
+      <div data-markdown>
+        * 解析本地模板，并生成新文件，指令：
+
+        >`nei template [参数]`
+
+        ---
+
+        >模板解析引擎是 Handlebars
+      </div>
+    </section>
+
+    <section>
+      <h2>本文在线访问地址</h2>
+      <div data-markdown>
+        [http://gzool.com/nei](http://gzool.com/nei)
       </div>
     </section>
 
     <section>
       <h2>Thank You</h2>
       <h3>Q & A</h3>
-      <p>
-        <small><a href="https://github.com/huntbao">包勇明</a> / <a href="http://weibo.com/gzooler">@huntbao</a>
-        </small>
-      </p>
+      <div data-markdown>
+        [包勇明](https://github.com/huntbao) / [@huntbao](http://weibo.com/gzooler)
+      </div>
     </section>
 
   </div>
