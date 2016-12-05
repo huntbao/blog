@@ -150,6 +150,8 @@ permalink: nei
 
         >人是加到项目组上的，而不是在项目上
 
+        ---
+
         >可以将其他项目组的成员一并导入
       </div>
     </section>
@@ -158,8 +160,11 @@ permalink: nei
       <h2>项目组 - 成员权限</h2>
       <div data-markdown>
         * 创建者：拥有所有操作权限
+
         * 管理员：拥有除删除项目组之外的所有操作权限
+
         * 开发者和测试者：拥有项目资源的所有操作权限，对项目组本身没有操作权限
+
         * 观察者：“只读”权限
 
         >除创建者外，其他角色都可以有多个
@@ -170,6 +175,7 @@ permalink: nei
       <h2>项目组 - 加入项目组</h2>
       <div data-markdown>
         * 访问没权限的项目组或者项目时，会出现“申请加入”的按钮
+
         * 点击“我的项目组”，在“我的申请列表”区域的搜索框中输入项目组或者项目的名称
       </div>
     </section>
@@ -203,7 +209,11 @@ permalink: nei
 
         >前面有黄色共享图标的表示是共享资源
 
+        ---
+
         >公共资源库只有异步接口、数据模型和规则函数
+
+        ---
 
         >`不要把公共资源库当作实际项目来使用`
       </div>
@@ -213,9 +223,12 @@ permalink: nei
       <h2>项目组 - 共享资源</h2>
       <div data-markdown>
         * 项目中的异步接口、数据模型、规则函数可以共享
+
         * 资源被共享后，无法取消共享，操作时须谨慎
 
         > 共享资源的时候，还会将它所有引用的资源一并共享
+
+        ---
 
         > 如果不小心共享了某个资源，可以把它复制到目标项目，然后再将其删除
       </div>
@@ -228,10 +241,13 @@ permalink: nei
     <section class="tal">
       <h2>数据模型</h2>
       <div data-markdown>
-        * 最强大的功能之一，其他资源可以引用，是基础资源：
+        * 最强大的功能之一，其他资源可以引用：
+
           * 对应数据库实体，比如 Project、Page 等
+
           * 复用，比如需要在多处使用的异步接口响应参数，它们有着相同的格式
-        * 修改数据模型时，所有引用它的资源都会更新，换句话说，引用数据模型并不会产生新的数据模型，数据库只存了一份数据
+
+        * 修改时，所有引用它的资源都会更新，即引用并不会产生新的数据模型，数据库只存了一份数据
 
         >正确合理地使用数据模型，需要一定的总结和抽象能力，可以为之后的其他功能做好准备
       </div>
@@ -301,17 +317,21 @@ permalink: nei
       <h2>数据模型 - 哈希 - 创建方式</h2>
       <div data-markdown>
         * 在第一行的第一个输入框，粘贴 JSON 字符串
+
         * 点击“导入JSON”按钮，和上述功能相同
+
         * 导入其他数据模型：会将导入的字段当作一个整体来对待，详情页面也做了特殊显示处理
+
         * 从接口导入：会识别接口返回的 JSON 数据，支持 GET 和 POST 两种类型的接口
-        * 从 JavaBean 导入
+
+        * 从 JavaBean 文件导入
       </div>
     </section>
 
     <section class="tal">
       <h2>数据模型 - 枚举</h2>
       <div data-markdown>
-        枚举的类型可以是字符串或者数值，枚举的值是必填的，键是选填的：
+        枚举的类型可以是字符串或者数值，枚举的值是必填的，键是选填的。比如 NEI 中的 `ProgroupType`：
 
         | 值  | 类型 | 键(可选) | 描述 |
         | :--- | :--- | :--- | :--- |
@@ -326,7 +346,7 @@ permalink: nei
     <section class="tal">
       <h2>数据模型 - 枚举</h2>
       <div data-markdown>
-        包含键名的枚举类型：
+        包含键名的枚举类型 `HttpStatusCode`：
 
         | 值  | 类型 | 键(可选) | 描述 |
         | :--- | :--- | :--- | :--- |
@@ -341,6 +361,7 @@ permalink: nei
       <h2>数据模型 - 枚举 - 创建方式</h2>
       <div data-markdown>
         * 导入其他枚举类型
+
         * “从JSON导入”，此时导入的是值
       </div>
     </section>
@@ -351,6 +372,7 @@ permalink: nei
         NEI 中的数组有两种表示方式：
 
         * 在定义某个字段时，先选择类型 `Array`，多出来的另外一个下拉选择框表示数组元素的类型
+
         * 直接定义数组类别的数据模型
 
         >第一种表示方式是第二种的简便运用，两种表示方式是等价的
@@ -370,6 +392,7 @@ permalink: nei
       <h2>数据模型 - 数组 - 创建方式</h2>
       <div data-markdown>
         * 从JSON导入
+
         * 从接口导入
       </div>
     </section>
@@ -381,7 +404,7 @@ permalink: nei
 
         * 文件类型主要用在上传文件的异步接口中，在接口测试工具中也会有相应体现
 
-        >自定义数据模型的使用方式和系统预置的是相同的
+        >自定义数据模型的使用方式和系统预置的相同
       </div>
     </section>
 
@@ -393,6 +416,8 @@ permalink: nei
         `默认值 > 生成规则 > 随机数据`
 
         >生成规则可以是 JavaScript 脚本代码，但我们还是建议使用调用规则函数的代码，函数可以复用，管理维护也更方便
+
+        ---
 
         >枚举类型的 Mock 数据是其中的某个值
       </div>
@@ -406,6 +431,7 @@ permalink: nei
       <h2>规则函数</h2>
       <div data-markdown>
         * 即 JavaScript 函数，定义时需要指定函数名和函数体
+
         * 参数需要通过 `arguments` 对象获取，请参考 [arguments对象说明](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments)
       </div>
     </section>
@@ -414,7 +440,9 @@ permalink: nei
       <h2>规则函数 - 分类</h2>
       <div data-markdown>
         * 生成规则：参数的 Mock 数据
+
         * 发送规则：异步接口的发送前调用规则
+
         * 接收规则：异步接口的返回后调用规则
 
         >不同类型的规则函数，参数值是不同的，请参考 [NEI平台规则函数使用说明](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/NEI%E5%B9%B3%E5%8F%B0%E8%A7%84%E5%88%99%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
@@ -462,6 +490,7 @@ permalink: nei
       <h2>RESTful API 设计概要</h2>
       <div data-markdown>
         * 资源“增删改查”的标准，通信的数据格式使用 json
+
         * 以 User 实体为例，它的“增删改查”分别是：
           * 获取列表：`GET /users/`
           * 获取某个：`GET /users/:id`
@@ -478,9 +507,13 @@ permalink: nei
         NEI 项目中的一些实践：
 
         * 统一使用复数(users)，统一使用小写
+
         * url 前面可以加限定，比如 `/api/users`
+
         * url 中不出现动词，比如 `/deleteUser/`
+
         * DELETE 的请求体有些代理会不识别，最好放在 url 中
+
         * 详细的操作动词放到查询参数中，比如更新 user 头像：
           * `PATCH /users?changeavatar`
       </div>
@@ -506,6 +539,7 @@ permalink: nei
       <div data-markdown>
         * NEI 默认对 RESTful API 支持良好
           * 内置了常见的请求方式：GET、POST、DELETE、PUT、PATCH 等
+
           * 数据模型有 CRUD 的功能，可以一键生成相应的“增删改查”接口
       </div>
     </section>
@@ -849,9 +883,12 @@ permalink: nei
       <h2>构建工具</h2>
       <div data-markdown>
         * 地址：[https://github.com/NEYouFan/nei-toolkit](https://github.com/NEYouFan/nei-toolkit)
+
         * 主要功能：
           * 根据 NEI 平台定义的工程规范，生成工程的初始化目录结构
+
           * 自动集成在 NEI 上定义的资源：页面、异步接口、数据模型、页面模板、业务分组等
+
           * 本地模拟容器
       </div>
     </section>
