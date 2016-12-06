@@ -81,6 +81,7 @@ permalink: nei
       <h2>内容介绍</h2>
       <ul>
         <li>基本概念</li>
+        <li>消息通知</li>
         <li>接口测试</li>
         <li>工程规范</li>
         <li>构建工具</li>
@@ -130,7 +131,7 @@ permalink: nei
       <h2>项目组 - 创建者</h2>
       <div data-markdown>
         * 鼠标 hover 到项目组名称上，会显示该项目组的创建者
-        * 在“团队管理”中也可以看到该项目组的创建者
+        * 在“团队管理”中查看该项目组的创建者
       </div>
     </section>
 
@@ -146,7 +147,7 @@ permalink: nei
     <section class="tal">
       <h2>项目组 - 团队管理</h2>
       <div data-markdown>
-        * 创建好项目组后，在项目组的“团队管理”选项卡中，可以把其他人加到项目组中来
+        * 在“团队管理”中，可以把其他人添加到项目组中
 
         >人是加到项目组上的，而不是在项目上
 
@@ -159,13 +160,15 @@ permalink: nei
     <section class="tal">
       <h2>项目组 - 成员权限</h2>
       <div data-markdown>
-        * 创建者：拥有所有操作权限
+        * `创建者`：拥有所有操作权限
 
-        * 管理员：拥有除删除项目组之外的所有操作权限
+        * `管理员`：拥有除删除项目组之外的所有操作权限
 
-        * 开发者和测试者：拥有项目资源的所有操作权限，对项目组本身没有操作权限
+        * `开发者`：拥有项目资源的所有操作权限，对项目组本身没有操作权限
 
-        * 观察者：“只读”权限
+        * `测试者`：同“开发者”
+
+        * `观察者`：“只读”权限
 
         >除创建者外，其他角色都可以有多个
       </div>
@@ -176,7 +179,7 @@ permalink: nei
       <div data-markdown>
         * 访问没权限的项目组或者项目时，会出现“申请加入”的按钮
 
-        * 点击“我的项目组”，在“我的申请列表”区域的搜索框中输入项目组或者项目的名称
+        >`搜索项目组/项目`：点击“我的项目组”，在“我的申请列表”区域的搜索框中输入项目组或者项目的名称
       </div>
     </section>
 
@@ -189,9 +192,9 @@ permalink: nei
         /* User Model */
 
         {
-          "id": "number",
-          "name": "string",
-          "email": "string"
+          "id": "[number]",
+          "name": "[string]",
+          "email": "[string]"
         }
         ```
 
@@ -230,7 +233,7 @@ permalink: nei
 
         ---
 
-        > 如果不小心共享了某个资源，可以把它复制到目标项目，然后再将其删除
+        > `如果不小心共享了某个资源，可以把它复制到目标项目，然后再将其删除`
       </div>
     </section>
 
@@ -249,7 +252,7 @@ permalink: nei
 
         * 修改时，所有引用它的资源都会更新，即引用并不会产生新的数据模型，数据库只存了一份数据
 
-        >正确合理地使用数据模型，需要一定的总结和抽象能力，可以为之后的其他功能做好准备
+        >正确合理地使用数据模型，可以为之后的其他功能做好准备
       </div>
     </section>
 
@@ -297,7 +300,7 @@ permalink: nei
     <section class="tal">
       <h2>数据模型 - 哈希 - 可变字段</h2>
       <div data-markdown>
-        在定义数据模型时，有时某个字段的类型还无法确定，比如统一的异步接口返回参数格式：
+        在定义时，有时某个字段的类型还无法确定，比如统一的异步接口返回参数格式：
 
         ```json
         {
@@ -331,7 +334,7 @@ permalink: nei
     <section class="tal">
       <h2>数据模型 - 枚举</h2>
       <div data-markdown>
-        枚举的类型可以是字符串或者数值，枚举的值是必填的，键是选填的。比如 NEI 中的 `ProgroupType`：
+        枚举的类型可以是字符串或者数值，枚举的值是必填的，键是选填的。比如 NEI 中的 `ProjectType`：
 
         | 值  | 类型 | 键(可选) | 描述 |
         | :--- | :--- | :--- | :--- |
@@ -402,7 +405,7 @@ permalink: nei
       <div data-markdown>
         * 为了满足不同的开发人员的需求，NEI 可以自定义基本数据类型，比如 Objective-C 里面的 NSString、NSNumber 等
 
-        * 文件类型主要用在上传文件的异步接口中，在接口测试工具中也会有相应体现
+        * 文件类型主要用在上传文件的接口中，在接口测试界面中也会有相应体现
 
         >自定义数据模型的使用方式和系统预置的相同
       </div>
@@ -413,9 +416,11 @@ permalink: nei
       <div data-markdown>
         数据模型、异步接口的请求及响应参数、页面模板的参数等，系统提供了 MOCK 数据展示，优先级关系如下：
 
-        `默认值 > 生成规则 > 随机数据`
+        >`默认值 > 生成规则 > 随机数据`
 
-        >生成规则可以是 JavaScript 脚本代码，但我们还是建议使用调用规则函数的代码，函数可以复用，管理维护也更方便
+        ---
+
+        >生成规则可以是合法的 JavaScript 脚本代码，但建议使用调用规则函数的代码，函数可以复用，管理维护也更方便
 
         ---
 
@@ -445,7 +450,7 @@ permalink: nei
 
         * 接收规则：异步接口的返回后调用规则
 
-        >不同类型的规则函数，参数值是不同的，请参考 [NEI平台规则函数使用说明](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/NEI%E5%B9%B3%E5%8F%B0%E8%A7%84%E5%88%99%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
+        >不同类型的规则函数，注入的参数是不同的，请参考 [NEI平台规则函数使用说明](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/NEI%E5%B9%B3%E5%8F%B0%E8%A7%84%E5%88%99%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
       </div>
     </section>
 
@@ -487,28 +492,29 @@ permalink: nei
     </section>
 
     <section class="tal">
-      <h2>RESTful API 设计概要</h2>
+      <h2>话题：RESTful API 设计概要</h2>
       <div data-markdown>
-        * 资源“增删改查”的标准，通信的数据格式使用 json
+        * 资源“增删改查”的标准，使用 json 通信/
 
-        * 以 User 实体为例，它的“增删改查”分别是：
+        * 以 User 实体为例，它的“增删改查”的接口分别是：
           * 获取列表：`GET /users/`
-          * 获取某个：`GET /users/:id`
-          * 创建：`POST /users/`
-          * 更新某个：`PATCH /users/:id`
-          * 删除某个：`DELETE /users/:id`
+          * 获取单个：`GET /users/:id`
+          * 单个创建：`POST /users/`
+          * 批量创建：`POST /users/`
+          * 更新单个：`PATCH /users/:id`
+          * 删除单个：`DELETE /users/:id`
           * 删除多个：`DELETE /users/?ids=id1,id2,...`
       </div>
     </section>
 
     <section class="tal">
-      <h2>RESTful API 设计概要</h2>
+      <h2>话题：RESTful API 设计概要</h2>
       <div data-markdown>
         NEI 项目中的一些实践：
 
         * 统一使用复数(users)，统一使用小写
 
-        * url 前面可以加限定，比如 `/api/users`
+        * url 前面可以加限定，比如 `/api/users/`
 
         * url 中不出现动词，比如 `/deleteUser/`
 
@@ -520,22 +526,22 @@ permalink: nei
     </section>
 
     <section class="tal">
-      <h2>RESTful API 设计概要</h2>
+      <h2>话题：RESTful API 设计概要</h2>
       <div data-markdown>
         使用正确的 http 响应状态码，常见的有：
 
-        * 200，OK，操作成功
-        * 201，OK，创建成功
-        * 204，OK，删除成功
-        * 400，Bad Request，请求无效
-        * 401，Unauthorized，未授权
-        * 405，Method Not Allowed，方法不允许
-        * 500，Internal Server Error，服务器异常
+        * `200，OK`，操作成功
+        * `201，OK`，创建成功
+        * `204，OK`，删除成功
+        * `400，Bad Request`，请求无效
+        * `401，Unauthorized`，未授权
+        * `405，Method Not Allowed`，方法不允许
+        * `500，Internal Server Error`，服务器异常
       </div>
     </section>
 
     <section class="tal">
-      <h2>RESTful API 设计概要</h2>
+      <h2>话题：RESTful API 设计概要</h2>
       <div data-markdown>
         * NEI 默认对 RESTful API 支持良好
           * 内置了常见的请求方式：GET、POST、DELETE、PUT、PATCH 等
@@ -560,9 +566,9 @@ permalink: nei
     <section class="tal">
       <h2>异步接口 – 请求头、请求参数</h2>
       <div data-markdown>
-        * 请求头即在发送请求的时候添加到 Request Headers 中的参数
+        * 请求头即发送请求时添加到 Request Headers 中的参数
 
-        * 请求数据即要发送的数据。NEI 默认的请求参数类型是哈希对象
+        * 请求数据即要发送的数据，默认是哈希对象
 
         >JSON 共有 6 种类型：string、number、boolean、null、object、array。除了 null 之外，其他类型 NEI 都支持
       </div>
@@ -573,14 +579,14 @@ permalink: nei
       <div data-markdown>
         * 响应头即服务器需要返回的头信息
 
-        * 返回结果即异步接口返回的数据，格式同请求参数
+        * 响应参数即异步接口返回的数据，格式同请求参数
       </div>
     </section>
 
     <section class="tal">
       <h2>异步接口 – 响应参数定义技巧</h2>
       <div data-markdown>
-        * 响应参数一般具有某种固定格式，这样客户端就可以统一处理，比如 404、500 等异常。比如，可以先定义一个叫 ResultData 的数据模型，它的结构如下所示：
+        * 响应参数的格式一般是固定的。比如，定义一个叫 ResultData 的数据模型，它的结构如下所示：
 
         ```json
         {
@@ -617,7 +623,7 @@ permalink: nei
     <section class="tal">
       <h2>异步接口 – 响应参数定义技巧</h2>
       <div data-markdown>
-        可以使用二级参数的功能，即在定义的时候，result 字段的类型选择为 Object 即可
+        可以使用二级参数，在定义的时候，result 字段的类型选择为 Object
 
         >老版本的 NEI，无法很好地支持这个功能：需要给每一种响应增加一种数据模型，很繁琐，而且新增的数据模型无法复用，数据模型本身也没有意义
       </div>
@@ -638,13 +644,13 @@ permalink: nei
 
     <section class="tal">
       <h2>页面</h2>
-      <p>指可以通过地址访问的普通页面，它主要包含了：</p>
-      <ul>
-        <li>访问地址</li>
-        <li>参数列表</li>
-        <li>模板列表</li>
-        <li>接口列表</li>
-      </ul>
+      <div data-markdown>
+        * 指可以通过地址访问的普通页面，它主要包含了：
+          * 访问地址
+          * 参数列表
+          * 模板列表
+          * 接口列表
+      </div>
     </section>
 
     <section class="tal">
@@ -659,7 +665,7 @@ permalink: nei
       <div data-markdown>
         有两种传递方式：
 
-        * GET：通过 url 传入
+        * GET：通过 url
 
         * POST：通过 form 表单
 
@@ -693,9 +699,25 @@ permalink: nei
     <section class="tal">
       <h2>页面模板</h2>
       <div data-markdown>
-        * 模板就是服务端的模板
+        * 服务端的模板文件，一般需要经过模板引擎解析，主要包含了：
+          * 文件路径
+          * 预填数据
+      </div>
+    </section>
 
-        * 一般模板里面会有很多变量需要使用真实数据来替换，在创建模板时，数据选项一栏指的就是这些真实的数据。数据一般就对应服务端的 Model，通过 Controller 提供给模板
+    <section class="tal">
+      <h2>页面模板 - 文件路径</h2>
+      <div data-markdown>
+        * 在使用构建生成模板文件时，存放的相对于模板根目录的路径
+
+        >`模板根目录`在工程规范中设置
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>页面模板 - 预填数据</h2>
+      <div data-markdown>
+        * 服务端 Controller 注入给模板的数据，模板引擎会根据自己的语法规则，替换掉相应的插值变量
       </div>
     </section>
 
@@ -708,7 +730,82 @@ permalink: nei
       <div data-markdown>
         * 一个项目可以有多条业务线，业务分组可以用来更好地组织资源，它是唯一的
 
-        * 业务分组和标签有所不同，例如，资源可以有多个标签，但只能属于一个分组
+        >和标签不同：资源可以有多个标签，但只能属于一个分组
+      </div>
+    </section>
+
+    <section>
+      <h2>消息通知</h2>
+    </section>
+
+    <section class="tal">
+      <h2>消息通知</h2>
+      <div data-markdown>
+        * 个人消息
+
+        * 系统消息
+          * 新版本发版，新功能上线，活动等
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>消息通知 - 个人消息</h2>
+      <div data-markdown>
+        * 规范
+          * 创建的规范被他人收藏
+
+          * 收藏的规范被他人删除
+
+          * 收藏的规范被他人取消了共享
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>消息通知 - 个人消息</h2>
+      <div data-markdown>
+        * 项目组
+          * 项目组被创建者删除
+
+          * 自己已加入项目组
+
+          * 自己被移出项目组
+
+          * 自己被拒绝加入项目组
+
+          * 有其他人申请加入项目组
+
+          * 有其他人已加入项目组
+
+          * 项目组被更新
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>消息通知 - 个人消息</h2>
+      <div data-markdown>
+        * 项目
+          * 有人创建了项目
+
+          * 有人删除了项目
+
+          * 有人更新了项目
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>消息通知 - 个人消息</h2>
+      <div data-markdown>
+        * 资源的新建、更新、删除，需要通知该资源的负责人
+
+        >如果负责人是操作者本身，则不用通知
+
+        ---
+
+        >如果没有负责人，则不用产生通知
+
+        ---
+
+        >异步接口、页面模板和数据模型，需要通知引用它的资源的负责人
       </div>
     </section>
 
@@ -788,7 +885,7 @@ permalink: nei
     </section>
 
     <section class="tal">
-      <h2>话题 - fmpp 加载 JAR 文件</h2>
+      <h2>话题：fmpp 加载 JAR 文件</h2>
       <div data-markdown>
         有两种方法：
         * 在 ftl 模板通过 pp.loadData 加载：
@@ -821,44 +918,68 @@ permalink: nei
     </section>
 
     <section class="tal">
-      <h2>工程规范 – 特殊目录（一）</h2>
+      <h2>工程规范 – 特殊目录</h2>
       <div data-markdown>
-        * 静态资源根目录：在使用本地模拟容器时，需要该信息，该目录用来存放静态资源
+        * `静态资源根目录`：在使用本地模拟容器时，需要该信息，该目录用来存放静态资源
 
-        * 模板根目录：在使用本地模拟容器时，需要该信息，该目录用来存放页面模板
+        * `模板根目录`：在使用本地模拟容器时，需要该信息，该目录用来存放页面模板
 
-        * 接口MOCK数据根目录：使用本工具生成的异步接口的mock数据会放到该目录下面
+        * `接口MOCK数据根目录`：构建工具生成的异步接口的mock数据会放到该目录下面
       </div>
     </section>
 
     <section class="tal">
-      <h2>工程规范 – 特殊目录（二）</h2>
+      <h2>工程规范 – 特殊目录</h2>
       <div data-markdown>
-        * 模板MOCK数据根目录：使用本工具生成的页面模板的mock数据会放到该目录下面
+        * `模板MOCK数据根目录`：使用本工具生成的页面模板的mock数据会放到该目录下面
 
-        * JAR包根目录：存放自定义JAR包，ftl模板可以直接调用JAR包中的静态方法
+        * `JAR包根目录`：存放自定义JAR包，ftl模板可以直接调用JAR包中的静态方法
       </div>
     </section>
 
     <section class="tal">
-      <h2>工程规范 – 特殊文件（一）</h2>
+      <h2>工程规范 – 特殊文件</h2>
       <div data-markdown>
-        * 接口列表填充：使用项目中定义的异步接口数据列表作为数据源，每个异步接口都会生成一个文件
+        * `接口列表填充`：每个异步接口都会生成一个文件
 
-        * 数据模型列表填充：使用项目中定义的数据模型数据列表作为数据源，每个数据模型都会生成一个文件。为了保持通用性，我们区分了枚举类型和非枚举类型。如果需要使用枚类型的数据类型列表，需要在文件名后面加上`!!enum`
+        * `数据模型列表填充`：每个数据模型都会生成一个文件
 
-        * 页面模板列表填充：使用项目中定义的页面模板数据列表作为数据源，每个页面模板都会生成一个文件
+        >为了保持通用性，区分了枚举类型和非枚举类型。如果需要使用枚类型的数据类型列表，需要在文件名后面加上`!!enum`
+
+        * `页面模板列表填充`：每个页面模板都会生成一个文件
       </div>
     </section>
 
     <section class="tal">
-      <h2>工程规范 – 特殊文件（二）</h2>
+      <h2>工程规范 – 特殊文件</h2>
       <div data-markdown>
-        * 视图列表填充：使用项目中定义的视图数据列表作为数据源，每个视图都会生成一个文件
+        * `视图列表填充`：每个视图都会生成一个文件
 
-        * 命令行参数配置文件：该文件的内容须为有效的 json，它的值会作为本构建工具的命令行参数
+        * `命令行参数配置文件`：该文件的内容须为有效的 json，它的值会作为本构建工具的命令行参数
 
-        * 自定义Handlebars辅助函数：构建工具会运行这个文件，从而注册自定义方法
+        * `自定义Handlebars辅助函数`：构建工具会运行这个文件，注册自定义方法
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>工程规范 – 命令行参数</h2>
+      <div data-markdown>
+        命令行参数的值来自三部分:
+
+        * `命令行参数`：指的是用户在命令行中输入的参数，可以是用于构建工具自身的参数，也可以是用于模板填充的数据
+
+        * `在项目中设置的命令行参数列表`
+
+        * `在工程规范中指定的命令行参数文件`：文件的内容须是有效的 json。如果指定了多个这样的文件，则取第一个文件的内容
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>工程规范 – 命令行参数</h2>
+      <div data-markdown>
+        三者的优先级关系如下:
+
+        > `命令行参数` > `在项目中设置的命令行参数` > `在工程规范中指定的命令行参数文件`
       </div>
     </section>
 
@@ -900,7 +1021,9 @@ permalink: nei
 
         >`npm install nei –g`
 
-        * 构建工具基于 Node.js 平台，安装的 Node.js 版本须为 v4.2 及以上
+        ---
+
+        >构建工具基于 Node.js 平台，安装的 Node.js 版本须为 v4.2 及以上
       </div>
     </section>
 
@@ -944,6 +1067,44 @@ permalink: nei
         ---
 
         >本地模拟容器会 Mock 定义好的异步接口和页面，也会返回按照定义生成的 Mock 数据，从而使得前后端并行开发成为可能，更多信息请参考：[使用 NEI 进行前后端并行开发](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/%E4%BD%BF%E7%94%A8NEI%E8%BF%9B%E8%A1%8C%E5%89%8D%E5%90%8E%E7%AB%AF%E5%B9%B6%E8%A1%8C%E5%BC%80%E5%8F%91.md)
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>构建工具 - server.config.js</h2>
+      <div data-markdown>
+        * 根据工程规范的设置生成的配置文件，一般不用更改
+
+        >配置参数的含义请参考注释说明
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>构建工具 - server.config.js - routes</h2>
+      <div data-markdown>
+        示例：
+
+        ```js
+        routes: {
+          //"ALL /api/*": "代理所有接口, 这里输入代理服务器地址",
+          "GET /user/profile/:id": { name: 'mypage', index: 0, list: [{"id":10686,"path":"page/test"},{"id":10758,"path":"error"}] },
+          "POST /api/category/add": { path: 'post/api/category/add/data', id: 14077 },
+          "GET /api/category": { path: 'get/api/category/data', id: 14413 },
+          "POST /api/category": { path: 'post/api/category/data', id: 14076 },
+          "GET /api/author": { path: 'get/api/author/data', id: 14072 },
+        }
+        ```
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>构建工具 - server.config.js - routes</h2>
+      <div data-markdown>
+        >打开 `"ALL /api/*"` 可以将所有的接口代理到同一个地址，方便在不同的环境间进行切换
+
+        ---
+
+        >有 `list` 的表示是页面，值是页面模板列表，显示哪个模板由 `index` 的值决定
       </div>
     </section>
 
