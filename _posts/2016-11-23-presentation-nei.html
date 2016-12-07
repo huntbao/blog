@@ -227,7 +227,7 @@ permalink: nei
       <div data-markdown>
         * 项目中的异步接口、数据模型、规则函数可以共享
 
-        * 资源被共享后，无法取消共享，操作时须谨慎
+        * `资源被共享后，无法取消共享`，操作时须谨慎
 
         > 共享资源的时候，还会将它所有引用的资源一并共享
 
@@ -244,13 +244,18 @@ permalink: nei
     <section class="tal">
       <h2>数据模型</h2>
       <div data-markdown>
-        * 最强大的功能之一，其他资源可以引用：
-
-          * 对应数据库实体，比如 Project、Page 等
-
-          * 复用，比如需要在多处使用的异步接口响应参数，它们有着相同的格式
+        * 最强大的功能之一，其他资源可以引用
 
         * 修改时，所有引用它的资源都会更新，即引用并不会产生新的数据模型，数据库只存了一份数据
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>数据模型 - 用途</h2>
+      <div data-markdown>
+        * 描述数据库实体，比如 Project、Page 等
+
+        * 复用，比如需要在多处使用的异步接口响应参数，它们有着相同的格式
 
         >正确合理地使用数据模型，可以为之后的其他功能做好准备
       </div>
@@ -319,15 +324,15 @@ permalink: nei
     <section class="tal">
       <h2>数据模型 - 哈希 - 创建方式</h2>
       <div data-markdown>
-        * 在第一行的第一个输入框，粘贴 JSON 字符串
+        * 在第一行的第一个输入框，`粘贴JSON字符串`
 
-        * 点击“导入JSON”按钮，和上述功能相同
+        * 点击`导入JSON`按钮，和上述功能相同
 
-        * 导入其他数据模型：会将导入的字段当作一个整体来对待，详情页面也做了特殊显示处理
+        * `导入其他数据模型`：会将导入的字段当作一个整体来对待，详情页面也做了特殊显示处理
 
-        * 从接口导入：会识别接口返回的 JSON 数据，支持 GET 和 POST 两种类型的接口
+        * `从接口导入`：会识别接口返回的 JSON 数据，支持 GET 和 POST 两种类型的接口
 
-        * 从 JavaBean 文件导入
+        * `从JavaBean文件导入`
       </div>
     </section>
 
@@ -363,9 +368,9 @@ permalink: nei
     <section class="tal">
       <h2>数据模型 - 枚举 - 创建方式</h2>
       <div data-markdown>
-        * 导入其他枚举类型
+        * `导入其他枚举类型`
 
-        * “从JSON导入”，此时导入的是值
+        * `从JSON导入`，此时导入的是值
       </div>
     </section>
 
@@ -394,20 +399,29 @@ permalink: nei
     <section class="tal">
       <h2>数据模型 - 数组 - 创建方式</h2>
       <div data-markdown>
-        * 从JSON导入
+        * `从JSON导入`
 
-        * 从接口导入
+        * `从接口导入`
       </div>
     </section>
 
     <section class="tal">
-      <h2>数据模型 - 字符、数值、布尔、文件</h2>
+      <h2>数据模型 - 字符、数值、布尔</h2>
       <div data-markdown>
-        * 为了满足不同的开发人员的需求，NEI 可以自定义基本数据类型，比如 Objective-C 里面的 NSString、NSNumber 等
-
-        * 文件类型主要用在上传文件的接口中，在接口测试界面中也会有相应体现
+        * 为了满足不同的开发人员的需求，NEI 可以自定义基本数据类型，比如 Objective-C 的 NSString、NSNumber 等
 
         >自定义数据模型的使用方式和系统预置的相同
+
+        ---
+
+        >等价用法：使用系统的 String，在“变量映射”中增加 `String -> NSString` 的规则
+      </div>
+    </section>
+
+    <section class="tal">
+      <h2>数据模型 - 文件</h2>
+      <div data-markdown>
+        * 文件类型主要用在上传文件的接口中，在接口测试界面中也会有相应体现
       </div>
     </section>
 
@@ -435,7 +449,7 @@ permalink: nei
     <section class="tal">
       <h2>规则函数</h2>
       <div data-markdown>
-        * 即 JavaScript 函数，定义时需要指定函数名和函数体
+        * 指 JavaScript 函数，定义时需要指定函数名和函数体
 
         * 参数需要通过 `arguments` 对象获取，请参考 [arguments对象说明](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments)
       </div>
@@ -444,11 +458,11 @@ permalink: nei
     <section class="tal">
       <h2>规则函数 - 分类</h2>
       <div data-markdown>
-        * 生成规则：参数的 Mock 数据
+        * `生成规则`：参数的 Mock 数据
 
-        * 发送规则：异步接口的发送前调用规则
+        * `发送规则`：异步接口的发送前调用规则
 
-        * 接收规则：异步接口的返回后调用规则
+        * `接收规则`：异步接口的返回后调用规则
 
         >不同类型的规则函数，注入的参数是不同的，请参考 [NEI平台规则函数使用说明](https://github.com/NEYouFan/nei-toolkit/blob/master/doc/NEI%E5%B9%B3%E5%8F%B0%E8%A7%84%E5%88%99%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
       </div>
@@ -479,7 +493,7 @@ permalink: nei
     <section class="tal">
       <h2>异步接口</h2>
       <div data-markdown>
-        最核心的项目资源，它包含以下元素：
+        最核心的项目资源，它包含以下信息：
 
         * 请求地址、方式
         * 请求头信息
@@ -494,7 +508,7 @@ permalink: nei
     <section class="tal">
       <h2>话题：RESTful API 设计概要</h2>
       <div data-markdown>
-        * 资源“增删改查”的标准，使用 json 通信/
+        * 资源“增删改查”的标准，使用 json 通信
 
         * 以 User 实体为例，它的“增删改查”的接口分别是：
           * 获取列表：`GET /users/`
@@ -551,7 +565,7 @@ permalink: nei
     </section>
 
     <section class="tal">
-      <h2>异步接口 – 请求地址、方式</h2>
+      <h2>异步接口 – 请求地址、方法</h2>
       <div data-markdown>
         * 在创建异步接口时，需要指定请求地址，比如 /users
 
@@ -559,16 +573,16 @@ permalink: nei
           * 本地 http://127.0.0.1/users
           * 线上 https://nei.netease.com/users/
 
-        * 请求方式一般使用系统内置的方法即可：GET、POST、DELETE、PUT、PATCH 等
+        * 请求方法一般使用系统内置的方法即可：GET、POST、DELETE、PUT、PATCH 等
       </div>
     </section>
 
     <section class="tal">
       <h2>异步接口 – 请求头、请求参数</h2>
       <div data-markdown>
-        * 请求头即发送请求时添加到 Request Headers 中的参数
+        * `请求头`即发送请求时添加到 Request Headers 中的参数
 
-        * 请求数据即要发送的数据，默认是哈希对象
+        * `请求参数`即要发送的数据，默认是哈希对象
 
         >JSON 共有 6 种类型：string、number、boolean、null、object、array。除了 null 之外，其他类型 NEI 都支持
       </div>
@@ -577,18 +591,18 @@ permalink: nei
     <section class="tal">
       <h2>异步接口 – 响应头、响应参数</h2>
       <div data-markdown>
-        * 响应头即服务器需要返回的头信息
+        * `响应头`即服务器需要返回的头信息
 
-        * 响应参数即异步接口返回的数据，格式同请求参数
+        * `响应参数`即异步接口返回的数据
       </div>
     </section>
 
     <section class="tal">
       <h2>异步接口 – 响应参数定义技巧</h2>
       <div data-markdown>
-        * 响应参数的格式一般是固定的。比如，定义一个叫 ResultData 的数据模型，它的结构如下所示：
+        * 响应参数的格式一般是固定的，可以定义一个通用的 ResultData 数据模型，它的结构如下所示：
 
-        ```json
+        ```js
         {
           "code": "[number]", // 请求返回的状态码
           "msg": "[string]", // 返回的信息
@@ -623,7 +637,7 @@ permalink: nei
     <section class="tal">
       <h2>异步接口 – 响应参数定义技巧</h2>
       <div data-markdown>
-        可以使用二级参数，在定义的时候，result 字段的类型选择为 Object
+        * 可以使用二级参数，result 字段的类型选择为 Object
 
         >老版本的 NEI，无法很好地支持这个功能：需要给每一种响应增加一种数据模型，很繁琐，而且新增的数据模型无法复用，数据模型本身也没有意义
       </div>
@@ -632,9 +646,9 @@ permalink: nei
     <section class="tal">
       <h2>异步接口 – 发送、接收规则</h2>
       <div data-markdown>
-        * 发送规则：在发送数据之前，对数据进行一些特殊处理，比如对密码进行加密等
+        * `发送规则`：在发送数据之前，对数据进行一些特殊处理，比如对密码进行加密等
 
-        * 接收规则：在服务器返回数据后，对数据进行一些特殊处理后再返回给客户端脚本代码
+        * `接收规则`：在服务器返回数据后，对数据进行一些特殊处理后再返回给客户端脚本代码
       </div>
     </section>
 
@@ -646,9 +660,13 @@ permalink: nei
       <h2>页面</h2>
       <div data-markdown>
         * 指可以通过地址访问的普通页面，它主要包含了：
+
           * 访问地址
+
           * 参数列表
+
           * 模板列表
+
           * 接口列表
       </div>
     </section>
@@ -699,8 +717,10 @@ permalink: nei
     <section class="tal">
       <h2>页面模板</h2>
       <div data-markdown>
-        * 服务端的模板文件，一般需要经过模板引擎解析，主要包含了：
+        * 服务端的模板文件，主要包含了：
+
           * 文件路径
+
           * 预填数据
       </div>
     </section>
@@ -708,7 +728,7 @@ permalink: nei
     <section class="tal">
       <h2>页面模板 - 文件路径</h2>
       <div data-markdown>
-        * 在使用构建生成模板文件时，存放的相对于模板根目录的路径
+        * 在使用构建生成模板文件时，存放的`相对于模板根目录的路径`
 
         >`模板根目录`在工程规范中设置
       </div>
@@ -728,7 +748,7 @@ permalink: nei
     <section class="tal">
       <h2>业务分组</h2>
       <div data-markdown>
-        * 一个项目可以有多条业务线，业务分组可以用来更好地组织资源，它是唯一的
+        * 一个项目可以有多条业务线，业务分组可以用来更好地管理资源，它是唯一的
 
         >和标签不同：资源可以有多个标签，但只能属于一个分组
       </div>
@@ -831,7 +851,9 @@ permalink: nei
       <h2>接口测试 - 开发计划</h2>
       <div data-markdown>
         * 依赖测试：前一个接口的返回作为后一个接口的输入
+
         * 对接 JIRA：测试失败时可以提 bug 到 JIRA 系统
+
         * 其他需求收集中...
       </div>
     </section>
@@ -867,6 +889,7 @@ permalink: nei
       <h2>工程规范 - 变量映射规则</h2>
       <div data-markdown>
         * 在生成代码时，可以将某种类型映射成另外一种类型，比如将所有的 `String` 映射成为 `NSString`
+
         * 可以在三个地方设置变量映射规则，优先级关系如下：
 
         >`项目 > 项目组 > 工程规范`
@@ -966,7 +989,7 @@ permalink: nei
       <div data-markdown>
         命令行参数的值来自三部分:
 
-        * `命令行参数`：指的是用户在命令行中输入的参数，可以是用于构建工具自身的参数，也可以是用于模板填充的数据
+        * `终端输入的命令行参数`：指的是用户在命令行中输入的参数，可以是用于构建工具自身的参数，也可以是用于模板填充的数据
 
         * `在项目中设置的命令行参数列表`
 
@@ -979,7 +1002,7 @@ permalink: nei
       <div data-markdown>
         三者的优先级关系如下:
 
-        > `命令行参数` > `在项目中设置的命令行参数` > `在工程规范中指定的命令行参数文件`
+        > `终端输入的命令行参数` > `在项目中设置的命令行参数` > `在工程规范中指定的命令行参数文件`
       </div>
     </section>
 
@@ -1038,9 +1061,9 @@ permalink: nei
 
         >项目有唯一的 key，通过这个 key 可以加载项目的数据
 
-        >工程规范也有唯一的 key，参数为 `sk`
+        ---
 
-        >如果 k 和 sk 参数同时存在, 系统会优先考虑 sk 参数
+        >工程规范也有唯一的 key，参数为 `sk`
       </div>
     </section>
 
