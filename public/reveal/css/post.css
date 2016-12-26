@@ -1,0 +1,42 @@
+.tal {
+  text-align: left;
+  top: 0 !important;
+}
+
+.reveal pre {
+  width: 100%;
+}
+
+.reveal pre code {
+  border-radius: 5px;
+  padding: 12px;
+}
+
+.reveal sup {
+  font-size: 12px;
+  margin: -8px 4px 0;
+  vertical-align: top;
+}
+
+.reveal h2 {
+  text-transform: none;
+}
+
+code {
+  padding: .25em .1em;
+  font-size: 85%;
+  color: #bf616a;
+}
+
+.reveal blockquote {
+  padding: 0 20px;
+  border-radius: 5px;
+}
+
+.reveal section img {
+  box-shadow: none;
+}
+
+.reveal hr {
+  opacity: 0;
+}
