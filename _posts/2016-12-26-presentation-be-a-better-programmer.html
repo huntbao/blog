@@ -1,0 +1,451 @@
+---
+title: Be A Better Programmer
+category: presentation
+tag: presentation, coder
+permalink: be-a-better-programmer
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Be A Better Programmer</title>
+  <meta name="author" content="HuntBao">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="/public/reveal/lib/css/zenburn.css">
+  <link rel="stylesheet" href="/public/reveal/css/reveal.css">
+  <link rel="stylesheet" href="/public/reveal/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="/public/reveal/css/post.css">
+  <base target="_blank">
+</head>
+<body>
+
+<div class="reveal">
+
+  <div class="slides">
+    <section>
+      <h1>Be A Better Programmer</h1>
+      <p>
+        <small><a href="https://github.com/huntbao">包勇明</a> / <a href="http://weibo.com/gzooler">@huntbao</a></small>
+      </p>
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 内容简介
+      * 善用工具
+      * 遵循规范
+      * 调试技巧
+      * 如何学习
+      * 提问技巧
+      * 训练有素
+      * 书籍推荐
+    </section>
+
+    <section>
+      <h2>善用工具</h2>
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 开发工具
+
+      > 选一款自己喜欢的开发工具，花点时间研究它的配置选项:
+      * 主题
+      * 字体、颜色
+      * 关联文件
+      * 插件
+      * 代理
+      * 快捷键
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 开发工具 - 快捷键
+
+      * 自动补全
+
+      * 代码行
+        * 复制、删除、选中、移动等
+
+      * 代码块
+        * 折叠、展开、选中、移动、删除等
+
+      * 光标控制
+        * 多光标模式、列编辑模式等
+
+      * 代码格式化
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 开发工具 - Emmet 插件
+
+      > [http://emmet.io/](http://emmet.io/)
+    </section>
+
+    <section>
+      <h2>遵循规范</h2>
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 编码规范
+
+      > 恪守自己的编码规范，不允许别人格式化自己的代码
+
+      ---
+
+      > 遵循事先制定好的项目编码规范
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 编码规范 - 空白
+      * 空格
+      * 分组
+      * 空行
+        * 8% ~ 16%
+      * 缩进
+        * 2 ~ 4
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 编码规范 - 格式化
+
+      * 使用开发工具提供的代码格式化功能
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 编码规范 - 括号
+
+      * 多使用括号，比你觉得需要的还要多
+
+      ```js
+      let x = a || b ? c : d
+      ```
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 编码规范 - 分号
+
+      * JavaScript 语句末尾要不要加分号？
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 编码规范 - 变量命名
+
+      * 顾名思义
+
+      * 长命名，优先考虑
+        * 较少用到的变量和全局变量适用长命名
+
+      * 短命名，尽量避免
+        * 局部变量和循环变量适用短命名
+
+      * 拼写正确
+        * 没把握的单词事先查字典(IDE会有提示)
+        * 不使用拼音
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 编码规范 - 变量命名
+
+      * 谨记典型的命名以及方式
+        * 临时变量
+        * 布尔变量
+          * 使用肯定的变量
+
+          ```js
+          // good
+          let found = false
+          // bad
+          let notFound = true
+          ```
+
+        * 常量
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 编码规范 - 注释
+
+      * 概述性和意图性注释:
+        * 复杂业务逻辑、算法等
+
+      * 避免会增加阅读负担的注释:
+        * 重复
+        * 文不对题
+        * 废话
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 编码规范 - 注释语种
+
+      * 中文
+
+      * 英文
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 编码规范 - 心态
+
+      > 优秀的程序员应当有开放的心态，乐于接受已证实的更好规范
+    </section>
+
+    <section>
+      <h2>调试技巧</h2>
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 调试技巧 - 不正确的调试方式
+
+      * 胡乱猜测，没有求证
+
+      * 不追根究底，使用简单方法解决问题，比如加个 if 判断
+
+      * 怨天尤人，满腹牢骚，推卸责任:
+
+        * 较武断地认为不是自己的代码引起的问题
+
+        * 觉得不是问题或者是小问题，修复完全是在浪费时间
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 调试技巧 - 科学的调试方式
+
+      * 将错误状态稳定下来
+
+        * 重现问题
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 调试技巧 - 科学的调试方式
+
+      * 定位错误
+        * 适当地输出日志，分析程序的执行过程、数据状态等
+
+        * 排除法，注释掉不相关的代码
+
+      > When you have eliminated the impossibles, whatever remains, however improbable, must be the truth. -- Sherlock Holmes
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 调试技巧 - 科学的调试方式
+
+      * 分析错误
+
+        * 必须理解引起错误的原因
+
+        * 理解错误代码所在区块、所在函数等其他代码
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 调试技巧 - 科学的调试方式
+
+      * 修复错误
+
+        * 修改错误代码，并对修改后的代码进行充分测试
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 调试技巧 - 科学的调试方式
+
+      * 测试通过后，检查是否还有类似的错误
+    </section>
+
+    <section>
+      <h2>如何学习</h2>
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 基础学习
+
+      > 学习一门新的语言时，找一本讲语法的书，认真看一遍
+
+      ---
+
+      > 学习一种新的前端框架时，先把它的文档认真看一遍
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 专项训练
+
+      > 对一问题进行专项学习，并有总结输出，目标是成为这一问题的专家
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 专项学习 - 常见问题举例
+
+      * 跨域
+      * 文件上传
+      * CSS 经典布局
+    </section>
+
+    <section>
+      <h2>提问技巧</h2>
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 提问的智慧
+
+      * [提问的智慧](https://gist.github.com/huntbao/64d6fb58bc8ed6e5b71c953164a01b53)
+      * [如何向开源社区提问题](https://github.com/seajs/seajs/issues/545)
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 提问技巧 - 提问前
+
+      * 提问前，自己必须已经做了很多工作
+
+        * 官方文档
+
+        * 搜索引擎，学会翻墙
+
+          * 中文搜索不到，就用英文再搜索，或反之
+
+        * 阅读源码
+          * 初级程序员不做要求，有能力的除外
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 提问技巧 - 提问时
+
+      * 使用专业术语
+        * 专业术语获取途径？—— 多读、多看、多想
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 提问技巧 - 提问时
+
+      * 分解问题，把大问题拆成小问题
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 提问技巧 - 提问时
+
+      * 问题描述准确，几句话就能把问题说清楚
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 提问技巧 - 提问时
+
+      * 最好有小的 demo 重现问题
+
+        * 一般来说，要避免提问随机出现的问题
+
+        * 前端的随机问题，一般和网速(时序)等有关
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 提问技巧 - 提问时
+
+      * 大胆猜测，小心求证
+
+      > 不要轻易说“这个问题太奇怪了！”
+
+      ---
+
+      > 要相信科学！
+    </section>
+
+    <section>
+      <h2>训练有素</h2>
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 训练有素
+
+      * 自信心
+
+        * 写得了程序的人，肯定有一定的聪明才智
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 训练有素
+
+      * 谦虚
+
+        * 承认自己智力有限并通过学习来弥补
+
+        * 研究表明，谦虚的程序员善于弥补其不足之处，所编写的代码让自己和他都易看懂，其中的错误也较少
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 训练有素
+
+      * 求知欲
+
+        * 在成长为高手的过程中，对技术事物的求知欲具有压倒一切的重要性
+
+        * 在开发过程中，建立自我意识:
+
+          * 这种方式上次用过了，这次就换种方式
+
+          * 把每个需求都当做提升自己的机会，优秀的程序员总是能够实现各种各样的需求
+
+          * 对新技术的试验
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 训练有素
+
+      * 诚实
+
+        * 不是高手时不假装是高手
+
+        * 乐于承认错误
+
+        > 如果是两个理性而真诚的真理追求者争论问题，争论的结果必然是这两人达成一致
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 训练有素
+
+      * 懒惰
+
+        * 将重复性代码抽象为函数
+
+        * 编写工具完成重复性工作
+    </section>
+
+    <section>
+      <h2>书籍推荐</h2>
+    </section>
+
+    <section class="tal" data-markdown>
+      ## 书籍推荐
+
+      * 面向对象:《Java编程思想》
+
+      * 软件开发:《代码大全》
+        * 本文的很多资料来自于此书
+
+      * 三本权威指南: JavaScript、HTML、CSS
+
+      * 其他
+        * 经典的计算机书籍都应该看一遍
+    </section>
+
+    <section>
+      <h2>没有人能迫使你成为好的程序员</h2>
+    </section>
+
+    <section>
+      <h2>本文档在线访问地址</h2>
+      <div data-markdown>
+        [http://gzool.com/be-a-better-programmer](http://gzool.com/be-a-better-programmer)
+      </div>
+    </section>
+
+    <section>
+      <h2>Thank You</h2>
+      <h3>Q & A</h3>
+      <div data-markdown>
+        [包勇明](https://github.com/huntbao) / [@huntbao](http://weibo.com/gzooler)
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="/public/reveal/lib/js/head.min.js"></script>
+<script src="/public/reveal/js/reveal.js"></script>
+<script src="/public/reveal/js/post.js"></script>
+</body>
+</html>
