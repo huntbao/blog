@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 在网易云上部署自己的应用
+title: 在网易云上部署应用
 category: engineering
 tag: engineering
 permalink: depoy-site-on-163yun
 ---
 
-本文以 Node.js 应用为例，演示如何在[网易云的蜂巢](http://c.163yun.com/)上面部署自己的应用。
+本文以 Node.js 应用为例，演示如何在[网易云的蜂巢](http://c.163yun.com/)上面部署应用。
 
 ## 本地开发环境及工具
 
@@ -157,7 +157,7 @@ mysql -p
 status;
 {% endhighlight %}
 
-使用 vim 修改 MySql的配置文件，修改编码和时区：
+使用 vim 修改 MySql 的配置文件，修改编码和时区：
 
 {% highlight shell %}
 vim /etc/mysql/mysql.conf.d/mysqld.cnf
@@ -193,11 +193,11 @@ default-time-zone = '+8:00'
 至此，除了 Nginx 外，其他工具都已经安装完成。
 
 
-## 通过 pm2 部署 Node 应用
+## 通过 pm2 部署 Node.js 应用
 
-本小节演示如何通过 [pm2](https://github.com/Unitech/pm2) 将 Node 应用部署到目标服务器上面。
+本小节演示如何通过 [PM2](https://github.com/Unitech/pm2) 将 Node.js 应用部署到目标服务器上面。
 
-本地机器和目标服务器都需要 pm2，通过以下命令安装：
+本地机器和目标服务器都需要 PM2，通过以下命令安装：
 
 {% highlight shell %}
 npm install -g pm2
@@ -250,7 +250,7 @@ pm2 deploy ecosystem.config.js production setup
 
 ## 设置 SSH 公钥
 
-打开 Web Console，输入下述命令计算远程机器的 SSH 公钥：
+打开 Web Console，输入下述命令生成远程机器的 SSH 公钥：
 
 {% highlight shell %}
 ssh-keygen
@@ -349,4 +349,4 @@ nginx -s reload
 
 ## 写在最后
 
-由于环境和软件版本的差异以及随着时间的推移，本文所讲述的过程和方法难免会出现差错的情况。也有可能现在你完全按照本文的操作过程也运行不成功，这些都是可能的。不过，如果你已经看到这里，我相信所有的问题你都能解决。
+由于环境和软件版本的差异以及随着时间的推移，本文所讲述的过程和方法难免会出现差错的情况。也有可能现在你完全按照本文的操作步骤也不成功，这些都是可能的。不过，如果你已经看到这里，我相信所有的问题你都能解决。
