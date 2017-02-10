@@ -250,7 +250,7 @@ pm2 deploy ecosystem.config.js production setup
 
 ## 设置 SSH 公钥
 
-打开 Web Console，输入下述命令生成远程机器的 SSH 公钥：
+打开 Web Console，输入下述命令生成远程机器的 SSH 密钥：
 
 {% highlight shell %}
 ssh-keygen
@@ -280,7 +280,7 @@ ssh-keyscan -t rsa bitbucket.org >> ~/.ssh/known_hosts
 
 再次运行上面的部署命令，如果看到最后的 “Success”，那就说明部署已经成功。
 
-> `npm install` 命令可能花费较长时间，有可能会安装失败，可以使用 `npm install --production` 节省一些时间
+> `npm install` 命令可能花费较长时间，有可能会安装失败，可以使用 `npm install --production` 节省一些时间和流量:)
 
 此时就可以在浏览器中打开你的应用了，地址是：`http://[蜂巢服务的公网IP地址]:8081`
 
