@@ -25,7 +25,7 @@ permalink: depoy-site-on-163yun
 
 ## 项目开发流程
 
-首先在 [NEI 接口管理平台](https://nei.netease.com/) 上面定义好所有的异步接口、数据模型和页面等资源，通过 [NEI Toolkit](https://github.com/NEYouFan/nej-toolkit) 提供接口 Mock 服务。
+首先在 [NEI 接口管理平台](https://nei.netease.com/) 上面定义好所有的异步接口、数据模型和页面等资源，通过 [NEI Toolkit](https://github.com/NEYouFan/nei-toolkit) 提供接口 Mock 服务。
 
 使用 Vuejs 和 Webpack 开发前端页面，同时调通所有的接口。前端开发完成后，再使用 Node.js 开发后端服务。再之后的前后端调试利用 NEI Toolkit 提供的代理功能，将请求代理到本地的 Node.js 服务接口上。开发完成后，在本地将所有资源打包，提交到代码仓库。本演示项目托管在 [bitbucket](https://bitbucket.org/) 上面。
 
