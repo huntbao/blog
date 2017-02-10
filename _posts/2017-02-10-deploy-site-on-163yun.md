@@ -6,7 +6,7 @@ tag: engineering
 permalink: depoy-site-on-163yun
 ---
 
-本文以 Node.js 应用为例，演示如何在[网易云的蜂巢](http://c.163yun.com/)上面部署应用。
+本文以 Node.js 应用为例，一步一步演示如何将它部署到[网易云的蜂巢](http://c.163yun.com/)上面。
 
 ## 本地开发环境及工具
 
