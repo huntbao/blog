@@ -11,7 +11,7 @@ permalink: wu-wang-chu-xin
 ![static]({{ site.baseurl }}public/images/wuwangchuxin/textoverflow.png)
 
 中文译文参考的英文原文：
-![static]({{ site.baseurl }}public/images/wuwangchuxin/cotextoverflow2nfig.png)
+![static]({{ site.baseurl }}public/images/wuwangchuxin/textoverflow2.png)
 
 现在的英文原文：
 ![static]({{ site.baseurl }}public/images/wuwangchuxin/textoverflow3.png)
