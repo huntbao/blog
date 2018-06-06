@@ -6,8 +6,8 @@ tag: engineering
 permalink: setup-gitlabrunner-on-163yun
 ---
 
-本文演示如何在[网易云](http://c.163yun.com/)上面安装 Gitlab Runner。
 
+最近由于工作需要，在不同的服务器上安装了好几遍 Gitlab Runner，由于资料较为分散，时间久了，有些安装步骤必然会有所遗忘。本文演示如何在[网易云](http://c.163yun.com/)上面安装 Gitlab Runner，如果你正好也需要搭建 CI 服务，可以参考下面的步骤。
 
 ## 在网易蜂巢上面创建容器服务
 
@@ -27,7 +27,7 @@ permalink: setup-gitlabrunner-on-163yun
 
 选择 `SSH 密钥`。这是用户自己电脑上的公钥，等容器创建好后，可以在本地使用 SSH 的方式直接登录容器。如果是初次使用，就选择“创建SSH密钥”，然后选择“导入密钥”，可以上传本地的 SSH 公钥，或者是将公钥内容粘贴到文本框中。
 
-蜂巢也可以直接使用 `Web Console`，本文使用这种方式，之后会讲解。
+蜂巢也可以直接使用 `Web Console`。
 
 由于 Gitlab Runner 的 CI 服务，会产生很多的构建和缓存文件，容器的系统盘只有 20G，一般来说对于有规模的团队是不够用的，这里我们再挂载一个数据盘，大家可以按照自己的实际需求选择是否要挂载额外的数据盘。
 
@@ -39,7 +39,7 @@ permalink: setup-gitlabrunner-on-163yun
 
 ![static]({{ site.baseurl }}public/images/setupgitlabrunner/fc4.png)
 
->注意，因为 gitlab runner 默认会安装在 /home/gitlab-runner 目录中，挂载目录也需要选择这个
+>注意，gitlab runner 的安装目录和挂载目录需要保持一致，这里我们使用 /home/gitlab-runner 目录
 
 点击“下一步”，然后点击“立即创建”，此时就会开始创建我们设置的容器服务。
 
@@ -67,25 +67,25 @@ permalink: setup-gitlabrunner-on-163yun
 
 按照[官方文档](https://docs.gitlab.com/runner/install/linux-manually.html)，安装 Gitlab Runner
 
-1. 运行下面的命令：
+运行下面的命令：
 
 {% highlight shell %}
 wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
 {% endhighlight %}
 
-2. 修改权限
+修改权限
 
 {% highlight shell %}
 chmod +x /usr/local/bin/gitlab-runner
 {% endhighlight %}
 
-3. 创建 GitLab CI 用户
+创建 GitLab CI 用户
 
 {% highlight shell %}
 useradd --comment 'GitLab Runner' --create-home root --shell /bin/bash
 {% endhighlight %}
 
-4. 安装并运行服务
+安装并运行服务
 
 {% highlight shell %}
 gitlab-runner install --user=root --working-directory=/home/gitlab-runner
@@ -95,7 +95,7 @@ gitlab-runner start
 
 ## 注册 Runner
 
-先打开 Gitlal 上的某个项目，选择设置中的 CI/CD 页面，里面有注册 Runner 时需要的 URL 地址和 Token 信息。
+先打开 Gitlab 上的某个项目，选择设置中的 CI/CD 页面，里面有注册 Runner 时需要的 URL 地址和 Token 信息。
 
 然后依次运行下面的命令
 
@@ -135,6 +135,8 @@ Please enter the executor: ssh, docker+machine, docker-ssh+machine, kubernetes, 
 docker
 {% endhighlight %}
 
+其他选项如果没有特殊要求，就一路回车即可。
+
 ## 启动 Gitlab Runner
 
 此时，在 Gitlab 上的项目的 CI/CD 设置页面，会出现我们注册的 Runner，并且默认已经是启动的。
@@ -146,7 +148,7 @@ docker
 
 ## 安装其他软件
 
-对于前端来说，运行任务时，基本上都需要 Node.js 和其他的软件。常见的软件安装有：
+对于前端工程师来说，运行任务时，基本上都需要 Node.js 和其他的软件。常见的需要安装的软件有：
 
 首先更新安装工具命令：
 
