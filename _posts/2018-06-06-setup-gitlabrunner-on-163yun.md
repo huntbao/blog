@@ -99,37 +99,37 @@ gitlab-runner start
 
 然后依次运行下面的命令
 
-1. 运行注册命令
+运行注册命令
 
 {% highlight shell %}
 gitlab-runner register
 {% endhighlight %}
 
-2. 输入 CI/CD 页面显示的 URL 地址
+输入 CI/CD 页面显示的 URL 地址
 {% highlight shell %}
 Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com )
 https://xxx.xxx.xxx
 {% endhighlight %}
 
-3. 输入 CI/CD 页面显示的 Token
+输入 CI/CD 页面显示的 Token
 {% highlight shell %}
 Please enter the gitlab-ci token for this runner
 xxx
 {% endhighlight %}
 
-4. 输入 Runner 的描述
+输入 Runner 的描述
 {% highlight shell %}
 Please enter the gitlab-ci description for this runner
 [hostame] my-runner
 {% endhighlight %}
 
-5. 输入 Runner 的 Tag
+输入 Runner 的 Tag
 {% highlight shell %}
 Please enter the gitlab-ci tags for this runner (comma separated):
 my-tag,another-tag
 {% endhighlight %}
 
-5. 选择 [Runner executor](https://docs.gitlab.com/runner/executors/README.html)，我们选择 `shell`
+选择 [Runner executor](https://docs.gitlab.com/runner/executors/README.html)，我们选择 `shell`
 {% highlight shell %}
 Please enter the executor: ssh, docker+machine, docker-ssh+machine, kubernetes, docker, parallels, virtualbox, docker-ssh, shell:
 docker
