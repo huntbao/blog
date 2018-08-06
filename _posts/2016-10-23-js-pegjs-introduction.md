@@ -209,9 +209,9 @@ LB "Linebreak"
 
 验证结果：
 
-![pegjs]({{ site.baseurl }}public/images/pegjs/result1.jpg)
+![pegjs](/public/images/pegjs/result1.jpg)
 
-![pegjs]({{ site.baseurl }}public/images/pegjs/result2.jpg)
+![pegjs](/public/images/pegjs/result2.jpg)
 
 
 ## 一个实际例子

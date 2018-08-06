@@ -5,7 +5,7 @@ title: 单页Web应用 勘误收集
 ---
 
 
-![单页Web应用]({{ site.baseurl }}public/images/spa.png)
+![单页Web应用](/public/images/spa.png)
 
 此篇博客作为本书勘误收集而用，若译文有误或者有任何疑问，欢迎留下评论，或者给我发邮件(地址：<gzooler@gmail.com>)非常感谢。
 

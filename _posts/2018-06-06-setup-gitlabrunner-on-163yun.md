@@ -13,13 +13,13 @@ permalink: setup-gitlabrunner-on-163yun
 
 登录 [网易蜂巢](https://c.163.com/)，左边侧栏，选择“容器服务”。可以创建空间，也可以直接使用 default 空间。选中空间后，点击“创建有状态负载”。
 
-![static]({{ site.baseurl }}public/images/setupgitlabrunner/fc1.png)
+![static](/public/images/setupgitlabrunner/fc1.png)
 
 填写完后，点击“下一步”。
 
 点击“选择镜像”。
 
-![static]({{ site.baseurl }}public/images/setupgitlabrunner/fc2.png)
+![static](/public/images/setupgitlabrunner/fc2.png)
 
 在搜索框中，输入 `ubuntu`，选择“公共镜像”，选择自己喜欢的版本，我们就选择默认的“16.04-tools”。
 
@@ -33,11 +33,11 @@ permalink: setup-gitlabrunner-on-163yun
 
 选择“创建云硬盘”，按要求填写名称，按实际需求选择硬盘的容量
 
-![static]({{ site.baseurl }}public/images/setupgitlabrunner/fc3.png)
+![static](/public/images/setupgitlabrunner/fc3.png)
 
 点击“选择数据盘”下拉菜单，选择我们刚才创建的数据盘，然后填写挂载目录
 
-![static]({{ site.baseurl }}public/images/setupgitlabrunner/fc4.png)
+![static](/public/images/setupgitlabrunner/fc4.png)
 
 >注意，gitlab runner 的安装目录和挂载目录需要保持一致，这里我们使用 /home/gitlab-runner 目录
 
@@ -49,7 +49,7 @@ permalink: setup-gitlabrunner-on-163yun
 
 容器服务创建成功后，需要绑定公网IP，选择容器服务的“详细信息”标签，点击“绑定公网IP”
 
-![static]({{ site.baseurl }}public/images/setupgitlabrunner/fc5.png)
+![static](/public/images/setupgitlabrunner/fc5.png)
 
 如果没有可用的公网IP，需要先申请公网IP。根据官方说明“弹性公网 IP 目前仅适用于可用区 B 中 VPC 网络环境中的实例，旧版 IP 管理中 IP 仅适用于可用区 A 中 classic 网络环境中的实例”，申请符合容器服务的公网IP。
 
@@ -60,7 +60,7 @@ permalink: setup-gitlabrunner-on-163yun
 
 选择“副本管理”标签，点击“Console”
 
-![static]({{ site.baseurl }}public/images/setupgitlabrunner/fc6.png)
+![static](/public/images/setupgitlabrunner/fc6.png)
 
 
 ## 安装 Gitlab Runner

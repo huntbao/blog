@@ -212,17 +212,17 @@ server {
 
 不管是本地环境还是线上环境，如果 `static` 的 `host` 地址指向本地，那么看到的是这样的：
 
-![static]({{ site.baseurl }}public/images/static-architecture/local.png)
+![static](/public/images/static-architecture/local.png)
 
 `index.merge.js` 是本地文件，这样就可以直接调试线上环境的问题了，很方便。
 
 如果 `static` 的 `host` 地址指向线上，那么看到的是这样的：
 
-![static]({{ site.baseurl }}public/images/static-architecture/online.png)
+![static](/public/images/static-architecture/online.png)
 
 `index.merge.js` 是线上文件，它的内容已经被替换，它的内容是所有引入文件内容之和，并已经压缩，如图所示：
 
-![static]({{ site.baseurl }}public/images/static-architecture/online-d.png)
+![static](/public/images/static-architecture/online-d.png)
 
 以上都是需要在本地启 `static` 服务才可以。如果开发人员不在公司，在自己的电脑上没有整套 `static` 环境，那有没有办法直接调试线上的问题呢？因为线上的代码都是压缩过的，绝大多数时候是无法直接调试的。
 
@@ -232,21 +232,21 @@ server {
 
 只要能看到单个的未压缩过的模块文件，就可以调试。先看未作任何处理时的情况：
 
-![static]({{ site.baseurl }}public/images/static-architecture/fiddler-1.png)
+![static](/public/images/static-architecture/fiddler-1.png)
 
 线上的代码是压缩过的。
 
 先在本地准备一个文件 `index.merge.js` （文件名可以随意取），如图所示：
 
-![static]({{ site.baseurl }}public/images/static-architecture/fiddler-2.png)
+![static](/public/images/static-architecture/fiddler-2.png)
 
 然后打开 `fiddler`，选中 `AutoResponder` 标签，勾选 `Enable automatic responses`，然后把左边要替换的文件 `index.merge.js` 拖到右边的方框中，在右最下面的输入框中选择 `Find a file...`，在弹出来的文件选择器中选择刚才准备好的放在本地电脑上的 `index.merge.js` 文件，然后点 `save` 按钮：
 
-![static]({{ site.baseurl }}public/images/static-architecture/fiddler-3.png)
+![static](/public/images/static-architecture/fiddler-3.png)
 
 刷新页面，效果如图所示：
 
-![static]({{ site.baseurl }}public/images/static-architecture/fiddler-4.png)
+![static](/public/images/static-architecture/fiddler-4.png)
 
 单个未处理过的模块文件已经出现，这样就可以调试代码了。这也是为什么发版工具没有对单个的模块文件进行压缩处理的原因。
 

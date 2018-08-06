@@ -5,7 +5,7 @@ title: 单页Web应用 译后记
 ---
 
 
-![单页Web应用]({{ site.baseurl }}public/images/spa.png)
+![单页Web应用](/public/images/spa.png)
 
 突然想为这本书写篇译后记，一来是出版社的老师已经提前发布了[《译者序》](</2014/08/25/book-spa-errata-collect/>)的内容，相同的文字再发一遍觉得没啥意思。二来正好还点事情想说明一下。
 

@@ -5,7 +5,7 @@ title: jQuery、jQuery UI及jQuery Mobile技巧与示例 勘误收集
 ---
 
 
-![jQuery技巧与示例]({{ site.baseurl }}public/images/jquery-recipes.jpg)
+![jQuery技巧与示例](/public/images/jquery-recipes.jpg)
 
 此书由程学彬 （<http://weibo.com/ironbin>）和我合译完成，此篇博客作为勘误收集而用，若译文有误或者有任何疑问，欢迎留下评论，或者给我发邮件(地址：<gzooler@gmail.com>)或者联系程学彬，非常感谢。
 

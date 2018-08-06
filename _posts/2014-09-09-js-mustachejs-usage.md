@@ -4,7 +4,7 @@ category: js
 title: Mustache.js 使用简介
 ---
 
-![Mustache.js]({{ site.baseurl }}public/images/mustache.png)
+![Mustache.js](/public/images/mustache.png)
 
 2009 年 10 月，[Chris Wanstrath](http://twitter.com/defunkt){:target="_blank"} 发布了 [Mustache](https://github.com/defunkt/mustache){:target="_blank"}，它是一个 Ruby 工具类库。不久后，[Jan Lehnardt](https://github.com/janl){:target="_blank"} 便发布了 [Mustache.js](https://github.com/janl/mustache.js){:target="_blank"}。
 

@@ -8,13 +8,13 @@ permalink: wu-wang-chu-xin
 今天查资料时，发现了MDN上的一处错误（或者是说表达不清的翻译），如下所示：
 
 中文译文：
-![static]({{ site.baseurl }}public/images/wuwangchuxin/textoverflow.png)
+![static](/public/images/wuwangchuxin/textoverflow.png)
 
 中文译文参考的英文原文：
-![static]({{ site.baseurl }}public/images/wuwangchuxin/textoverflow2.png)
+![static](/public/images/wuwangchuxin/textoverflow2.png)
 
 现在的英文原文：
-![static]({{ site.baseurl }}public/images/wuwangchuxin/textoverflow3.png)
+![static](/public/images/wuwangchuxin/textoverflow3.png)
 
 很久之前，在看MDN中文文档的时候，发现一个很低级但又会误导人的错误，于是注册帐号修改之。
 

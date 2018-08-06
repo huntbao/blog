@@ -56,7 +56,7 @@ permalink: depoy-site-on-163yun
 
 此时最下方会显示配置信息和配置费用的总览，如下图所示：
 
-![static]({{ site.baseurl }}public/images/fengchao/config.png)
+![static](/public/images/fengchao/config.png)
 
 确认信息无误，点击“立即创建”。之后会显示创建过程的信息提示，不用等多久，服务就会创建完成。
 

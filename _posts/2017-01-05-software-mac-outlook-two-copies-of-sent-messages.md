@@ -14,4 +14,4 @@ permalink: mac-outlook-two-copies-of-sent-messages
 
 3. 选中“不存储已发送邮件的副本”，如图所示：
 
-![static]({{ site.baseurl }}public/images/outlook.jpg)
+![static](/public/images/outlook.jpg)

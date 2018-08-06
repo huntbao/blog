@@ -5,6 +5,7 @@ category: engineering
 tag: engineering
 permalink: talk-about-after-frontend-backend-separating
 ---
+
 # 引言
 
 随着单页应用和移动互联网的兴起，软件工程师也很自然地被分成了多个工种，常见的有 Web 前端工程师、iOS 工程师、Android 工程师、后端工程师等。

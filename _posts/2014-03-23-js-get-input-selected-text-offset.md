@@ -6,7 +6,7 @@ title: 获取输入框中选中文本相对于页面的偏移
 
 ### 题目：计算下图所示输入框中的选中文本相对于页面的偏移位置：
 
-![o_textarea_selected_text_offset]({{ site.baseurl }}public/images/o_textarea_selected_text_offset.png)
+![o_textarea_selected_text_offset](/public/images/o_textarea_selected_text_offset.png)
 
 #### 首先思考如何获取页面上选中文本相对页面的偏移位置。
 

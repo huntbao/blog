@@ -14,7 +14,7 @@ Notepad++的代码提示文件是一个XML文件，位置是在：..\Program Fil
 
 将这三个文件：html.xml, css.xml, javascript.xml 复制到上面所说的目录下面即可。友情提醒：覆盖前请备份原来的文件。
 
-[打包文件下载]({{ site.baseurl }}public/others/notepad4jquery.zip)
+[打包文件下载](/public/others/notepad4jquery.zip)
 
 html.xml 收录 264 项， css.xml 收录 562 项， javascript.xml 收录了 2284 项
 
@@ -28,29 +28,29 @@ javascript包含了 Firefox6、chrome13、ie9、safari5、opera11.51 的各种�
 
 打开Notepad++的代码自动完成的功能：设置-->首选项-->备份与自动完成，"所有输入均启用自动完成"前面打上钩：
 
-![演示1]({{ site.baseurl }}public/images/npca/1.jpg)
+![演示1](/public/images/npca/1.jpg)
 
 注：自动完成默认的呼出快捷键是：ctrl+space，该快捷键和输入法冲突，建议把输入法的快捷键给改了。
 
 
 ### 效果演示：
 
-![演示2]({{ site.baseurl }}public/images/npca/2.png)
+![演示2](/public/images/npca/2.png)
 
-![演示3]({{ site.baseurl }}public/images/npca/3.png)
+![演示3](/public/images/npca/3.png)
 
-![演示4]({{ site.baseurl }}public/images/npca/4.png)
+![演示4](/public/images/npca/4.png)
 
-![演示5]({{ site.baseurl }}public/images/npca/5.png)
+![演示5](/public/images/npca/5.png)
 
-![演示6]({{ site.baseurl }}public/images/npca/6.png)
+![演示6](/public/images/npca/6.png)
 
-![演示7]({{ site.baseurl }}public/images/npca/7.png)
+![演示7](/public/images/npca/7.png)
 
 
 注：关于制作过程，这里就不解释了，也写了好些JS，稍微看下代码相信都能明白的。HTML和CSS没什么捷径可寻，基本上是人肉完成的。
 
-[制作包下载]({{ site.baseurl }}public/others/np-autocomplete.zip)
+[制作包下载](/public/others/np-autocomplete.zip)
 
 本文最初发表于[博客园](http://www.cnblogs.com/huntbao/archive/2012/02/20/notepad-code-autocomplete.html){:target="_blank"}
 

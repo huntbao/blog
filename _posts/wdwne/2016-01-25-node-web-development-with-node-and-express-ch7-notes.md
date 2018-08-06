@@ -68,7 +68,7 @@ $('document').ready(function(){
     {{ "{{{_sections.head"}}}}}
   </head>
   <body>
-    {{{body}}}
+    {{ "{{{body"}}}}}
     <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
     {{ "{{{_sections.jquery"}}}}}
   </body>

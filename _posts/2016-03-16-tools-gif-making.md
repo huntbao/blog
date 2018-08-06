@@ -19,11 +19,11 @@ QuickTime 录屏生成的文件格式是 .mov 文件。
 
 打开 Photoshop, 选择“文件 --> 导入 --> 视频帧到图层...”，如图所示：
 
-![static]({{ site.baseurl }}public/images/gifmaking/import.jpg)
+![static](/public/images/gifmaking/import.jpg)
 
 注意，由于视频的时间一般都较长，如果直接使用默认选项，很可能会出现下面的提示：
 
-![static]({{ site.baseurl }}public/images/gifmaking/alert.jpg)
+![static](/public/images/gifmaking/alert.jpg)
 
 所以这里需要勾选“限制为每隔...帧”的选项，也就是每隔多少帧提取一个图层，比如输入 20。
 
