@@ -119,6 +119,13 @@ apt-get install redis-server
 /etc/init.d/redis-server start
 {% endhighlight %}
 
+更改 Redis 密码：
+
+{% highlight shell %}
+vim /etc/redis/redis.conf
+{% endhighlight %}
+
+找到 `SECURITY` 部分的 `requirepass`，后面跟的就是需要设置的密码。
 
 安装 Git：
 
