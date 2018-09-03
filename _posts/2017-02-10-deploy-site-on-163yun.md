@@ -353,6 +353,37 @@ nginx -s reload
 
 至此，应用部署完成。
 
+## 安装 MongoDB[2018.9.3 补充]
+
+蜂巢上的 MongoDB 的版本是 Community Edition 是 3.4，接下来也来安装这个版本。安装过程比较简单，按照官方文档即可：[https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-ubuntu/](https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-ubuntu/)
+
+1. Import the public key used by the package management system.
+{% highlight shell %}
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+{% endhighlight %}
+
+2. Create a list file for MongoDB.
+{% highlight shell %}
+echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+{% endhighlight %}
+
+3. Reload local package database.
+{% highlight shell %}
+apt-get update
+{% endhighlight %}
+
+4. Install the MongoDB packages.
+{% highlight shell %}
+apt-get install -y mongodb-org
+{% endhighlight %}
+
+上述命令可能失败，按照提示添加 ` --allow-unauthenticate` 参数
+
+5. Run MongoDB Community Edition
+{% highlight shell %}
+mongod --config /etc/mongod.conf
+{% endhighlight %}
+
 
 ## 写在最后
 
