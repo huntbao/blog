@@ -162,6 +162,8 @@ Worker 是浏览器原生支持的，不需要引入额外的文件，是优先�
 eval('process.exit(0)');
 ```
 
+和在浏览器中一样，也需要把代码放到隔离的沙箱中去运行。
+
 #### VM
 
 Node.js 有一个 [vm](https://nodejs.org/api/vm.html) 模块，它可以在 V8 虚拟机中编译和执行代码，它是和当前执行环境隔离的沙箱环境，其中没有 `process`、`console`、`fs` 等全局对象：
