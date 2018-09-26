@@ -208,9 +208,9 @@ const {VM} = require('vm2');
 new VM().run('this.constructor.constructor("return process")().exit()');
 ```
 
-vm2 内部也是调用了 vm，它使用了 [Proxy](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 来防止访问沙箱外的东西，并且覆写了内置的 `require` 命令。
+vm2 内部也是调用了 vm，它使用了 [Proxy](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 来防止访问沙箱外的东西，并且覆写了内置的 `require` 命令，对一些内置对象做了访问限制。
 
-但我们不能认为它是绝对安全的，比如这个[issue](https://github.com/patriksimek/vm2/issues/32)，从中我们知道 vm2 本身也是不断地在优化中。目前没有发现安全问题并不能说明不存在安全问题。
+但我们不能认为它是绝对安全的，比如从这个[issue](https://github.com/patriksimek/vm2/issues/32)，我们可以看出 vm2 本身也是不断地在进化中。目前没有发现安全问题并不能说明不存在安全问题。
 
 ## 小结
 
