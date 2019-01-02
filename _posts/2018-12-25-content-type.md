@@ -6,7 +6,7 @@ tag: content-type
 permalink: content-type
 ---
 
-很多年前，一位前端领域的专家级人物找到我，然后有了下面的对话：
+很多年前，一位前端领域的专家找到我，然后有了下面的对话：
 
 专家：这个图片地址（类似于这种 `http://www.example.com/xyz`）是不是搞错了？
 
@@ -79,16 +79,46 @@ Content-Type 的值可以由三个部分组成，如下：
 Content-Type: [media-type];[charset=charset];[boundary=boundary]
 ```
 
-* `media-type`，资源或者数据的 [MIME Types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)，比如 `image/png`。
+* `media-type`，资源或者数据的 [MIME Types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)，比如 `image/png`（Multipurpose Internet Mail Extensions，多用途 Internet 邮件扩展，简称 MIME）。
 
 * `charset`，资源或者数据的字符编码标准，比如 `utf-8`。
 
 * `boundary`，对于复合实体（multipart entities），boundary 是必需的，其包括来自一组字符的1到70个字符，已知通过电子邮件网关是非常健壮的，而不是以空白结尾。它用于封装消息的多个部分的边界。通常 boundary 的最前面和最后面都添加了两个横线。
 
 
-## 常见的 Content-Type 值
+## MIME 语法及种类
 
-对于前端工程师来说，有几个 Content-Type 值必须要掌握，我们挨个来看一下。
+MIME 的语法如下：
+
+```
+type/subtype
+```
+
+MIME的组成结构非常简单；由类型与子类型两个字符串中间用`/`分隔而组成。不允许空格存在。type 表示可以被分多个子类的独立类别。subtype 表示细分后的每个类型。
+
+MIME 类型对大小写不敏感，但是传统写法都是小写。
+
+MIME 种类可以分成两个大数，独立类型 和 Multipart 类型。
+
+* 独立类型
+  * text，表明文件是普通文本，理论上是人类可读。
+  * image，表明是某种图像。不包括视频，但是动态图（比如动态gif）也使用image类型。
+  * audio，表明是某种音频文件。
+  * video，表明是某种视频文件。
+  * application，表明是某种二进制数据。
+
+>对于text文件类型若没有特定的 subtype，就使用 text/plain。类似的，二进制文件没有特定或已知的 subtype，即使用 application/octet-stream。
+
+* Multipart 类型
+  * multipart/form-data
+  * multipart/byteranges
+
+> Multipart 类型表示细分领域的文件类型的种类，经常对应不同的 MIME 类型。这是复合文件的一种表现方式。multipart/form-data 可用于联系 HTML Forms 和 POST 方法，此外 multipart/byteranges 使用状态码 206 Partial Content 来发送整个文件的子集，而 HTTP 对不能处理的复合文件使用特殊的方式：将信息直接传送给浏览器（这时可能会建立一个“另存为”窗口，但是却不知道如何去显示内联文件。）
+
+
+## 常见的 MIME 值
+
+对于前端工程师来说，有几个 MIME 值必须要掌握，我们挨个来看一下。
 
 
 ### application/octet-stream
@@ -103,4 +133,206 @@ Content-Type: [media-type];[charset=charset];[boundary=boundary]
 
 ### text/css
 
-在网页中要被解析为 CSS 的任何 CSS 文件必须指定 MIME 为 text/css。通常，服务器不识别以 .css 为后缀的文件的 MIME 类型，而是将其以 MIME 为 text/plain 或 application/octet-stream 来发送给浏览器：在这种情况下，大多数浏览器不识别其为 CSS 文件，直接忽略掉。特别要注意为 CSS 文件提供正确的 MIME 类型。
+在网页中要被解析为 CSS 的文件必须指定 MIME 为 text/css。通常，服务器不识别以 .css 为后缀的文件的 MIME 类型，而是将其以 MIME 为 text/plain 或 application/octet-stream 来发送给浏览器，在这种情况下，大多数浏览器不识别其为 CSS 文件，直接忽略掉。
+
+在 Chrome 浏览器中，如果 CSS 没有指定 MIME 类型，它会在控制台显示一条如下的警告信息：
+
+```
+Resource interpreted as Stylesheet but transferred with MIME type text/plain: "http://127.0.0.1:8080/a.css".
+```
+
+如果 CSS 是通过外部链接的方式引入文档的，也就是使用 link 标签，需要指定它的 `rel` 值为 `stylesheet`，又因为 `stylesheet` 类型对应的文件只有 CSS 一种，此时 link 标签的 type 属性值是可以省略的，也就是不用写 `type="text/css"`，这也是现在推荐的做法。内联方式的 `style` 标签也同理。
+
+
+### JavaScript 的 MIME 类型
+
+据 MIME 嗅探标准，下面是有效的 JavaScript MIME 类型：
+
+* `application/javascript`
+* `application/ecmascript`
+
+其他所有的 `text` 开头的值已经全部被废弃。
+
+
+### 图片类型
+
+常见的有 `image/gif`、`image/jpeg`、`image/png`、`image/svg+xml` 等。
+
+
+### multipart/form-data
+
+当需要将浏览器中的整个 HTML 表单数据发送给服务器时，可以使用 `multipart/form-data`。它表示一种复合文档格式（multipart document format），由不同的部分组成，使用 boundary （一个以 -- 开头的字符串）分隔。对于文件上传字段，每个部分都有各自的 HTTP 头、Content-Disposition 和 Content-Type。
+
+比如下面这个表单：
+
+```html
+<form action="http://127.0.0.1:3000/api/data" method="post" enctype="multipart/form-data">
+  <label>Name: <input name="myTextField" value="Test"></label>
+  <label><input type="checkbox" name="myCheckBox"> Check</label>
+  <label>Upload file: <input type="file" name="myFile"></label>
+  <button>Send the file</button>
+</form>
+```
+
+后端接收代码为：
+
+```js
+const fs = require('fs');
+const http = require('http');
+const url = require('url');
+
+http.createServer(function (req, res) {
+  const request = url.parse(req.url, true);
+  const pathname = request.pathname;
+  if (req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString();
+    });
+    req.on('end', () => {
+      console.log(body);
+      res.end('ok');
+    });
+  } else if (pathname === '/') {
+    const html = fs.readFileSync(__dirname + '/test.html');
+    res.writeHead(200);
+    res.end(html, 'binary');
+  } else {
+    res.writeHead(200);
+  }
+}).listen(3000, '127.0.0.1');
+```
+
+填写下表单，选择一个文本文件，发送的内容大致为（使用 [Charles](https://www.charlesproxy.com/download/) 抓包看的结果）：
+
+```
+POST /api/data HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Length: 396
+Pragma: no-cache
+Cache-Control: no-cache
+Origin: http://127.0.0.1:3000
+Upgrade-Insecure-Requests: 1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryO6aTo0R62isSQqNd
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://127.0.0.1:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+
+------WebKitFormBoundaryO6aTo0R62isSQqNd
+Content-Disposition: form-data; name="myTextField"
+
+Test
+------WebKitFormBoundaryO6aTo0R62isSQqNd
+Content-Disposition: form-data; name="myCheckBox"
+
+on
+------WebKitFormBoundaryO6aTo0R62isSQqNd
+Content-Disposition: form-data; name="myFile"; filename="test.txt"
+Content-Type: text/plain
+
+hello world
+------WebKitFormBoundaryO6aTo0R62isSQqNd--
+```
+
+后端拿到的请求体数据为：
+
+```
+------WebKitFormBoundaryto3g2TNiB3G3GHmd
+Content-Disposition: form-data; name="myTextField"
+
+Test
+------WebKitFormBoundaryto3g2TNiB3G3GHmd
+Content-Disposition: form-data; name="myCheckBox"
+
+on
+------WebKitFormBoundaryto3g2TNiB3G3GHmd
+Content-Disposition: form-data; name="myFile"; filename="test.txt"
+Content-Type: text/plain
+
+hello world
+------WebKitFormBoundaryto3g2TNiB3G3GHmd--
+```
+
+### application/x-www-form-urlencoded
+
+我们先把上面的表单改一下：
+
+```html
+<form action="http://127.0.0.1:3000/api/data" method="post" enctype="application/x-www-form-urlencoded">
+  <label>Name: <input name="myTextField" value="Test"></label>
+  <label><input type="checkbox" name="myCheckBox"> Check</label>
+  <label>Upload file: <input type="file" name="myFile"></label>
+  <button>Send the file</button>
+</form>
+```
+
+此时发送的内容为：
+
+```
+POST /api/data HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Length: 30
+Pragma: no-cache
+Cache-Control: no-cache
+Origin: http://127.0.0.1:3000
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://127.0.0.1:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+
+myTextField=Test&myCheckBox=on&myFile=test.txt
+```
+
+后端接收到的数据为：
+
+```
+myTextField=Test&myCheckBox=on&myFile=test.txt
+```
+
+它是一段字符串，没有二进制的文件内容。这段字符串是以 `名称=值` 对的形式连接，连接符是 `&`。根据[规范](https://www.w3.org/TR/html401/interact/forms.html)中`17.13.4 Form content types`的描述，Form 表单默认的编码类型（enctype）是 `application/x-www-form-urlencoded`，并且必须按照下面的规则处理：
+
+* 控件的名称和值（names and values） 必须转义。空格转换成 `+`，不是字母数字的字符，需要转换为 `%HH` 的格式，前面一个百分号，之后跟的是该字符的 ASCII 码的十六进制形式，用两个字节表示。换行使用`CR LF`对表示，比如 `%0D%0A`。
+* 控制的名称和值对按照它们在文档中出现的顺序排列。名称和值以`=`连接，然后再以`&`将所有的名称和值对连接起来。
+
+
+### multipart/form-data vs application/x-www-form-urlencoded
+
+根据上面的描述，`multipart/form-data` 和 `application/x-www-form-urlencoded` 都可以用来发送表单数据，但需要注意的是：
+
+* 因为 `application/x-www-form-urlencoded` 会对字符进行转义，所以它不适合发送大量的二进制数据或者是包含非 ASCII 码字符的文本，这非常低效。此时需要使用 `multipart/form-data`。
+* 那是不是只用 `multipart/form-data` 就可以了？并非如此。如果发送的数据量很小，并且都是字母数据类型的值（大多数场景都是如此），此时就适合使用 `application/x-www-form-urlencoded`，因为 `multipart/form-data` 要增加的 boundary 等开销可能比实际的数据量还要大。
+
+
+### application/json
+
+它是 JSON 的官方 MIME 类型。下面是使用 [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) 方法来发送 json 数据的示例代码：
+
+```js
+  (async () => {
+    const res = await fetch('http://127.0.0.1:3000/api/json', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({a: 1, b: 'b'})
+    });
+    const content = await res.json();
+    console.log(content);
+  })();
+```
+
+发送的是一个字符串，内容是：
+
+```
+{"a":1,"b":"b"}
+```
+
+后端拿到的也是一个字符串，内容同上。之后就可以使用解析 JSON 字符串的库将字符串转换成程序容易处理的 JSON 对象，比如 Node.js 原生支持的 `JSON` 对象。
+
+关于 `Content-Type` 的介绍就讲到这里，相信看到这里的你已经掌握了这个 Web 开发最常见的知识点了。
