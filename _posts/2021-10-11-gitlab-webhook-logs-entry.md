@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Gitlba Webhook Logs 查看入口
+title: Gitlab Webhook Logs 查看入口
 category: Tips
 tag: tech-tips
 permalink: gitlab-webhook-logs-entry
