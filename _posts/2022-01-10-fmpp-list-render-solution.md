@@ -26,7 +26,7 @@ const obj = [{'name':'HTML'}, {'name':'CSS'}];
 ${skills}
 ```
 
-则输出的结果为：`[{name=HTML}, {name=CSS}]`，这个是一个字符串，并且格式并不符合 JSON 规范，我们希望输出的格式和数据本身是保持一致的。
+则输出的结果为：`[{name=HTML}, {name=CSS}]`，这是一个字符串，并且格式并不符合 JSON 规范，我们希望输出的格式和数据本身保持一致。
 
 当然，我们可以写函数转换成 JSON 格式（输出在 HTML 代码中），但处理过程比较繁琐，因为对象字段的值也可以是对象，比如：
 
@@ -35,7 +35,7 @@ ${skills}
 const skills = [{'name':{first:'HTML',last:'FREEMARKER'}}, {'name':'CSS'}];
 ```
 
-输出结果为：`[{name={last=FREEMARKER, first=HTML}}, {name=CSS}]`，这处理起来就不方便了。
+输出结果为：`[{name={last=FREEMARKER, first=HTML}}, {name=CSS}]`，处理起来就不方便了。
 
 那会不会是 FreeMarker 本身的问题呢？我们可以使用下面的 Java 代码进行验证：
 
