@@ -2,8 +2,8 @@
 layout: post
 title: 聊聊 SaaS 定制化
 category: sass
-tag: SaaS customization
-permalink: SaaS-customization
+tag: saas customization
+permalink: saas-customization
 ---
 
 ## 定制化简述
