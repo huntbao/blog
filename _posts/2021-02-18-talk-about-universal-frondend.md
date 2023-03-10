@@ -2,8 +2,8 @@
 layout: post
 title: 谈谈大前端
 category: Definitions
-tag: universal-frondend
-permalink: talk-about-universal-frondend
+tag: universal-frontend
+permalink: talk-about-universal-frontend
 ---
 
 本来是想直接写写大前端负责人的职责的，但是在查阅资料的时候，发现“大前端”的介绍文章还很少，大家对这个概念也还存在偏差，所以在写下一篇之前，有必要来谈谈什么是大前端。
@@ -15,7 +15,7 @@ permalink: talk-about-universal-frondend
 
 所以，在云音乐，大前端是iOS、安卓、前端三者的总称，对于普通业务开发同学来说，工作职责并未发生变化，iOS工程师仍旧做iOS开发，安卓工程师仍旧做安卓开发，前端仍旧做前端开发，并且头衔也未发生变化。
 
-根据搜索公开资料，国外应该没有“大前端”的说法，所以也没有对应的英文，这是国内业界人士发明的词汇，我这里也给它起个英文名字：Universal Frondend。
+根据搜索公开资料，国外应该没有“大前端”的说法，所以也没有对应的英文，这是国内业界人士发明的词汇，我这里也给它起个英文名字：Universal Frontend。
 
 需要注意的是，很多人理解的大前端，其实是全栈工程师，国外称之为 full-stack engineer。全栈工程师是指既懂前端又懂后端的工程师，一般是由Web前端工程师转变而来，因为他们擅长的是JavaScript语言，而Node.js使用的就是JavaScript语言规范（ECMAScript），他们有天然优势成为全栈工程师。
 
@@ -30,7 +30,7 @@ permalink: talk-about-universal-frondend
 
 我们发现，iOS和安卓，都是一种操作系统，在特定平台上开发，需要投入巨大的学习精力，所以按照平台来划分工程师头衔是合理的。
 
-我们通常称为的前端，特指Web前端工程师，是用Web技术（HTML、CSS、JavaScript等）实现基于浏览器的UI界面，浏览器可以在任意操作系统上运行，所以头衔就不会和操作系统平台挂钩。HTML、CSS和JavaScript是前端工程师必须掌握的三门语言，所以头衔也不会和开发语言挂钩。有些公司确实也设立了JavaScript开发工程师，但这不是主流的做法。只会JavaScript而不懂HTML和CSS，确实很难有作为。因为UI界面靠近用户侧，称之为“前端”也是合理的，对应的英文为 frondend，以区别于服务端，所以服务端也叫“后端”。
+我们通常称为的前端，特指Web前端工程师，是用Web技术（HTML、CSS、JavaScript等）实现基于浏览器的UI界面，浏览器可以在任意操作系统上运行，所以头衔就不会和操作系统平台挂钩。HTML、CSS和JavaScript是前端工程师必须掌握的三门语言，所以头衔也不会和开发语言挂钩。有些公司确实也设立了JavaScript开发工程师，但这不是主流的做法。只会JavaScript而不懂HTML和CSS，确实很难有作为。因为UI界面靠近用户侧，称之为“前端”也是合理的，对应的英文为 frontend，以区别于服务端，所以服务端也叫“后端”。
 
 Web浏览器其实也是一种“客户端”，所以将iOS、安卓和前端统称为“客户端”也是合理的，但是一个头衔名词既然已经被大家认可理解，如果再赋予新的含义总会产生不必要的沟通麻烦，此时使用新名词是有必要的。所以“客户端”这个叫法并不合适。由于iOS和安卓也是一种UI界面，所以将iOS和安卓称为“前端”也合理。同样的原因，“前端”已经特指“Web前端”，没必要再赋予它新的含义。
 
