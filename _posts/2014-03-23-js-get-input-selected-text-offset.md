@@ -1,5 +1,4 @@
 ---
-layout: post
 category: js
 title: 获取输入框中选中文本相对于页面的偏移
 ---
@@ -112,7 +111,7 @@ $(document).mouseup(function (e) {
     console.log(boundingClientRect)
     mouseDownedInput = null
 })
-    
+
 {% endhighlight %}
 
 #### 说明

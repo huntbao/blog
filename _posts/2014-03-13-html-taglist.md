@@ -1,5 +1,4 @@
 ---
-layout: post
 category: html
 title: html标签对应的英文原文
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 category: js
 title: Mustache.js 使用简介
 ---

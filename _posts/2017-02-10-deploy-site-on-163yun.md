@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 在网易云上部署应用
 category: engineering
 tag: engineering

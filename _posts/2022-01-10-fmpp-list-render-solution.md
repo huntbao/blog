@@ -1,5 +1,4 @@
 ---
-layout: post
 title: FMPP 渲染 List 的解决方案
 category: open source tools
 tag: tools

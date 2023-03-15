@@ -1,5 +1,4 @@
 ---
-layout: post
 title: APP标准研发流程
 category: Engineering
 tag: app-dev

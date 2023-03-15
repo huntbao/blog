@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 谈谈前后端分离之后
 category: engineering
 tag: engineering

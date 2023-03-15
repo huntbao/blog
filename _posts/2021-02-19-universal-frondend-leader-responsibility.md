@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 大前端负责人的职责
 category: Engineering
 tag: universal-frondend

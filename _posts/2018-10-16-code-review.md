@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 十条简单高效的 Code Review 技巧【翻译】
 category: Engineering
 tag: Code Review

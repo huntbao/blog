@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Web包装设计实战
 category: svg
 tag: svg package design

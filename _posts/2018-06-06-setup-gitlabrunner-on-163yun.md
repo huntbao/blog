@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 在网易云上安装 Gitlab Runner
 category: engineering
 tag: engineering

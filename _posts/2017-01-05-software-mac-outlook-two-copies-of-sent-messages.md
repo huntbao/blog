@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Mac Outlook 发件箱出现两份相同的信息
 category: software
 tag: software

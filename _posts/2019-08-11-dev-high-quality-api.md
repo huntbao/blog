@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 开发高质量服务端 API
 category: Engineering
 tag:  effective

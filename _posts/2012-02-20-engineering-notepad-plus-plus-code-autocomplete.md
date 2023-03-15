@@ -1,5 +1,4 @@
 ---
-layout: post
 category: engineering
 title: Notepad++ 代码自动完成制作方法
 ---
@@ -53,8 +52,3 @@ javascript包含了 Firefox6、chrome13、ie9、safari5、opera11.51 的各种�
 [制作包下载](/public/others/np-autocomplete.zip)
 
 本文最初发表于[博客园](http://www.cnblogs.com/huntbao/archive/2012/02/20/notepad-code-autocomplete.html){:target="_blank"}
-
-
-
-
-

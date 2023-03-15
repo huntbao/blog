@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 勿忘初心
 category: others
 tag: others

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Web Development with Node and Express Chapter 21 - Going Live
 category: wdwne
 ---

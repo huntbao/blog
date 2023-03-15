@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 谈谈大前端
 category: Definitions
 tag: universal-frontend

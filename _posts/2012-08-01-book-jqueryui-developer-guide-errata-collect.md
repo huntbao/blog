@@ -1,5 +1,4 @@
 ---
-layout: post
 category: book
 title: jQuery UI开发指南 勘误收集
 ---
@@ -43,6 +42,3 @@ jQuery UI的官方文档有些地方写得过于简单，没有详细解释，�
 
 
 2012年8月　于上海
-
-
-

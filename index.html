@@ -1,21 +1,7 @@
 ---
-layout: page
-title: All articles
+# You don't need to edit this file, it's empty on purpose.
+# Edit theme's home layout instead if you wanna make some changes
+# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+layout: home
+author_profile: true
 ---
-<div class="archives">
-    <ul class="archive-posts">
-        {% for post in site.posts %}
-        {% if post.category != "wdwne" and post.hidden != true %}
-        <li>
-            <a href="{{ post.url }}">
-                {{ post.title }}
-                <small>{{ post.date | date_to_string }}</small>
-            </a>
-            {% if post.category == 'presentation' %}
-            <sup class="title-cate">ppt</sup>
-            {% endif %}
-        </li>
-        {% endif %}
-        {% endfor %}
-    </ul>
-</div>
