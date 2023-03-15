@@ -20,6 +20,7 @@ twitter_username: huntbao
 github_username: huntbao
 minimal_mistakes_skin: default
 search: true
+locale: zh
 
 # Build settings
 github: [metadata]
