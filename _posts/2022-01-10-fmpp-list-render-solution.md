@@ -5,8 +5,6 @@ tag: tools
 permalink: fmpp-list-render-solution
 ---
 
-# 背景介绍
-
 [FMPP](http://fmpp.sourceforge.net/index.html) 是一款用来处理 [FreeMarker ](https://freemarker.apache.org/) 模板的文本引擎工具。
 
 FMPP 本身是用 Java 编写的，Node.js 也可以执行 jar 文件，这就给 Node.js 渲染 ftl 模板提供了可能。
