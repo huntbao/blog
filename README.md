@@ -11,6 +11,8 @@ gem sources -l
 https://ruby.taobao.org
 ```
 
+> 最新 $ gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+
 #### Install jekyll
 ```shell
 sudo gem install jekyll

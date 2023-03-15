@@ -1,5 +1,4 @@
 ---
-layout: post
 category: node
 title: Web Development with Node and Express - Learning notes
 ---

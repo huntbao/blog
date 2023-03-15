@@ -1,5 +1,4 @@
 ---
-layout: post
 category: engineering
 title: 广联云 static 架构及原理介绍
 ---

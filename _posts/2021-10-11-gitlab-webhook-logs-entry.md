@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Gitlab Webhook Logs 查看入口
 category: Tips
 tag: tech-tips

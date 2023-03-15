@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 汉字转拼音的浏览器端实现
 category: javascript
 tag: javascript

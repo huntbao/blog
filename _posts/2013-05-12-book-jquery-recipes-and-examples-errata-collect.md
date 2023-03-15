@@ -1,5 +1,4 @@
 ---
-layout: post
 category: book
 title: jQuery、jQuery UI及jQuery Mobile技巧与示例 勘误收集
 ---
@@ -50,7 +49,3 @@ title: jQuery、jQuery UI及jQuery Mobile技巧与示例 勘误收集
 
 
 2013年5月12日　于上海
-
-
-
-

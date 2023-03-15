@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 如何安全地运行用户的 JavaScript 脚本
 category: JavaScript
 tag: JavaScript, Security

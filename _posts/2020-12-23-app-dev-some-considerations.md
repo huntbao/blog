@@ -1,5 +1,4 @@
 ---
-layout: post
 title: APP 研发中的若干注意事项
 category: Engineering
 tag: app-dev

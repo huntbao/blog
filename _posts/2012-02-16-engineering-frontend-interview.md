@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 老外的前端面试题
 category: engineering
 ---
@@ -125,10 +124,10 @@ var person = new Person()
 
 {% highlight javascript %}
 var foo = "Hello";
-(function() { 
-  var bar = " World"; 
-  alert(foo + bar); 
-})(); 
+(function() {
+  var bar = " World";
+  alert(foo + bar);
+})();
 alert(foo + bar);
 {% endhighlight %}
 
@@ -186,8 +185,3 @@ $(".foo div#bar:eq(0)")
 
 
 本文最初发表于[博客园](http://www.cnblogs.com/huntbao/archive/2012/02/16/front-end-job-interview-questions.html){:target="_blank"}
-
-
-
-
-

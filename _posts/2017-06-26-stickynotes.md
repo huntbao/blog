@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 两小时快速开发自己的便笺系
 category: live
 tag: live

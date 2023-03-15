@@ -1,5 +1,4 @@
 ---
-layout: post
 title: gif 动图制作方法
 category: tool
 tag: tool

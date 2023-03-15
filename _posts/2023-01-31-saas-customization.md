@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 聊聊 SaaS 定制化
 category: sass
 tag: saas customization

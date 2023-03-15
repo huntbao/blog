@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 如何愉快地写个小 Parser —— PEG.js 介绍
 category: js
 tag: js pegjs

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 居家隔离的若干注意事项
 category: Life
 tag: life

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Object.create(null) 的用法
 category: js
 tag: js
