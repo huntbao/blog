@@ -5,6 +5,8 @@ tag: life
 permalink: home-quarantine-notes
 ---
 
+> 愿疫情永远不会再降临人类。
+
 12 月 7 号上午 10 点 25 分，有位邻居在业主群发了一张照片，问：“17幢啥情况”
 
 ![](/public/images/home-quarantine/1.jpg)
