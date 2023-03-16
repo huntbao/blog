@@ -21,6 +21,7 @@ github_username: huntbao
 minimal_mistakes_skin: default
 search: true
 locale: zh
+repository: huntbao/blog
 
 # Build settings
 github: [metadata]
@@ -86,7 +87,15 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: true
+      comments:
+        provider: "giscus"
+        giscus:
+          repo_id              : "MDEwOlJlcG9zaXRvcnkyMzA3NzQyOA=="
+          category_name        : "Announcements"
+          category_id          : "DIC_kwDOAWAiNM4CU6y2"
+          discussion_term      : "pathname"
+          reactions_enabled    : "1"
+          theme                : "light"
       # share: true
       related: true
   # _pages
