@@ -22,7 +22,8 @@ minimal_mistakes_skin: default
 search: true
 locale: zh
 repository: huntbao/blog
-encoding: utf-8
+words_per_minute: 60
+
 
 # Build settings
 github: [metadata]
@@ -92,10 +93,10 @@ defaults:
         provider: "giscus"
         giscus:
           repo_id              : "MDEwOlJlcG9zaXRvcnkyMzA3NzQyOA=="
-          category_name        : "Q&A"
+          category_name        : "Specific Post Comments"
           category_id          : "DIC_kwDOAWAiNM4CU6y4"
           discussion_term      : "pathname"
-          reactions_enabled    : "1"
+          reactions_enabled    : 1
           theme                : "light"
       # share: true
       related: true
