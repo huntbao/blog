@@ -29,7 +29,7 @@ comments:
     repo_id              : "MDEwOlJlcG9zaXRvcnkyMzA3NzQyOA=="
     category_name        : "Specific Post Comments"
     category_id          : "DIC_kwDOAWAiNM4CU6y4"
-    discussion_term      : "pathname"
+    discussion_term      : "url"
     reactions_enabled    : 1
     theme                : "light"
 
