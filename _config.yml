@@ -23,7 +23,15 @@ search: true
 locale: zh
 repository: huntbao/blog
 words_per_minute: 60
-
+comments:
+  provider: "giscus"
+  giscus:
+    repo_id              : "MDEwOlJlcG9zaXRvcnkyMzA3NzQyOA=="
+    category_name        : "Specific Post Comments"
+    category_id          : "DIC_kwDOAWAiNM4CU6y4"
+    discussion_term      : "pathname"
+    reactions_enabled    : 1
+    theme                : "light"
 
 # Build settings
 github: [metadata]
@@ -89,15 +97,7 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments:
-        provider: "giscus"
-        giscus:
-          repo_id              : "MDEwOlJlcG9zaXRvcnkyMzA3NzQyOA=="
-          category_name        : "Specific Post Comments"
-          category_id          : "DIC_kwDOAWAiNM4CU6y4"
-          discussion_term      : "pathname"
-          reactions_enabled    : 1
-          theme                : "light"
+      comments: true
       # share: true
       related: true
   # _pages
