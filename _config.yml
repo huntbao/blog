@@ -27,9 +27,9 @@ comments:
   provider: "giscus"
   giscus:
     repo_id              : "MDEwOlJlcG9zaXRvcnkyMzA3NzQyOA=="
-    category_name        : "Specific Post Comments"
+    category_name        : "BlogComments"
     category_id          : "DIC_kwDOAWAiNM4CU6y4"
-    discussion_term      : "url"
+    discussion_term      : "pathname"
     reactions_enabled    : 1
     theme                : "light"
 
