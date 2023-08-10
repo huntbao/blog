@@ -1,19 +1,19 @@
 # Gzool blog
 
-### Change gem sources:
+## Change gem sources
+
 Since rubygems.org is fucked by GFW, so need to change gem sources first:
 
 ```shell
-gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/
+# gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/ --remove https://gems.ruby-china.com/
 gem sources -l
 *** CURRENT SOURCES ***
-
-https://ruby.taobao.org
+# https://ruby.taobao.org
 ```
 
-> 最新 $ gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+### Install jekyll
 
-#### Install jekyll
 ```shell
 sudo gem install jekyll
 ```
@@ -24,10 +24,10 @@ if pygments is not installed, then:
 sudo gem install pygments.rb
 ```
 
+### Run
 
-#### Run
 ```shell
-jekyll serve
+bundle exec jekyll server --livereload
 ```
 
 Now browse to http://localhost:4000

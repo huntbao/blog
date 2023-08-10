@@ -8,3 +8,5 @@ package.json
 package-lock.json
 node_modules
 .jekyll-cache
+ruby
+.bundle
