@@ -7,7 +7,7 @@ permalink: code-review-with-chatgpt
 
 在编程世界中，有三个老大难问题，大家都觉得非常重要但实际上却经常被忽视：文档、单元测试和代码审查（Code Review）。
 
-本文要讨论的是第三个问题：Code Review，主要介绍网易云商前端团队在 Code Review 上的探索和实践。
+本文要讨论的是第三个问题：Code Review，主要介绍网易云商前端团队在 Code Review 流程和工具上的探索和实践，不涉及 Code Review 的理论知识。
 
 ![cr](/public/images/codereview/6.jpg)
 
