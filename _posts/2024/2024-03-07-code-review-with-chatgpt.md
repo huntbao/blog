@@ -146,7 +146,9 @@ This is original code:\n```' + oldContent + '```\n\nThis is new code:\n```' + ne
 
 但是非常遗憾，我们公司部署的 Gitlab 版本不支持这个插件（有个登录认证接口是新版本的 Gitlab 才加上的，老版本没有这个接口），此外，我们发现 Gitlab Workflow 插件在展示代码时，使用了只读模式，在只读模式下，右键菜单功能非常有限，比如没有 Github Copilot 菜单。
 
-基于上述考虑，我们参考了 Gitlab Workflow 的功能和代码，开发了一个类似的插件，在渲染代码内容时，我们把编辑器设置为可编辑，这样所有右键菜单都能正常使用。至此，我们的 Code Review 流程就完全搬到了 IDE 中进行，效果截图如下：
+基于上述考虑，我们参考了 Gitlab Workflow 的功能和代码，开发了一个类似的插件，在渲染代码内容时，我们把编辑器设置为可编辑，这样所有右键菜单都能正常使用。关于插件的开发细节，这里就不展开了，可以参考插件作者编写的文章。
+
+至此，我们的 Code Review 流程就完全搬到了 IDE 中进行，效果截图如下：
 
 ![cr](/public/images/codereview/3.png)
 
