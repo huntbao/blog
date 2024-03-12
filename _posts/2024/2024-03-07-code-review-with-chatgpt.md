@@ -123,8 +123,15 @@ Code Review 的重要性不言而喻，但为什么有些团队却不重视它�
 
 最终的 Prompt 大致如下：
 
-```plaintext
-This is original code:\n```' + oldContent + '```\n\nThis is new code:\n```' + newContent + '```\nCompare and analyze the aforementioned original code and new code, point out the logical differences between the new code and the original code, indicate whether the new code can be optimized, and provide detailed explanations.. Response language: Chinese
+```js
+This is original code:\n```' + oldContent + '```\n
+This is new code:\n```' + newContent + '```\n
+Compare and analyze the aforementioned original 
+code and new code, point out the logical differences
+between the new code and the original code, 
+indicate whether the new code can be optimized, 
+and provide detailed explanations.
+Response language: Chinese
 ```
 
 经过上述优化后，ChatGPT 的回复效果得到了显著提升，它能够精准分析出新老代码的差异，提出合理的建议，这让我们团队非常惊喜，下面是一个 ChatGPT 的回复案例，帮我们发现了一个代码逻辑错误：
