@@ -31,3 +31,8 @@ bundle exec jekyll server --livereload
 ```
 
 Now browse to http://localhost:4000
+
+## MathJax
+
+* https://github.com/jeffreytse/jekyll-spaceship
+* https://docs.mathjax.org/en/latest/options/output/svg.html
