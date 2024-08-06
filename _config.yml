@@ -36,7 +36,7 @@ comments:
 # Build settings
 github: [metadata]
 markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
+theme: minimal-mistakes-jekyll
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
@@ -56,12 +56,14 @@ exclude:
 
 # Plugins (previously gems:)
 plugins:
+  - jekyll-spaceship
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-algolia
 
 author:
   name   : "Hunt Bao"
@@ -110,3 +112,19 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+
+# Jekyll Spaceship，禁用右键菜单，使用 svg 渲染
+jekyll-spaceship:
+  mathjax-processor:
+    config:
+      tex:
+        inlineMath:
+          - ['$','$']
+          - ['\(','\)']
+        displayMath:
+          - ['$$','$$']
+          - ['\[','\]']
+      svg:
+        fontCache: 'none'
+      options:
+        enableMenu: false
