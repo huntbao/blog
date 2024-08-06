@@ -36,8 +36,7 @@ comments:
 # Build settings
 github: [metadata]
 markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
-#theme: minimal-mistakes-jekyll
+theme: minimal-mistakes-jekyll
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
