@@ -5,7 +5,7 @@ tag: algorithm, javascript
 permalink: algorithm-hard-js-longest-increasing-subsequences
 ---
 
-> 困难算法题，拼接最大数，使用 JavaScript 语言编写
+> 困难算法题，最长递增子序列，使用 JavaScript 语言编写
 
 ## 题目
 

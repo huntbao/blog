@@ -1,11 +1,11 @@
 ---
-title: 【算法题-困难】按格式合并两个链表
+title: 【算法题-困难】按公因数计算最大组件大小
 category: algorithm
 tag: linked list, javascript
-permalink: algorithm-hard-js-merge-two-linked-list
+permalink: algorithm-hard-js-maximum-component-size-by-common-factor
 ---
 
-> 困难算法题，按格式合并两个链表，使用 JavaScript 语言编写
+> 困难算法题，按公因数计算最大组件大小，使用 JavaScript 语言编写
 
 ## 题目
 

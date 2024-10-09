@@ -1,11 +1,11 @@
 ---
-title: 【算法题-困难】不相交的线
+title: 【算法题-困难】最长超赞子字符串
 category: algorithm
 tag: algorithm, javascript
 permalink: algorithm-hard-js-longest-awesome-substring
 ---
 
-> 困难算法题，不相交的线，使用 JavaScript 语言编写
+> 困难算法题，最长超赞子字符串，使用 JavaScript 语言编写
 
 ## 题目
 

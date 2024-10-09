@@ -1,5 +1,5 @@
 ---
-title: 【算法题-困难】按格式合并两个链表
+title: 【算法题-困难】拼接最大数
 category: algorithm
 tag: linked list, javascript
 permalink: algorithm-hard-js-merge-two-linked-list
