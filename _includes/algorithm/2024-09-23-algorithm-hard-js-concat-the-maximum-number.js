@@ -5,7 +5,7 @@ let inputs = `
 9,1,2,5,8,3
 5
 `;
-const nums = inputs.trim().split(' ').map(Number);
+const nums = inputs.trim().split('\n').map(line => line.split(',').map(Number));
 
 function maxSubsequence(nums, len) {
   const stack = [];
@@ -44,10 +44,4 @@ function maxNumber(nums1, nums2, k) {
   return maxResult;
 }
 
-// 示例
-const nums1 = [3, 4, 6, 5];
-const nums2 = [9, 1, 2, 5, 8, 3];
-const k = 5;
-// console.log(maxNumber(nums1, nums2, k)); // 输出 [9, 8, 6, 5, 3]
-
-console.log(maxSubsequence(nums1, 3))
+console.log(maxNumber(nums[0], nums[1], nums[2][0]).join(',')); // 9,8,6,5,3
