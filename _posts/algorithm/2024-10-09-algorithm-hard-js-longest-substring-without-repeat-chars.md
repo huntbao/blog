@@ -13,7 +13,11 @@ permalink: algorithm-hard-js-longest-substring-without-repeat-chars
 
 ### 输入格式
 
+一个字符串 s
+
 ### 输出格式
+
+一个数字，表示最长子串的长度
 
 ### 输入样例
 
@@ -65,6 +69,22 @@ pwwkew
 
 ## 分析
 
+详细步骤
+
+1. 初始化：
+  * 使用一个哈希表 `map` 来存储字符及其对应的索引。
+  * 初始化两个指针 `left` 和 `right`，分别表示当前窗口的左右边界。
+  * 初始化变量 `maxLength` 来记录最长子串的长度。
+
+2. 遍历字符串：
+  * 使用 `right` 指针遍历字符串 `s`。
+  * 如果当前字符 `s[right]` 已经在哈希表 `map` 中，并且其索引大于等于 `left`，则更新 `left` 为 `map[s[right]] + 1`。
+  * 将当前字符 `s[right]` 及其索引存入哈希表 `map`。
+  * 计算当前窗口的长度 `right - left + 1`，并更新 `maxLength`。
+
+3. 返回结果：
+  * 返回 `maxLength`，即最长不含重复字符的子串的长度。
+
 ## 解答
 
 ```js
@@ -73,3 +93,16 @@ pwwkew
 
 ## 解释
 
+1. 初始化：
+  * `map` 用于存储字符及其索引。
+  * `left` 和 `right` 指针用于表示当前窗口的左右边界。
+  * `maxLength` 用于记录最长子串的长度。
+
+2. 遍历字符串：
+  * 遍历字符串 `s`，使用 `right` 指针。
+  * 如果当前字符 `s[right]` 已经在 `map` 中，并且其索引大于等于 `left`，则更新 `left` 为 `map.get(s[right]) + 1`。
+  * 将当前字符 `s[right]` 及其索引存入 `map`。
+  * 计算当前窗口的长度 `right - left + 1`，并更新 `maxLength`。
+
+3. 返回结果：
+  * 返回 `maxLength`，即最长不含重复字符的子串的长度。

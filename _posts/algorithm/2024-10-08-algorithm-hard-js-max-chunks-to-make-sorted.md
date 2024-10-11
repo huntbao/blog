@@ -9,9 +9,9 @@ permalink: algorithm-hard-js-max-chunks-to-make-sorted
 
 ## 题目
 
-给你一个整数数组 arr。将 arr 分割成若干块，并将这些块分别进行排序。之后再连接起来，使得连接的结果和按升序排序后的原数组相同。
+给定一个整数数组 arr。将 arr 分割成若干块，并将这些块分别进行排序。之后再连接起来，使得连接的结果和按升序排序后的原数组相同。
 
-返回能将数组分成的最多块数？
+返回能将数组分成的最多块数。
 
 ### 输入格式
 
@@ -61,8 +61,8 @@ permalink: algorithm-hard-js-max-chunks-to-make-sorted
 
 代码长度限制
 
-
 ## 分析
+
 
 ## 解答
 
