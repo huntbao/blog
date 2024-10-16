@@ -43,13 +43,11 @@ function longestAwesome2(s) {
   for (let i = 0; i < s.length; i++) {
     // 数字出现的次数（0-9）
     const showTimes = new Array(10).fill(0);
-    let str = "";
-    // 以 s[i] 开头的所有子字符串
     for (let j = i; j < s.length; j++) {
       showTimes[s[j]]++;
-      str += s[j];
-      //判断这个子串是否超赞子字符串
+      
       let oddCounts = 0;
+      // 0-9 出现的次数为奇数的个数
       for (let k = 0; k < 10; k++) {
         if (showTimes[k] % 2 !== 0) {
           oddCounts++;

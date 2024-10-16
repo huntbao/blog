@@ -11,12 +11,12 @@ function decode(encoded) {
   let totalXor = 0;
   let encodedXor = 0;
 
-  // 计算 1 到 n 的所有整数的异或和
+  // 计算 1 到 n 的所有整数的异或值
   for (let i = 1; i <= n; i++) {
     totalXor ^= i;
   }
 
-  // 计算 encoded 数组中所有奇数索引位置的元素的异或和
+  // 计算 encoded 数组中所有奇数索引位置的元素的异或值
   for (let i = 1; i < n - 1; i += 2) {
     encodedXor ^= encoded[i];
   }
