@@ -68,5 +68,5 @@ permalink: algorithm-hard-js-merge-two-linked-list
 ## 解答
 
 ```js
-{% include algorithm/2024-04-11-algorithm-hard-js-merge-two-linked-list.js %}
+{% include algorithm/2024-10-17-algorithm-hard-js-merge-two-linked-list.js %}
 ```
