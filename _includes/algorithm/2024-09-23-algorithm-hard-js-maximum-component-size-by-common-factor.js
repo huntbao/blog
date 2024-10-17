@@ -1,13 +1,13 @@
 
 // 这是题目要求的输入格式
 let inputs = `
-  4 16 15 35
+  4 6 15 35
 `;
 const nums = inputs.trim().split(' ').map(Number);
 
 // 查找最大公约数
-function findGCD(a, b){
-  while(b !== 0){
+function findGCD(a, b) {
+  while (b !== 0) {
     const tmp = b;
     b = a % b;
     a = tmp;
@@ -31,29 +31,29 @@ class UnionFind {
     this.componentSize = new Array(size).fill(1);
   }
   find(x) {
-    if(this.parents[x] !== x){
+    if (this.parents[x] !== x) {
       return this.find(this.parents[x]);
     }
     return x;
   }
-  union(x, y){
+  union(x, y) {
     const rootX = this.find(x);
     const rootY = this.find(y);
-    if(rootX !== rootY){
+    if (rootX !== rootY) {
       this.parents[rootY] = rootX;
       this.componentSize[rootX] += this.componentSize[rootY];
     }
   }
-  getLargestSize(){
+  getLargestSize() {
     return Math.max(...this.componentSize);
   }
 }
 function largestComponentSize(nums) {
   // 确保parents能装下所有数字
-  const uf = new UnionFind(Math.max(...nums)+1);
-  for(let i = 0; i < nums.length; i++) {
-    for(let j = 1; j < nums.length; j++) {
-      if(findGCD(nums[i], nums[j]) > 1) {
+  const uf = new UnionFind(Math.max(...nums) + 1);
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 1; j < nums.length; j++) {
+      if (findGCD(nums[i], nums[j]) > 1) {
         uf.union(i, j);
       }
     }
@@ -62,5 +62,4 @@ function largestComponentSize(nums) {
 }
 
 // 示例
-// const nums = [4, 6, 15, 35];
 console.log(largestComponentSize(nums)); // 输出 4

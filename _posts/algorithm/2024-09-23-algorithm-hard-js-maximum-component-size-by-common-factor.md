@@ -11,9 +11,8 @@ permalink: algorithm-hard-js-maximum-component-size-by-common-factor
 
 给定一个由不同正整数组成的非空数组 nums，考虑下面的构图：
 
-有 nums.length 个节点，按照从 nums[0]到 nums[nums.length-1]标记；
-
-只有当 nums[i] 和 nums[j] 共用一个大于 1 的公因数时，nums[i] 和 nums[j] 之间才有一条边。
+* 有 nums.length 个节点，按照从 nums[0] 到 nums[nums.length-1]标记；
+* 只有当 nums[i] 和 nums[j] 共用一个大于 1 的公因数时，nums[i] 和 nums[j] 之间才有一条边。
 
 返回构图中最大连通组件的大小。
 
