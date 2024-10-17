@@ -2,7 +2,7 @@
 title: 【算法题-困难】拼接最大数
 category: algorithm
 tag: linked list, javascript
-permalink: algorithm-hard-js-merge-two-linked-list
+permalink: algorithm-hard-js-concat-the-maximum-number
 ---
 
 > 困难算法题，拼接最大数，使用 JavaScript 语言编写

@@ -1,19 +1,32 @@
 // 链表类
-class ListNode {
-  constructor(address, data, next) {
-    this.address = address;
-    this.data = data;
-    this.next = next;
-  }
-
-  reverse() {
-    // 反转链表，链表中的第一个节点来调用该方法即可
-    let prev = null;
-    let current = this;
-    while (current !== null) {
-      [current.next, prev, current] = [prev, current, current.next];
+class Node {
+  addr = null
+  val = null
+  next = null
+  constructor(map, addr, l) {
+    l.val += 1;
+    this.addr = addr;
+    let [v, n] = map.get(addr);
+    this.val = v;
+    if (n !== '-1') {
+      this.next = new Node(map, n, l);
     }
-    return prev;
+  }
+  toString() {
+    let [n, retV] = [this, []];
+    while (n !== null) {
+      retV.push(`${n.addr} ${n.val} ${n.next === null ? '-1' : n.next.addr}`);
+      n = n.next;
+    }
+    return retV.join('\n');
+  }
+  reverse() {
+    // 反转链表
+    let [h, c] = [null, this];
+    while (c !== null) {
+      [c.next, h, c] = [h, c, c.next];
+    }
+    return h;
   }
 }
 
@@ -32,25 +45,25 @@ const c = inputs.split('\n');
 const [startAddr1, startAddr2, totalNodeNum] = c[0].split(' ');
 // Map 只是为了方便构建链表数据结构
 const map = new Map();
-for (let i = 1; i <= parseInt(totalNodeNum); i++) {
-    let [a1, v, n] = c[i].split(' ');
-    map.set(a1, [v, n]);
+for (let i = 1; i <= parseInt(totalNum); i++) {
+  let [a1, v, n] = c[i].split(' ');
+  map.set(a1, [v, n]);
 }
 //构建两个链表并且直接返回链表长度
 let length1 = { val: 0 };
 let length2 = { val: 0 };
-var L1 = new ListNode(map, startAddr1, length1);
-var L2 = new ListNode(map, startAddr2, length2);
+var L1 = new Node(map, startAddr1, length1);
+var L2 = new Node(map, startAddr2, length2);
 if (length1.val < length2.val) {
-    // 确保 L1 是长的链表
-    [L1, L2] = [L2, L1];
+  // 确保 L1 是长的链表
+  [L1, L2] = [L2, L1];
 }
 // 反转短链表
 L2 = L2.reverse();
 let [cl1, cl2] = [L1, L2];
 while (cl2 !== null) {
-    // 长链表每隔2个结点，插一个短链表的结点。直到短链表没有剩余结点
-    cl1 = cl1.next;
-    [cl1.next, cl2.next, cl2, cl1] = [cl2, cl1.next, cl2.next, cl1.next];
+  // 长链表每隔2个结点，插一个短链表的结点。直到短链表没有剩余结点
+  cl1 = cl1.next;
+  [cl1.next, cl2.next, cl2, cl1] = [cl2, cl1.next, cl2.next, cl1.next];
 }
 console.log("" + L1);
