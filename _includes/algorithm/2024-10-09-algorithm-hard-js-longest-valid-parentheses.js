@@ -23,7 +23,6 @@ function longestValidParentheses(s) {
         // 如果栈不为空，计算当前有效括号子串的长度，即 i - stack[stack.length - 1]，并更新 maxLength。
         // maxLength = i - stack[stack.length - 1]; // 错误写法，不能通过用例 "()(()"。
         maxLength = Math.max(maxLength, i - stack[stack.length - 1]);
-        console.log('maxLength:', maxLength);
       }
     }
   }

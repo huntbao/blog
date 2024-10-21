@@ -1,3 +1,14 @@
+const inputs = `
+00100 01000 7
+02233 2 34891
+00100 6 00001
+34891 3 10086
+01000 1 02233
+00033 5 -1
+10086 4 00033
+00001 7 -1
+`;
+
 // 链表类
 const nodeAddrMap = new Map();
 
@@ -31,18 +42,6 @@ class Node {
     return prev;
   }
 }
-
-const inputs = `
-00100 01000 7
-02233 2 34891
-00100 6 00001
-34891 3 10086
-01000 1 02233
-00033 5 -1
-10086 4 00033
-00001 7 -1
-`;
-
 const c = inputs.split('\n');
 const [startAddr1, startAddr2, totalNodeNum] = c[0].split(' ');
 

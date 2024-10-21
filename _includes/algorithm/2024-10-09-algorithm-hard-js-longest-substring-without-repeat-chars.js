@@ -1,6 +1,6 @@
 
 // 这是题目要求的输入格式
-let inputs = `bbbbb`;
+let inputs = `abcabcbb`;
 
 function lengthOfLongestSubstring(s) {
   const hashSet = new Set();
@@ -20,5 +20,5 @@ function lengthOfLongestSubstring(s) {
   return maxLength;
 }
 
-// 示例
-console.log(lengthOfLongestSubstring(inputs)); // 不能 trim，否则无法通过测试用例
+// 不能 trim，否则无法通过测试用例，因为输入s 由英文字母、数字、符号和空格组成
+console.log(lengthOfLongestSubstring(inputs));

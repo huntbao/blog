@@ -52,7 +52,7 @@ function maxPathSum(root) {
     // 更新全局最大路径和
     maxSum = Math.max(maxSum, currentPathSum);
 
-    // 返回从当前节点出发的最大路径和
+    // 返回从当前节点出发的最大路径和, 因为如果当前节点不是最终路径的根节点, 那么只能选择左子树或者右子树，不能同时选择
     return node.val + Math.max(leftGain, rightGain);
   }
 
