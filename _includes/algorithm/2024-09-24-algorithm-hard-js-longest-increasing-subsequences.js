@@ -20,5 +20,19 @@ function lengthOfLIS(nums) {
   return Math.max(...dp);
 }
 
+function lengthOfLIS2(nums) {
+  const stack = [];
+  let ret = 0;
+  while (nums.length > 0) {
+    let f = nums.shift();
+    while (stack.length > 0 && stack[stack.length - 1] >= f) {
+      stack.pop();
+    }
+    stack.push(f);
+    ret = Math.max(ret, stack.length);
+  }
+  return ret;
+}
+
 // 示例
-console.log(lengthOfLIS(nums)); // 输出 4
+console.log(lengthOfLIS2(nums)); // 输出 4

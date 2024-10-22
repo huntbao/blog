@@ -8,9 +8,7 @@ const nums = inputs.trim().split(' ').map(Number);
 // 查找最大公约数
 function findGCD(a, b) {
   while (b !== 0) {
-    const tmp = b;
-    b = a % b;
-    a = tmp;
+    [a, b] = [b, a % b];
   }
   return a;
 }

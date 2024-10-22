@@ -1,8 +1,8 @@
 
 // 这是题目要求的输入格式
 let inputs = `
-6 1 3 7 1 7 5
-5 1 9 2 5 1
+3 1 4 2
+3 1 2 4
 `;
 
 inputs = inputs.trim().split('\n').map(line => line.trim().split(' ').map(Number));

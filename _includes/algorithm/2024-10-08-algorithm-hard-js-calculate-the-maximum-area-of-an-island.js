@@ -20,9 +20,7 @@ function findBiggestIsland(arr) {
   let biggest = 0;
   for (let i = 0; i < row; i++) {
     for (let j = 0; j < col; j++) {
-      if (arr[i][j] === 1) {
-        biggest = Math.max(biggest, dfs(i, j));
-      }
+      biggest = Math.max(biggest, dfs(i, j));
     }
   }
   return biggest;
