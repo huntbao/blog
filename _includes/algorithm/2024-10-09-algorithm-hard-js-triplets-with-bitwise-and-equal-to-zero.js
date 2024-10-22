@@ -14,6 +14,7 @@ function countTriplets(nums) {
   // 检查第三个数
   for (let k = 0; k < n; k++) {
     for (const [andResult, freq] of countMap) {
+      // (andResult & nums[k])，两边要加括号，否则优先级没有 & 高
       if ((andResult & nums[k]) === 0) {
         count += freq;
       }
