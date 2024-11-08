@@ -3,6 +3,7 @@ title: 【算法题-困难】最长递增子序列
 category: algorithm
 tag: algorithm, javascript
 permalink: algorithm-hard-js-longest-increasing-subsequences
+hidden: true
 ---
 
 > 困难算法题，最长递增子序列，使用 JavaScript 语言编写

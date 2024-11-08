@@ -3,6 +3,7 @@ title: 【算法题-困难】超级回文数
 category: algorithm
 tag: algorithm, javascript
 permalink: algorithm-hard-js-super-palindromic-number
+hidden: true
 ---
 
 > 困难算法题，超级回文数，使用 JavaScript 语言编写

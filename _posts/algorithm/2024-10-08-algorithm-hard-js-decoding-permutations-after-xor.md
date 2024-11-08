@@ -3,6 +3,7 @@ title: 【算法题-困难】解码异或后的排列
 category: algorithm
 tag: algorithm, javascript
 permalink: algorithm-hard-js-decoding-permutations-after-xor
+hidden: true
 ---
 
 > 困难算法题，解码异或后的排列，使用 JavaScript 语言编写

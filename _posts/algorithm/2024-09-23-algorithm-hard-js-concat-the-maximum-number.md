@@ -3,6 +3,7 @@ title: 【算法题-困难】拼接最大数
 category: algorithm
 tag: linked list, javascript
 permalink: algorithm-hard-js-concat-the-maximum-number
+hidden: true
 ---
 
 > 困难算法题，拼接最大数，使用 JavaScript 语言编写

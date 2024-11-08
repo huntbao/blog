@@ -3,6 +3,7 @@ title: 【算法题-困难】最长有效括号
 category: algorithm
 tag: algorithm, javascript
 permalink: algorithm-hard-js-longest-valid-parentheses
+hidden: true
 ---
 
 > 困难算法题，最长有效括号，使用 JavaScript 语言编写

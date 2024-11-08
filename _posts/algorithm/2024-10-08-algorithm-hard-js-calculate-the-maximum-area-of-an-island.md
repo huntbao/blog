@@ -3,6 +3,7 @@ title: 【算法题-困难】计算岛屿最大面积
 category: algorithm
 tag: algorithm, javascript
 permalink: algorithm-hard-js-calculate-the-maximum-area-of-an-island
+hidden: true
 ---
 
 > 困难算法题，计算岛屿最大面积，使用 JavaScript 语言编写

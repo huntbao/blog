@@ -3,6 +3,7 @@ title: 【算法题-困难】最长超赞子字符串
 category: algorithm
 tag: algorithm, javascript
 permalink: algorithm-hard-js-longest-awesome-substring
+hidden: true
 ---
 
 > 困难算法题，最长超赞子字符串，使用 JavaScript 语言编写

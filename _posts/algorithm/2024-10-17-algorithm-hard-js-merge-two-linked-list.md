@@ -3,6 +3,7 @@ title: 【算法题-困难】按格式合并两个链表
 category: algorithm
 tag: linked list, javascript
 permalink: algorithm-hard-js-merge-two-linked-list
+hidden: true
 ---
 
 > 困难算法题，按格式合并两个链表，使用 JavaScript 语言编写

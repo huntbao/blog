@@ -3,6 +3,7 @@ title: 【算法题-困难】最多能完成排序的块
 category: algorithm
 tag: algorithm, javascript
 permalink: algorithm-hard-js-max-chunks-to-make-sorted
+hidden: true
 ---
 
 > 困难算法题，最多能完成排序的块，使用 JavaScript 语言编写
