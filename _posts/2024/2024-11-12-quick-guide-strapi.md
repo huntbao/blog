@@ -10,16 +10,16 @@ permalink: quick-guide-strapi
 上面这句话包含了 3 个关键信息：
 
 1. 开源：Strapi 是一个开源项目，这意味着你可以免费使用它（某些功能可能会受限）。github 地址：[https://github.com/strapi/strapi](https://github.com/strapi/strapi)。
-2. Headless：这意味着它不提供前端界面，你需要使用其他技术来构建前端应用。
-3. CMS：这意味着 Strapi 适合用来构建 CMS 应用，非 CMS 应用是不适合的。
+2. Headless：这意味着 Strapi 不提供前端界面，你需要使用任意前端技术来构建前端界面。
+3. CMS：这意味着 Strapi 只适合用来构建 CMS 应用，非 CMS 应用是不适合的。
 
 ## 设计理念
 
 Strapi 做的事情大致如下：
 
-1. 提供了一个本地开发环境，让你可以方便的开发和调试。在本地开发环境中，使用 Content-Type Builder 功能，可以创建 Content-Type，这其实就是建模过程，一个 Content-Type 就是一个 Model，可以给这个 Content-Type 添加字段，字段也有类型，和创建数据库表类似，常见的需求肯定都是能配置出来的。在本创建的模型，会保存成一个 schema.json 文件。
+1. 提供了一个本地开发环境，让你可以方便的开发和调试。在本地开发环境中，使用 Content-Type Builder 功能，可以创建 Content-Type，这其实就是建模过程，一个 Content-Type 就是一个 Model，可以给这个 Content-Type 添加字段，字段也有类型，和创建数据库表类似，常见的需求肯定都是能配置出来的。在本地创建的模型，会保存为一个 schema.json 文件。
 2. 本地开发环境创建完模型后，可以将上述 schema.json 文件及其他配置数据部署到 Strapi Cloud 服务器上。当然部署过程中，需要提供一些账号信息，按照提示操作即可。
-3. 在 Strapi Cloud 上部署完成后，你就可以使用 API 来获取数据了。API 支持 REST 和 GraphQL 两种方式。比如最常见的就是 CRUD 操作，可以先使用 POST 请求创建一条数据，最后使用 GET 请求来获取数据。当然这些接口的访问权限可以设置，比如公开、认证授权等等。
+3. 在 Strapi Cloud 上部署完成后，你就可以使用 API 来获取数据了。API 支持 REST 和 GraphQL 两种方式。比如 REST 接口，可以先使用 POST 请求创建一条数据，最后使用 GET 请求来获取数据。当然这些接口的访问权限也可以设置，比如公开、认证授权等等。
 
 Strapi Cloud 可以理解为一台服务器，服务端接口已经都部署好了，我们可以使用前端技术（移动端技术也可以）来调用这些接口，这样就能快速创建一个 CMS 应用。
 
