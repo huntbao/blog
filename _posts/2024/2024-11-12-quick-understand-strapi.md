@@ -2,7 +2,7 @@
 title: 一文了解 Strapi
 category: 技术
 tag: strapi
-permalink: quick-guide-strapi
+permalink: quick-understand-strapi
 ---
 
 [Strapi](https://strapi.io/) 的官方介绍是：Open-source headless CMS。
@@ -13,7 +13,7 @@ permalink: quick-guide-strapi
 2. Headless：这意味着 Strapi 不提供前端界面，你需要使用任意前端技术来构建前端界面。
 3. CMS：这意味着 Strapi 只适合用来构建 CMS 应用，非 CMS 应用是不适合的。
 
-## 设计理念
+## 核心功能
 
 Strapi 做的事情大致如下：
 
@@ -25,15 +25,17 @@ Strapi Cloud 可以理解为一台服务器，服务端接口已经都部署好�
 
 围绕着上述设计理念，Strapi 还提供了非常多的功能，这个也是显而易见需要提供的功能，不然常规 CMS 应用都无法创建。
 
+## 插件市场
+
+Strapi 提供了近 200 个可以直接使用的插件，方便应用开发者直接使用，插件就是一个 npm 安装包，开发者在项目中直接安装 npm 包依赖即可使用。如果没有找到符合需求的插件，还可以向社区提交插件需求，得到社区的插件开发者的帮助。
+
 ## 和低代码平台的区别
 
 低代码平台一般会提供一个可视化的界面，让你可以方便的拖拽组件来创建应用，同时低代码平台一般都是包含前端界面的。可以理解为 Strapi 是低代码平台的一种非常轻量级的实现。
 
 ## 商业模式
 
-> 注：以下内容是 AI 生成的，仅供参考。
-
-Strapi 采用开源加商业化的双轨制商业模式：
+Strapi 采用开源+商业化的双轨制商业模式：
 
 1. 社区版（Community Edition）
    - 完全免费开源
