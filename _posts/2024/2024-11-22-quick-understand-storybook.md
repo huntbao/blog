@@ -5,6 +5,8 @@ tag: storybook
 permalink: quick-understand-storybook
 ---
 
+![title](/public/images/storybook/title.png)
+
 ## 简介
 
 [Storybook](https://github.com/storybookjs/storybook) 是一个 UI 组件开发环境，它允许开发者在独立的环境中开发和展示组件，而不需要在应用中运行。Storybook 有助于开发者在不同状态、变量、事件等情况下展示组件，方便开发者开发和调试组件。
