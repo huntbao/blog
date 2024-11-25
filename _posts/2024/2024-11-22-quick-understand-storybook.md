@@ -7,7 +7,7 @@ permalink: quick-understand-storybook
 
 ## 简介
 
-[Storybook](https://github.com/storybookjs/storybook) 是一个 UI 组件开发环境，它允许开发者在独立的环境中开发和展示组件，而不需要在应用中运行。Storybook 有助于开发者在不同状态、变量、事件等情况下展示组件，方便开发者调试和展示组件。
+[Storybook](https://github.com/storybookjs/storybook) 是一个 UI 组件开发环境，它允许开发者在独立的环境中开发和展示组件，而不需要在应用中运行。Storybook 有助于开发者在不同状态、变量、事件等情况下展示组件，方便开发者开发和调试组件。
 
 Storybook 是一个开源项目，目前由 [Chromatic](https://www.chromatic.com) 公司维护，商业模式主要有以下几种方式：
 
@@ -17,7 +17,7 @@ Storybook 是一个开源项目，目前由 [Chromatic](https://www.chromatic.co
 
 ## 模板项目
 
-想要了解一个项目的功能，最好的方式就是按照官方的介绍实际体验一下。
+想要了解一个项目的功能，最好的方式就是按照官方文档实际体验一下。
 
 1. 运行 `npx storybook@latest init` 命令可以安装 Storybook 模板项目，技术栈选择 `React + Vite`。
 2. 运行 `npm run dev` 命令可以启动项目。
@@ -35,7 +35,7 @@ Storybook 模板项目内置了三个组件：`Button.tsx`、`Header.tsx` 和 `P
 
 ![dev-docs](/public/images/storybook/dev-docs.png)
 
-模板项目运行很简单，效果很惊艳，忍不住要给它点个赞。
+模板项目运行简单，代码易懂，效果惊艳，忍不住要给它点个赞。
 
 ## 核心功能
 
@@ -54,7 +54,7 @@ Storybook 模板项目内置了三个组件：`Button.tsx`、`Header.tsx` 和 `P
   - 视图测试，这个功能依赖 Chromatic 云端服务器，需要在本地运行命令，将代码上传到 Chromatic 云端，Chromatic 会截取代码修改前后的组件 UI 快照，然后对比两个快照的差异，生成变更报告，方便开发者查看组件的变更情况。
 
 - `Interactions` 面板的具体功能如下：
-  - 交互行为测试，这个功能会自动运行组件的 UI 测试用例，用例写在 stories 文件中，如果测试用例通过，会显示绿色的勾，如果测试用例不通过，会显示红色的叉，方便开发者查看组件的测试情况。
+  - 交互行为测试，这个功能会自动运行组件的 UI 测试用例，用例写在 stories 文件中，如果测试用例通过，会显示绿色的`PASS`，如果测试用例不通过，会显示红色的`FAIL`。
 
 ![dev-interactions-succeed](/public/images/storybook/dev-interactions-succeed.png)
 
@@ -62,7 +62,7 @@ Storybook 模板项目内置了三个组件：`Button.tsx`、`Header.tsx` 和 `P
 
 ## 小插曲
 
-我在体验 Storybook 模板项目的过程，一开始并没有发现 `Page.stories.ts` 文件编写了交互行为测试代码，一直在看 `Button.stories.ts` 代码。
+我在体验 Storybook 模板项目的过程中，一开始并没有发现 `Page.stories.ts` 文件编写了交互行为测试代码，而是一直在研究 `Button.stories.ts` 代码。
 
 作为一名前端开发者应该有的嗅觉，看到了 `Interactions` 面板后，就研究了下官方文档说明 [Component tests](https://storybook.js.org/docs/writing-tests/component-testing?renderer=react)，然后自然是想要如何给这个 `Button.tsx` 按钮组件添加交互行为测试。
 
@@ -72,17 +72,19 @@ Storybook 模板项目内置了三个组件：`Button.tsx`、`Header.tsx` 和 `P
 
 ![ddev-interactions-failed](/public/images/storybook/button-interaction-code.png)
 
-但写完发后发现点击事件不生效，排查后发现是因为我加的 `onClick` 方法被传入的参数 `props` 中的 `onClick` 默认值给覆盖了。为了快速验证效果，我就把 `props` 相关的代码都删除了，点击事件就生效了。
+但写完发后发现点击事件不生效，排查后发现是因为我加的 `onClick` 方法被传入的参数 `props` 中的 `onClick` 默认值给覆盖了。为了快速验证效果，我删除了 `props` 的相关代码，点击事件就生效了。
 
 然后我就在 `Button.stories.ts` 文件中添加了一个测试用例，很完美地跑通用例后，心情是非常愉悦的。
 
-然后我就想着如何通过命令行运行测试用例，继续研究了下官方文档说明 [Component tests](https://storybook.js.org/docs/writing-tests/component-testing?renderer=react#execute-tests-with-the-test-runner)，按照文档提示运行 `npm run test-storybook` 命令后，发现测试用例居然失败了！！！
+然后我就想着如何通过命令行运行所有组件的所有测试用例，继续研究了下官方文档说明 [Component tests](https://storybook.js.org/docs/writing-tests/component-testing?renderer=react#execute-tests-with-the-test-runner)，按照文档提示运行 `npm run test-storybook` 命令后，发现测试用例居然失败了！！！
 
 我就很纳闷，明明在 Storybook 开发界面中测试用例是通过的，为什么在命令行中测试用例就不通过了？？？
 
-仔细看了报错信息，不通过的用例是 `Page.stories.ts` 文件中的用例，因为我把 `Button.tsx` 组件的代码改坏了，导致 ``Page.stories.ts` 组件中的用例不通过。
+仔细看了报错信息，不通过的用例是 `Page.stories.ts` 文件中的用例，因为我把 `Button.tsx` 组件的代码改坏了，导致 `Page.stories.ts` 组件中的用例不通过。
 
-这是一个很完美的“犯罪”现场：由于修改了老的业务代码导致其他地方的老功能受到了影响，这和我们平时开发业务代码时的情况是一样的，我见过太多这种案例了，相信看文章的你也一定遇到过。
+这是一个完美的犯错场景：由于修改了老的业务代码导致其他地方的老功能受到了影响，这和我们平时开发业务代码时的情况是一样的，我见过太多这种案例了，相信看文章的你也一定遇到过。
+
+![legacy-code](/public/images/storybook/legacy-code.png)
 
 ## 价值总结
 
@@ -110,7 +112,7 @@ Storybook 模板项目内置了三个组件：`Button.tsx`、`Header.tsx` 和 `P
 
 那结合 Storybook 的价值和缺点，是否值得在实际项目中使用呢？
 
-其实要不要用某个工具或者项目，并不是由人决定的，而是由业务需求决定的，理解这一点是非常重要的。
+其实要不要用某个工具或者项目，并不是由人决定的，而是由业务需求决定的，理解这一点非常重要。
 
 比如用 React 来开发一个简单的静态页面，那就用不着引入数据管理库。但在实际开发中，有些同学就不管三七二十一，一上来就用数据管理库，这完全是个人的技术追求和兴趣，和业务需求无关。后果就是增加了项目的复杂度，增加了维护成本，可能还会延期交付项目。如果你是团队的技术负责人，一定要及时制止这种行为，因为这是不负责任的行为。
 
@@ -148,4 +150,4 @@ Storybook 模板项目内置了三个组件：`Button.tsx`、`Header.tsx` 和 `P
 
 Storybook 是一个非常优秀的 UI 组件开发环境，它能够给组件提供独立的运行环境，能单独开发和调试组件，这意味着组件的开发方式发生了根本性地改变，在落地过程中需要考虑很多因素，比如团队的技术水平、团队的接受程度、团队的业务需求等等。
 
-如果你有组件研发规范的烦恼，那么建议你再花点时间深入调研一下，看看是否适合你的项目。
+如果你有组件研发规范的烦恼，那么建议你再花点时间深入调研一下，看看 Storybook 是否适合你的项目，如果你有什么好的建议，也欢迎在评论区留言。
