@@ -1,5 +1,5 @@
 ---
-title: 一文了解 Stroybook
+title: 一文了解 Storybook
 category: 技术
 tag: storybook
 permalink: quick-understand-storybook
