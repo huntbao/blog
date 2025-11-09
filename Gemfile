@@ -7,6 +7,9 @@ gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
+  gem "csv"
+  gem "bigdecimal"
+  gem "mutex_m"
   gem "minimal-mistakes-jekyll"
   gem "jekyll-spaceship"
   gem "jekyll-paginate"
