@@ -3,10 +3,6 @@ title: 【算法题-简单】使用栈实现队列
 category: algorithm
 tag: stack, queue, javascript
 permalink: algorithm-simple-js-implement-queue-using-stack
-<<<<<<< HEAD
-=======
-hidden: true
->>>>>>> master
 ---
 
 > 简单算法题，使用栈模拟队列的功能，使用 JavaScript 语言编写
