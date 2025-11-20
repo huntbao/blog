@@ -10,3 +10,4 @@ node_modules
 .jekyll-cache
 ruby
 .bundle
+.vscode
